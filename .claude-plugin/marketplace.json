@@ -1,0 +1,17 @@
+{
+  "name": "addresszen-skills",
+  "metadata": {
+    "description": "AddressZen address lookup skills for Claude Code"
+  },
+  "owner": {
+    "name": "AddressZen",
+    "email": "support@addresszen.com"
+  },
+  "plugins": [
+    {
+      "name": "addresszen",
+      "source": "./",
+      "category": "developer-tools"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "addresszen",
+  "displayName": "AddressZen",
+  "description": "Skills for integrating AddressZen APIs and widgets — international address lookup and validation.",
+  "version": "0.0.0",
+  "skills": "./skills/",
+  "author": {
+    "name": "AddressZen",
+    "url": "https://addresszen.com"
+  },
+  "homepage": "https://addresszen.com",
+  "repository": "https://github.com/addresszen/skills",
+  "license": "SEE LICENSE IN LICENSE",
+  "keywords": ["address", "addresszen", "autocomplete", "lookup", "international"]
+}

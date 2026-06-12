@@ -1,0 +1,13 @@
+{
+  "name": "addresszen-skills",
+  "owner": {
+    "name": "AddressZen",
+    "email": "support@addresszen.com"
+  },
+  "plugins": [
+    {
+      "name": "addresszen",
+      "source": "./"
+    }
+  ]
+}
