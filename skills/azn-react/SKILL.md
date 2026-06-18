@@ -1,5 +1,5 @@
 ---
-name: addresszen-react
+name: azn-react
 description: |
   Use this skill whenever the user wants address autocomplete in a React or
   Next.js application, address suggestions as the user types in a React form,
@@ -181,3 +181,7 @@ If you need a fully custom UI (your own dropdown, your own suggestion rendering)
 - Live docs and full option reference: [docs.addresszen.com/docs/address-lookup](https://docs.addresszen.com/docs/address-lookup)
 - React integration page: [docs.addresszen.com/docs/address-lookup/react](https://docs.addresszen.com/docs/address-lookup/react)
 - API docs: [docs.addresszen.com](https://docs.addresszen.com)
+
+## Full documentation
+
+The full AddressZen documentation — every guide, API reference, and integration — is available as a single file at [llms.txt](https://docs.addresszen.com/llms.txt). Point your agent there for anything this skill doesn't cover.

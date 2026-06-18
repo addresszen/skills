@@ -1,0 +1,30 @@
+{
+  "$comment": "Drives generation of skills/azn-api-integration/references/. Endpoints excluded here are legacy or superseded by the autocomplete (find + resolve) flow.",
+  "endpoints": {
+    "exclude": [
+      "UDPRN",
+      "UMPRN",
+      "Addresses",
+      "AddressVerify",
+      "RetrieveAddress"
+    ]
+  },
+  "data": {
+    "include": [
+      "PafAddress",
+      "MrAddress",
+      "NybAddress",
+      "AbAddress",
+      "WelshPafAddress",
+      "EcadAddress",
+      "EcafAddress",
+      "GeonamesPlace",
+      "AddressSuggestion",
+      "UkAddressSuggestion",
+      "PlaceSuggestion",
+      "ApiKey",
+      "Licensee",
+      "Config"
+    ]
+  }
+}
