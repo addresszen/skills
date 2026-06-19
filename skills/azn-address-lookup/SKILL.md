@@ -21,12 +21,12 @@ inputs:
     description: API key for the AddressZen API. Get one at addresszen.com
     required: true
 references:
-  - additional-configuration.md
   - additional-data.md
   - behaviours.md
   - bias-by-geolocation.md
   - bias-by-ip.md
   - callbacks.md
+  - configuration-reference.md
   - configure.md
   - css-classes.md
   - default-country.md
@@ -127,7 +127,7 @@ The references below are organised by intent. Read only the ones relevant to the
 - [`npm.md`](./references/npm.md) — npm/bundler install
 - [`script.md`](./references/script.md) — CDN `<script>` tag install (global `AddressZen.AddressLookup`)
 - [`configure.md`](./references/configure.md) — minimum required config (`apiKey`, `outputFields`)
-- [`additional-configuration.md`](./references/additional-configuration.md) — full options reference
+- [`configuration-reference.md`](./references/configuration-reference.md) — full options reference
 - [`callbacks.md`](./references/callbacks.md) — `onAddressRetrieved`, `onLoaded`, `onFailedCheck`, etc.
 
 ### React / single-page apps

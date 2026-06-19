@@ -2,7 +2,7 @@
 
 Address Lookup exports a `setup` method to apply address verification to a form. `setup` requires the following configuration at minimum.
 
-> `apiKey` and `outputFields` below are all you need to get Address Lookup working. For the complete set of controller options, see [Additional Configuration](https://docs.addresszen.com/docs/address-lookup/additional-configuration).
+> `apiKey` and `outputFields` below are all you need to get Address Lookup working. For the complete set of controller options, see [Configuration Reference](https://docs.addresszen.com/docs/address-lookup/configuration-reference).
 
 ## API Key
 

@@ -144,7 +144,7 @@ The widget needs its stylesheet for the suggestion dropdown to render correctly.
 By default the component injects the stylesheet into `<head>` on mount:
 
 ```tsx
-<AddressLookup apiKey="ak_test" /> {/* injectStyle defaults to true */}
+<AddressLookup apiKey="ak_test" />
 ```
 
 To bundle the CSS yourself (recommended for production builds with stricter CSP), set `injectStyle={false}` and import the stylesheet:
