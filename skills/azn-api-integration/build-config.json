@@ -6,7 +6,9 @@
       "UMPRN",
       "Addresses",
       "AddressVerify",
-      "RetrieveAddress"
+      "RetrieveAddress",
+      "SignUpClaim",
+      "SignUpMintToken"
     ]
   },
   "data": {
@@ -15,6 +17,7 @@
       "MrAddress",
       "NybAddress",
       "AbAddress",
+      "AbpAddress",
       "WelshPafAddress",
       "EcadAddress",
       "EcafAddress",

@@ -65,8 +65,8 @@ Autocomplete API usage does not impact your balance, but resolving a suggestion 
 | `post_town` | query | no | string | Restrict addresses to matching town, city or other locality identifier. |
 | `uprn` | query | no | integer | Does not accept comma separated terms. Only a single term is permitted |
 | `country` | query | no | string | Filters by country name. |
-| `postcode_type` | query | no | string | Filter by Postcode Type. Useful for separating organizational and residential addresses |
-| `su_organisation_indicator` | query | no | string | Useful for separating organizational and residential addresses |
+| `postcode_type` | query | no | string | Filter by Postcode Type. Useful for separating organisational and residential addresses |
+| `su_organisation_indicator` | query | no | string | Useful for separating organisational and residential addresses |
 | `bias_postcode_outward` | query | no | string | Boosts addresses with a matching outward code. |
 | `bias_postcode` | query | no | string | Boost addresses which match postcode. |
 | `bias_postcode_area` | query | no | string | Boosts if the first one or two non-numeric characters of a postcode match |

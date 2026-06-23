@@ -22,7 +22,7 @@ Content-Type: `application/json` (required)
 
 | Field | Required | Type | Description |
 |---|---|---|---|
-| `name` | no | string | Licensee individual or organization name |
+| `name` | no | string | Licensee individual or organisation name |
 | `address` | no | string | Licensee's first, second and third line address as well as post town concatenated by commas |
 | `postcode` | no | string | Licensee's postcode |
 | `whitelist` | no | array | A list of allowed URLs. An empty list means that whitelisting is disabled |

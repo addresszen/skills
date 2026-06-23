@@ -1,10 +1,12 @@
-# Not Yet Built Address
+# AddressBase Premium
 
-A UK premise under construction and currently not occupied.
+Address from Ordnance Survey AddressBase Premium dataset.
 
-This dataset is updated by Royal Mail on a monthly cadence.
+Please contact us to have this enabled on your account.
 
-**Schema name:** `NybAddress`
+All AddressBase Premium addresses have a UPRN and a rooftop geolocation available however they may not have a UDPRN.
+
+**Schema name:** `AbpAddress`
 
 ## Fields
 
@@ -51,6 +53,7 @@ This dataset is updated by Royal Mail on a monthly cadence.
 | `latitude` | yes |  | The latitude of the postcode (WGS84/ETRS89). |  |
 | `eastings` | yes |  | Eastings reference using the [Ordnance Survey National Grid reference system](https://en.wikipedia.org/wiki/Ordnance_Survey_National_Grid). |  |
 | `northings` | yes |  | Northings reference using the [Ordnance Survey National Grid reference system](https://en.wikipedia.org/wiki/Ordnance_Survey_National_Grid) |  |
+| `native` | yes | object | A flat, consolidated row from the `abp.addresses` materialised view of | `{"uprn":"49020496","parent_uprn":"49020495","logical_status":1,"blpu_state":"2","blpu_state_date":"2011-10-06T00:00:00.000Z","country":"W","latitude":52.4121999,"longitude":-4.0883772,"x_coordinate":258053.87,"y_coordinate":281405.95,"rpc":2,"local_custodian_code":6820,"addressbase_postal":"D","postcode_locator":"SY23 1JT","multi_occ_count":4,"blpu_start_date":"2007-10-24T00:00:00.000Z","blpu_end_date":null,"blpu_last_update_date":"2025-10-13T00:00:00.000Z","blpu_entry_date":"2006-11-24T00:00:00.000Z","udprn":"24255522","organisation_name":null,"legal_name":null,"department_name":null,"sub_building_name":null,"building_name":null,"building_number":1,"dependent_thoroughfare":"CASTLE TERRACE","thoroughfare":"SOUTH ROAD","double_dependent_locality":null,"dependent_locality":null,"post_town":"ABERYSTWYTH","postcode":"SY23 1JT","postcode_type":"S","delivery_point_suffix":"1A","po_box_number":null,"welsh_dependent_thoroughfare":"HEOL Y CASTELL","welsh_thoroughfare":"TAN Y CAE","welsh_double_dependent_locality":null,"welsh_dependent_locality":null,"welsh_post_town":"ABERYSTWYTH","dpa_process_date":"2016-01-18T00:00:00.000Z","dpa_start_date":"2012-04-23T00:00:00.000Z","dpa_end_date":null,"dpa_last_update_date":"2016-02-10T00:00:00.000Z","dpa_entry_date":"2012-03-19T00:00:00.000Z","classification_code":"RD04","class_scheme":"AddressBase Premium Classification Scheme","scheme_version":1,"classification_start_date":"2007-10-24T00:00:00.000Z","classification_end_date":null,"classification_last_update_date":"2018-09-23T00:00:00.000Z","classification_entry_date":"2006-11-24T00:00:00.000Z","organisation_start_date":null,"organisation_end_date":null,"organisation_last_update_date":null,"organisation_entry_date":null,"lpi_key":"6820L000054880","lpi_language":"CYM","lpi_logical_status":1,"lpi_start_date":"2007-10-24T00:00:00.000Z","lpi_end_date":null,"lpi_last_update_date":"2025-09-26T00:00:00.000Z","lpi_entry_date":"2007-09-04T00:00:00.000Z","sao_start_number":null,"sao_start_suffix":null,"sao_end_number":null,"sao_end_suffix":null,"sao_text":null,"pao_start_number":1,"pao_start_suffix":null,"pao_end_number":null,"pao_end_suffix":null,"pao_text":"HEOL Y CASTELL","usrn":"47114724","usrn_match_indicator":"1","area_name":null,"level":null,"official_flag":"Y","street_record_type":1,"swa_org_ref_naming":6820,"street_state":"2","street_state_date":"1990-01-01T00:00:00.000Z","street_surface":"1","street_classification":null,"street_start_date":"2007-10-24T00:00:00.000Z","street_last_update_date":"2022-01-14T00:00:00.000Z","street_record_entry_date":"1998-07-14T00:00:00.000Z","street_start_x":257968,"street_start_y":281400,"street_start_lat":52.4121241,"street_start_long":-4.0896363,"street_end_x":258266,"street_end_y":281393,"street_end_lat":52.4121386,"street_end_long":-4.0852551,"street_tolerance":10,"street_description":"SOUTH ROAD","street_locality":null,"street_town":"ABERYSTWYTH","adminstrative_area":"CEREDIGION","sd_language":"ENG","sd_start_date":"2007-10-24T00:00:00.000Z","sd_end_date":null,"sd_last_update_date":"2016-02-06T00:00:00.000Z","sd_entry_date":"1998-07-14T00:00:00.000Z","toid":"osgb1000020592167","toid_address":"osgb1000002175099422","toid_highways":"osgb5000005181786114","council_tax_ref":null,"ndr_ref":null,"ons_ward_code":"W05001302","ons_parish_code":"W04000359"}` |
 
 ## Used By
 

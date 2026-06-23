@@ -6,7 +6,7 @@
 
 | Field | Required | Type | Description | Example |
 |---|---|---|---|---|
-| `name` | yes | string | Licensee individual or organization name | `Qwerty Widgets Limited` |
+| `name` | yes | string | Licensee individual or organisation name | `Qwerty Widgets Limited` |
 | `address` | yes | string | Licensee's first, second and third line address as well as post town concatenated by commas | `12 High Street, Manchester` |
 | `postcode` | yes | string | Licensee's postcode | `ID1 1QD` |
 | `whitelist` | yes | array<string> | A list of allowed URLs. An empty list means that whitelisting is disabled |  |

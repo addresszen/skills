@@ -18,7 +18,7 @@ All AddressBase Core address have a UPRN and a rooftop geolocation available how
 | `country_iso_2` | yes | string | 2 letter country code (ISO 3166-1) |  |
 | `country` | yes | string | Full country names (ISO 3166) | `England` |
 | `language` | yes | string | Language represented by 2 letter ISO Code (639-1) |  |
-| `line_1` | yes | string | First Address Line. Often contains premise and thoroughfare information. In the case of a commercial premise, the first line is always the full name of the registered organization. Never empty. | `Prime Minister &amp; First Lord of Treasury` |
+| `line_1` | yes | string | First Address Line. Often contains premise and thoroughfare information. In the case of a commercial premise, the first line is always the full name of the registered organisation. Never empty. | `Prime Minister &amp; First Lord of Treasury` |
 | `line_2` | yes | string | Second Address Line. Often contains thoroughfare and locality information. May be empty | `10 Downing Street` |
 | `line_3` | yes | string | Third address line. May be empty. | `` |
 | `post_town` | yes | string | **Filter by Town or City" | `London` |
@@ -38,10 +38,10 @@ All AddressBase Core address have a UPRN and a rooftop geolocation available how
 | `building_name` | yes | string | Name of residential or commercial premise. | `` |
 | `sub_building_name` | yes | string | When a premise is split into individual units such as flats, apartments or business units. Cannot be present without either building_name or building_number. E.g. Flat 1, A, 10B | `Flat 1` |
 | `po_box` | yes | string | When the PO Box Number field is populated it will contain PO BOX nnnnnn where n represents the PO Box number. Note that the PO Box details can occasionally consist of a combination of numbers and letters. PO Box Numbers are only allocated to Large Users. | `100` |
-| `department_name` | yes | string | Used to supplement Organization Name to identify a department within the organization. | `` |
-| `organisation_name` | yes | string | Used to supplement Organization Name to identify a department within the organization | `Prime Minister &amp; First Lord Of The Treasury` |
+| `department_name` | yes | string | Used to supplement Organisation Name to identify a department within the organisation. | `` |
+| `organisation_name` | yes | string | Name of the business or organisation receiving mail at this delivery point | `Prime Minister &amp; First Lord Of The Treasury` |
 | `postcode_type` | yes |  | This indicates the type of user. It can only take the values 'S' or 'L' indicating small or large respectively. Large User Postcodes. These are assigned to one single address either due to the large volume of mail received at that address, or because a PO Box or Selectapost service has been set up. Small User Postcodes. These identify a group of Delivery Points. |  |
-| `su_organisation_indicator` | yes | string | Small User Organization Indicator can have the values 'Y' or space. A value of 'Y' indicates that a Small User Organization is present at this address. | `Y` |
+| `su_organisation_indicator` | yes | string | Small User Organisation Indicator can have the values 'Y' or space. A value of 'Y' indicates that a Small User Organisation is present at this address. | `Y` |
 | `delivery_point_suffix` | yes | string | A unique Royal Mail 2-character code (the first numeric & the second alphabetical), which, when added to the Postcode, enables each live Delivery Point to be uniquely identified. Once the Delivery Point is deleted from PAF the DPS may be reused (although they aren’t reused until all remaining Delivery Points in the range have been allocated). The DPS for a Large User is always '1A' as each Large User has its own Postcode. | `1A` |
 | `premise` | yes | string | A pre-computed string which sensibly combines building_number, building_name and sub_building_name. building_number, building_name and sub_building_name represent raw data from Royal Mail's and can be difficult to parse if you are unaware of how the Postcode Address File premise fields work together. For this reason, we also provide a pre-computed premise field which intelligently gathers these points into a single, simple premise string. This field is ideal if you want to pull premise information and thoroughfare information separately instead of using our address lines data. | `10` |
 | `administrative_county` | yes | string | The current administrative county to which the postcode has been assigned. | `` |

@@ -23,8 +23,8 @@ The ECAD contains additional data for each ECAF address.
 | `line_7` | yes | string | Address Line 7 |  |
 | `line_8` | yes | string | Address Line 8 |  |
 | `line_9` | yes | string | Address Line 9 |  |
-| `department` | yes | string | The department or division within an organization. If the department element exists, then the organization must also exist. | `Accounts Department` |
-| `organisation` | yes | string | Organization name | `Oak Tree Limited` |
+| `department` | yes | string | The department or division within an organisation. If the department element exists, then the organisation must also exist. | `Accounts Department` |
+| `organisation` | yes | string | Organisation name | `Oak Tree Limited` |
 | `sub_building_name` | yes | string | The sub-building refers to an apartment, flat or unit within a building. | `Flat 1` |
 | `building_name` | yes | string | The name given to the building. Prepended by sub building, if any, when the sub building does not appear on a line to itself. The building name is omitted if it is the same as either the Organisation or Building Group. | `Rose Cottage` |
 | `building_number` | yes | string | A number associated with the whole building. The building number may have a numeric and an alphanumeric component, which are concatenated e.g. 2A, or alternatively will have a simple building number or a complex building number. The building number always relates to the whole building and not a sub-unit within it. | `22` |
@@ -40,7 +40,7 @@ The ECAD contains additional data for each ECAF address.
 | `longitude` | yes |  | The longitude of the postcode (WGS84/ETRS89). |  |
 | `latitude` | yes |  | The latitude of the postcode (WGS84/ETRS89). |  |
 | `ecad_id` | no | string | Unique 10 digit ECAD ID | `17000000` |
-| `organisation_id` | yes | string | Organization ID | `10098783` |
+| `organisation_id` | yes | string | Organisation ID | `10098783` |
 | `address_point_id` | yes | string | Address Point ID | `10098783` |
 | `building_id` | yes | string | Building ID | `10098783` |
 | `building_group_id` | yes | string | Building Group ID | `10098783` |
@@ -63,7 +63,7 @@ The ECAD contains additional data for each ECAF address.
 | `under_construction` | yes |  | A Yes/No field, indicating whether or not the building is under construction. |  |
 | `building_use` | yes |  | Can be one of: |  |
 | `vacant` | yes |  | A Yes/No field, indicating whether the building is vacant. |  |
-| `org_vacant` | yes |  | A Yes/No field, indicating whether the organization is vacant. |  |
+| `org_vacant` | yes |  | A Yes/No field, indicating whether the organisation is vacant. |  |
 | `nace_code` | yes | string | The NACE Code for the Category. |  |
 | `nace_category` | yes | string | Name of the NACE Category |  |
 | `local_authority` | yes | string | Name of local authority |  |

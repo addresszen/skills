@@ -23,8 +23,8 @@ ECAF is the Eircode Address File which contains one record for each Postal Addre
 | `line_7` | yes | string | Address Line 7 |  |
 | `line_8` | yes | string | Address Line 8 |  |
 | `line_9` | yes | string | Address Line 9 |  |
-| `department` | yes | string | The department or division within an organization. If the department element exists, then the organization must also exist. | `Accounts Department` |
-| `organisation` | yes | string | Organization name | `Oak Tree Limited` |
+| `department` | yes | string | The department or division within an organisation. If the department element exists, then the organisation must also exist. | `Accounts Department` |
+| `organisation` | yes | string | Organisation name | `Oak Tree Limited` |
 | `sub_building_name` | yes | string | The sub-building refers to an apartment, flat or unit within a building. | `Flat 1` |
 | `building_name` | yes | string | The name given to the building. Prepended by sub building, if any, when the sub building does not appear on a line to itself. The building name is omitted if it is the same as either the Organisation or Building Group. | `Rose Cottage` |
 | `building_number` | yes | string | A number associated with the whole building. The building number may have a numeric and an alphanumeric component, which are concatenated e.g. 2A, or alternatively will have a simple building number or a complex building number. The building number always relates to the whole building and not a sub-unit within it. | `22` |
