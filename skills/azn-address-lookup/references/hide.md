@@ -46,4 +46,4 @@ A clickable link will also be provided to allow the user to manually enter an ad
 
 ## Custom Unhide Element
 
-You can assign a custom element to serve as a clickable element to unhide the address fields. Use the `unHide` option.
+You can assign a custom element to serve as a clickable element to unhide the address fields. Use the `unhide` option.

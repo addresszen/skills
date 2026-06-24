@@ -90,7 +90,7 @@ Invoked when an error has occurred following an attempt to retrieve a full addre
 
 The first argument is an error instance (i.e. inherits from Error) representing the error which has occurred.
 
-Examples of errors includes "lookup balance exhausted" and "lookup limit reached" errors.
+Examples of errors include "lookup balance exhausted" and "lookup limit reached" errors.
 
 ## Address Suggestion is Selected
 
@@ -104,7 +104,7 @@ Invoked when an error has occurred following an attempt to retrieve suggestions 
 
 The first argument is an error instance (i.e. inherits from Error) representing the error which has occurred.
 
-Examples of errors includes "lookup balance exhausted" and "lookup limit reached" errors.
+Examples of errors include "lookup balance exhausted" and "lookup limit reached" errors.
 
 ## Address Suggestions Retrieved from API
 

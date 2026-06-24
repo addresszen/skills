@@ -153,7 +153,7 @@ Checks the key is usable before initialising. The check can fail if:
 - Your key is requested from a URL not on your allowed list
 - The user has exceeded their daily limit
 
-On failure the widget does not initialise. Use the [`onFailedCheck`](https://docs.addresszen.com/docs/address-lookup/callbacks) callback to handle this case.
+On failure the widget does not initialize. Use the [`onFailedCheck`](https://docs.addresszen.com/docs/address-lookup/callbacks) callback to handle this case.
 
 ### `autocomplete`
 
@@ -165,7 +165,7 @@ Sets the input's `autocomplete=` attribute, aiming to stop browsers (particularl
 
 `(string | HTMLElement)[]` · default `[]`
 
-Elements to hide with `display: none;` when Address Lookup initialises. They are unhidden when an address is selected or the user opts to enter an address manually.
+Elements to hide with `display: none;` when Address Lookup initializes. They are unhidden when an address is selected or the user opts to enter an address manually.
 
 ```javascript
 {
@@ -177,7 +177,7 @@ Elements to hide with `display: none;` when Address Lookup initialises. They are
 }
 ```
 
-Enabling this also renders a clickable element offering manual address entry. Provide your own with [`unhide`](#unhide), or customise the default with [`msgUnhide`](#msgunhide) and [`unhideClass`](#unhideclass).
+Enabling this also renders a clickable element offering manual address entry. Provide your own with [`unhide`](#unhide), or customize the default with [`msgUnhide`](#msgunhide) and [`unhideClass`](#unhideclass).
 
 ### `unhide`
 

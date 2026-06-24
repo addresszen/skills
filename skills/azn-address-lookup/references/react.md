@@ -90,7 +90,7 @@ In wrap mode, HTML props on `<AddressLookup>` (like `placeholder`, `className`) 
 
 ## Common Options
 
-All behavioural options from the underlying controller are supported as props.
+All behavioral options from the underlying controller are supported as props.
 
 ```tsx
 <AddressLookup
