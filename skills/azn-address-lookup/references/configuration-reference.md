@@ -2,7 +2,7 @@
 
 A complete reference for every option accepted by [`AddressLookup.setup`](https://docs.addresszen.com/docs/address-lookup/configure). Only [`apiKey`](#apikey) and [`outputFields`](#outputfields) are required; everything else is optional and has a sensible default.
 
-Callbacks have their own page - see [Callbacks](https://docs.addresszen.com/docs/address-lookup/callbacks). Message strings, CSS classes and inline styles are summarised here and covered in depth under [Messages](https://docs.addresszen.com/docs/address-lookup/messages) and [Styling](https://docs.addresszen.com/docs/address-lookup/default-styling).
+Callbacks have their own page - see [Callbacks](https://docs.addresszen.com/docs/address-lookup/callbacks). Message strings, CSS classes and inline styles are summarized here and covered in depth under [Messages](https://docs.addresszen.com/docs/address-lookup/messages) and [Styling](https://docs.addresszen.com/docs/address-lookup/default-styling).
 
 ### `apiKey`
 
@@ -82,7 +82,7 @@ Converts the post town from upper case to title case - e.g. `"NEW YORK"` becomes
 
 `boolean` · default `false`
 
-Removes the organisation name from the address lines. Addresses that consist only of an organisation name are left untouched, as removing it would leave no premise identifier.
+Removes the organization name from the address lines. Addresses that consist only of an organization name are left untouched, as removing it would leave no premise identifier.
 
 ### `populateCounty`
 
@@ -142,11 +142,19 @@ Additional query parameters applied to the address resolve request - the second 
 
 To apply new parameters after setup, use `setResolveOptions` on the controller instance. Do not mutate `options.resolveOptions` directly.
 
+### `shouldAddressPopulate`
+
+`(address) => boolean | Promise<boolean>` · default `() => true`
+
+Runs after an address is retrieved and before it is written to the form. Return `false` (synchronously or via a promise) to cancel population, or `true` to proceed - useful for delivery-area checks or custom confirmation flows.
+
+Error handling is your responsibility: a rejecting promise **fails open** (population proceeds) rather than blocking the user on a broken check. Catch inside the predicate and return an explicit boolean - `return false` to cancel, `return true` to allow. See [Gate population by delivery area](https://docs.addresszen.com/docs/address-lookup/gate-population) for a worked example.
+
 ### `checkKey`
 
 `boolean` · default `true`
 
-Checks the key is usable before initialising. The check can fail if:
+Checks the key is usable before initializing. The check can fail if:
 
 - Your key has no remaining lookups
 - Your key has run into its daily lookup limit

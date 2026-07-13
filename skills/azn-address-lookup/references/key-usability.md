@@ -2,9 +2,10 @@
 
 Your key may not be available at some times. For instance:
 
-Your key may have reached its daily cap set by you
-Your user has reached their individual usage cap for the day
-The balance on your key is exhausted
+- Your key may have reached its daily cap set by you
+- Your user has reached their individual usage cap for the day
+- The balance on your key is exhausted
+
 By default, Address Lookup will not initialize if your key is not usable for whatever reason. You may use the `onLoaded` and `onFailedCheck` callbacks to make necessary adjustments.
 
 To disable key checking, set `checkKey` to `false`.

@@ -1,6 +1,6 @@
 # Merge Address into a Single Field
 
-Instead of writing each address attributes to individual fields, you may exercise fine control about how address data is presented using the `onAddressRetrieved` callback.
+Instead of writing each address attribute to individual fields, you may exercise fine control about how address data is presented using the `onAddressRetrieved` callback.
 
 In this example, we merge the address fields and insert the result into a `textarea`.
 

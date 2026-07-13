@@ -8,7 +8,7 @@
 
 - **Rapid Address Entry.** Receive address suggestions as you type with a response time of less than 100ms.
 - **Fuzzy Search.** Reduce keystrokes by compensating for spelling mistakes.
-- **Word Abbreviations.** Accepts abbreviations such as av(avenue), hwy (highway), st (street), wy (way).
+- **Word Abbreviations.** Accepts abbreviations such as av (avenue), hwy (highway), st (street), wy (way).
 - **Transposed Letters.** Handle accidental switching of letters, for instance Nwe York (New York).
 - **Inclusive.** WAI-ARIA compliant and works on screen readers for maximum accessibility.
 - **Customizable.** Extensively customizable behavior and styling.

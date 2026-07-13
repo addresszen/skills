@@ -1,6 +1,6 @@
 # Bias By Geolocation
 
-Bias search to a geospatial circle determined by an origin and radius in meters. Max radius is `50000`. 
+Biases the search to a geospatial circle determined by an origin and radius in meters. Max radius is `50000`.
 Uses the format `bias_lonlat=[longitude],[latitude],[radius in meters]`. Only one geospatial bias may be provided.
 
 ```html

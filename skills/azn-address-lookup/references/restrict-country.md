@@ -1,10 +1,10 @@
 # Restrict search to chosen countries
 
-Narrow the countries you wish to support
+Narrow the countries you wish to support.
 
-Setting this to an empty array (default) will enable all countries
+Setting this to an empty array (default) will enable all countries.
 
-Setting this to a single country will disable country selection and hide the country selection toolbar
+Setting this to a single country will disable country selection and hide the country selection toolbar.
 
 ```html
 <form>

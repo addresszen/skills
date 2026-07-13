@@ -1,6 +1,6 @@
 # Bias By IP
 
-Biases search based on approximate geolocation of an IP address. Set `bias_ip` to `true` within `queryOptions` to enable.
+Biases the search based on approximate geolocation of an IP address. Set `bias_ip` to `true` within `queryOptions` to enable.
 
 ```html
 <form>

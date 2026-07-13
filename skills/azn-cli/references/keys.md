@@ -80,7 +80,7 @@ azn keys logs --start 2026-01-01 --end 2026-01-31 > lookups.csv
 
 All subcommands **require user_token** (including `get` and `list`).
 
-A config's `payload` is an opaque serialised-JSON **string** (matching the API's `ConfigNewParam` / `ConfigUpdateParam`). The CLI validates that it parses as JSON but does not interpret its contents.
+A config's `payload` is an opaque serialized-JSON **string** (matching the API's `ConfigNewParam` / `ConfigUpdateParam`). The CLI validates that it parses as JSON but does not interpret its contents.
 
 ### `list [key]`
 
@@ -96,7 +96,7 @@ A config's `payload` is an opaque serialised-JSON **string** (matching the API's
 
 | Flag | Description |
 |---|---|
-| `--payload <json>` | **Required.** Serialised config payload (JSON string). |
+| `--payload <json>` | **Required.** Serialized config payload (JSON string). |
 
 ```bash
 azn keys configs create my-site --payload '{"allowedUrls":["https://example.com"]}'
@@ -108,7 +108,7 @@ azn keys configs create my-site --payload '{"allowedUrls":["https://example.com"
 
 | Flag | Description |
 |---|---|
-| `--payload <json>` | **Required.** Serialised config payload (JSON string). Replaces the existing payload. |
+| `--payload <json>` | **Required.** Serialized config payload (JSON string). Replaces the existing payload. |
 
 ### `delete <config> [key]`
 

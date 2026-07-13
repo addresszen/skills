@@ -106,7 +106,7 @@ All behavioral options from the underlying controller are supported as props.
 
 - [`defaultCountry`](https://docs.addresszen.com/docs/address-lookup/default-country) - ISO country code applied on mount. Defaults to `"USA"`; set `"GBR"` to opt into UK addresses, for example.
 - [`restrictCountries`](https://docs.addresszen.com/docs/address-lookup/restrict-country) - array of ISO codes to restrict the search to.
-- [`hideToolbar`](https://docs.addresszen.com/docs/address-lookup/hide) - hide the country selector toolbar.
+- [`hideToolbar`](https://docs.addresszen.com/docs/address-lookup/configuration-reference#hidetoolbar) - hide the country selector toolbar.
 - `injectStyle` - default `true`. Auto-injects the widget stylesheet. See [CSS](#css) below.
 - `queryOptions` - forwarded to the [Autocomplete API](https://docs.addresszen.com/docs/api/find-address) endpoint.
 - `resolveOptions` - forwarded to the resolve endpoint (e.g. `tags` for usage attribution).

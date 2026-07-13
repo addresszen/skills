@@ -1,10 +1,10 @@
 # Restrict To States
 
-Narrow the states you wish to support
+Narrow the states you wish to support.
 
-Setting this to an empty array (default) will enable all states
+Setting this to an empty array (default) will enable all states.
 
-Setting this to a single state will disable suggestions from other states
+Setting this to a single state will disable suggestions from other states.
 
 ```html
 <form>

@@ -5,7 +5,7 @@ title: 'Setting the default country'
 
 import { LiveCodes } from "@site/src/components/livecodes";
 
-Disable the country detection on Address Finder and set the default country. 
+Disable the country detection on Address Lookup and set the default country. 
 
 ```html
 <form>

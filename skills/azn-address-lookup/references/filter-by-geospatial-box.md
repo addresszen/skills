@@ -1,6 +1,6 @@
 # Filter By Geospatial Box
 
-Restrict search to a geospatial box determined by the `"top-left"` and `"bottom-right"` geolocations. 
+Restricts the search to a geospatial box determined by the `"top-left"` and `"bottom-right"` geolocations.
 Only one geospatial box can be provided.
 
 ```html
