@@ -43,6 +43,7 @@ references:
   - key-usability.md
   - messages.md
   - multiple.md
+  - no-match-action.md
   - npm.md
   - nudge.md
   - populate-country-select.md
@@ -162,6 +163,7 @@ The references below are organised by intent. Read only the ones relevant to the
 - [`separate-input.md`](./references/separate-input.md) — dedicated lookup input separate from output fields
 - [`multiple.md`](./references/multiple.md) — more than one lookup on the page
 - [`hide.md`](./references/hide.md) — hide output fields (and the toolbar) until an address is picked
+- [`no-match-action.md`](./references/no-match-action.md) — offer an out (e.g. manual entry) when a search returns no matches (`msgNoMatchAction` + `onNoMatchAction`)
 - [`prevent-autofill.md`](./references/prevent-autofill.md) — disable browser autofill on the lookup input
 - [`key-usability.md`](./references/key-usability.md) — keyboard navigation tweaks
 - [`validate-before-submitting.md`](./references/validate-before-submitting.md) — block submit until an address is verified

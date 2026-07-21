@@ -26,6 +26,25 @@ Displays when no suggestions could be found for the query.
 
 Defaults to `"No matches found"`
 
+## No Match Action
+
+`msgNoMatchAction`
+
+Label for an optional actionable item presented beneath `msgNoMatch` when a search returns no matches. Use it to offer users an out when they cannot find their address, e.g. a jump to manual address entry. The item renders when both a non-empty label and an `onNoMatchAction` callback are provided; selecting it by click or keyboard closes Address Lookup and invokes the callback.
+
+Defaults to `""` (disabled)
+
+```javascript
+AddressLookup.setup({
+  apiKey: "ak_test",
+  inputField: "#line_1",
+  msgNoMatchAction: "Enter address manually",
+  onNoMatchAction: function () {
+    // e.g. reveal a manual address entry form
+  },
+});
+```
+
 ## Unhide Label
 
 `msgUnhide`

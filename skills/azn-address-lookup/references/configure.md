@@ -26,9 +26,9 @@ Specify where to send address data given a selected address. `outputFields` is a
 }
 ```
 
-> The fields above (`line_1`, `line_2`, `city`, `state` and `zip_plus_4_code`) are the minimum set needed to capture a complete, deliverable US address. Collect all of them so the address you store reliably routes to the premise.
+> The fields above (`line_1`, `line_2`, `city`, `state` and `zip_plus_4_code`) are the minimum set needed to capture a complete, deliverable US address. Collect all of them so the address you store reliably routes to the premises.
 
-Assigning up to 2 address lines, city, state and zip code fields, is all addressing information required to identify a US premise. You may extract more data for an address by passing more properties into the `outputFields` configuration object.
+Assigning up to 2 address lines, city, state and zip code fields, is all addressing information required to identify a US address. You may extract more data for an address by passing more properties into the `outputFields` configuration object.
 
 The configuration attributes for `outputFields` match the Address response object.
 

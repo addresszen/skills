@@ -70,6 +70,12 @@ Invoked when controller attaches to the DOM (`controller.view.attach()`).
 
 Invoked when mousedown event is triggered on suggestion list.
 
+## No-Match Action is Selected
+
+`onNoMatchAction`
+
+Invoked when the user selects the no-match action (by click or keyboard). The action is presented beneath the no-match message when a search returns no matches and both `msgNoMatchAction` and this callback are configured. Selecting it closes the Address Lookup and invokes this callback.
+
 ## Address Suggestion List Opens
 
 `onOpen`

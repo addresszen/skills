@@ -246,6 +246,7 @@ Override any of the user-facing strings. See [Messages](https://docs.addresszen.
 | `msgInitial` | `"Start typing to find address"` |
 | `msgFallback` | `"Please enter your address manually"` |
 | `msgNoMatch` | `"No matches found"` |
+| `msgNoMatchAction` | `""` - assign a non-empty label (e.g. `"Enter address manually"`) to render an actionable item beneath `msgNoMatch` when a search returns no matches. Requires an `onNoMatchAction` callback |
 | `msgList` | `"Select your address"` |
 | `msgCountryToggle` | `"Change Country"` |
 
@@ -259,6 +260,7 @@ Override the class applied to each rendered element. See [CSS Classes](https://d
 | `mainClass` | `"idpc_af"` |
 | `listClass` | `"idpc_ul"` |
 | `messageClass` | `"idpc_error"` |
+| `noMatchActionClass` | `"idpc_action"` |
 | `toolbarClass` | `"idpc_toolbar"` |
 | `countryToggleClass` | `"idpc_country"` |
 
@@ -285,10 +287,10 @@ Inherited from the underlying API client. Defaults suit the production API and r
 | `version` | `string` | `"v1"` |
 | `tls` | `boolean` | `true` |
 | `timeout` | `number` | `10000` (ms) |
-| `strictAuthorisation` | `boolean` | `false` - force authorisation via HTTP headers only |
+| `strictAuthorisation` | `boolean` | `false` - force authorization via HTTP headers only |
 | `header` | `object` | `{}` - default headers added to each request |
 | `tags` | `string[]` | `[]` - tags appended to requests for your lookup logs |
 
 ## Callbacks
 
-Every lifecycle hook is documented on the [Callbacks](https://docs.addresszen.com/docs/address-lookup/callbacks) page: `onLoaded`, `onFailedCheck`, `onMounted`, `onRemove`, `onOpen`, `onClose`, `onFocus`, `onBlur`, `onInput`, `onKeyDown`, `onMouseDown`, `onSuggestionsRetrieved`, `onSuggestionError`, `onAddressSelected`, `onSelect`, `onAddressRetrieved`, `onAddressPopulated`, `onSearchError`, `onCountrySelected`, `onContextChange` and `onUnhide`.
+Every lifecycle hook is documented on the [Callbacks](https://docs.addresszen.com/docs/address-lookup/callbacks) page: `onLoaded`, `onFailedCheck`, `onMounted`, `onRemove`, `onOpen`, `onClose`, `onFocus`, `onBlur`, `onInput`, `onKeyDown`, `onMouseDown`, `onSuggestionsRetrieved`, `onSuggestionError`, `onAddressSelected`, `onSelect`, `onAddressRetrieved`, `onAddressPopulated`, `onSearchError`, `onCountrySelected`, `onContextChange`, `onNoMatchAction` and `onUnhide`.
