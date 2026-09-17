@@ -6,27 +6,33 @@
 
 **Tags:** Keys
 
-Reports lookup information on a key for paid lookups.
+Returns a CSV of the charged lookups made on a key, one row per request.
 
-This method requires a `user_token`, which can be found on your [accounts page](https://addresszen.com/account).
+Requires the `user_token` for the account. The maximum interval is 90 days. Without a start or end date the interval is the last 21 days.
 
-A maximum interval of 90 days can be provided for analysis. If no start or end date is provided, the last 21 days will be used as the default interval.
+The response is `text/csv` and downloads as an attachment. A non-200 response reverts to JSON, with the error code and message in the body.
 
-## Download Usage History (CSV)
+## CSV format
 
-`GET /keys/:key/lookups`
+The CSV has no header row. Columns, in order:
 
-Returns a CSV download of lookups performed and associated information.
+1. Timestamp (ISO 8601)
+2. IP address the request was received from
+3. Search term
+4. URL the request originated from
+5. Lookup type
+6. Tags
+7. Lookups consumed
+8. Licensee name (sublicensing keys only)
+9. Source IP address
 
-Note that the Content-Type returned will be CSV (text/csv). For a non 200 response, the `Content-Type` will revert to JSON with the error code and message embedded.
+The source IP column carries the address forwarded in the `AZ-Source-IP` header. We record it only for keys with IP address forwarding enabled, and only when the header holds a valid IP address. It is empty otherwise.
 
-## Data Redaction
+## Data redaction
 
-Personally Identifiable Data (PII) caught in this your usage log (including IP, search term and URL data) will be redacted on a weekly basis.
+We redact personally identifiable data (PII) in your usage log weekly, covering the IP, source IP, search term and URL columns.
 
-By default, PII will be redacted if it is older than 21 days. This timeframe can be configured from your dashboard.
-
-You may prevent PII collection altogether by setting the interval to `0` days.
+The default retention is 28 days. Change the period from your dashboard. Set it to `0` days to stop collecting PII altogether.
 
 ## Parameters
 
@@ -38,11 +44,65 @@ You may prevent PII collection altogether by setting the interval to `0` days.
 | `end` | query | no | integer | An end date/time in the form of a UNIX Timestamp in milliseconds. E.g.  `1418556477882` |
 | `licensee` | query | no | string | Uniquely identifies a licensee. |
 
-## Error Status Codes
+## Request Samples
 
-| HTTP | Code | Message |
-|---|---|---|
-| 400 |  | Bad Request |
+**curl**
+
+```bash
+curl -G 'https://api.addresszen.com/v1/keys/ak_test/lookups' \
+  -d 'user_token=uk_secret'
+```
+
+**JavaScript**
+
+```javascript
+const response = await fetch(
+  'https://api.addresszen.com/v1/keys/ak_test/lookups?' +
+  new URLSearchParams({
+    user_token: 'uk_secret',
+  })
+);
+
+const { result } = await response.json();
+```
+
+**Python**
+
+```python
+import requests
+
+response = requests.get(
+    "https://api.addresszen.com/v1/keys/ak_test/lookups",
+    params={
+        "user_token": "uk_secret",
+    },
+)
+result = response.json()["result"]
+```
+
+**Ruby**
+
+```ruby
+require "net/http"
+require "json"
+
+uri = URI("https://api.addresszen.com/v1/keys/ak_test/lookups")
+uri.query = URI.encode_www_form(user_token: "uk_secret")
+result = JSON.parse(Net::HTTP.get(uri))["result"]
+```
+
+**PHP**
+
+```php
+<?php
+$response = file_get_contents(
+  "https://api.addresszen.com/v1/keys/ak_test/lookups?" .
+  http_build_query([
+    "user_token" => "uk_secret",
+  ])
+);
+$result = json_decode($response, true)["result"];
+```
 
 ## See also
 

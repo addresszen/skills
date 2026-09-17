@@ -1,6 +1,6 @@
 # Messages
 
-Address Lookup uses a small default set of messages to communicate specific events to the user.  All of Address Lookup's default messages can be overridden. They are outlined below:
+Address Lookup uses a small default set of messages to communicate specific events to the user. All of Address Lookup's default messages can be overridden. They are outlined below:
 
 ## Initial Message
 

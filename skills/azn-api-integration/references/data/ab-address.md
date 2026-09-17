@@ -1,10 +1,12 @@
-# AddressBase Core
+# AddressBase Core Address
 
-Address from Ordnance Survey AddressBase Core dataset.
+An address from Ordnance Survey's AddressBase Core, a flat cut of the approved addresses in Great Britain. Each record is one UPRN drawn from the local authority gazetteers: the National Land and Property Gazetteer for England and Wales, the One Scotland Address Gazetteer for Scotland. It carries the Royal Mail delivery point where one has been matched, property level coordinates, a classification (`classification_code`), the key identifiers (`uprn`, `parent_uprn`, `udprn`, `usrn`, `toid`), the contributing authority (`gss_code`), coordinate quality (`rpc`) and the change the latest supply applied (`change_code`). Ordnance Survey publishes around 35 million records and refreshes them weekly.
 
-Please contact us to have this enabled on your account.
+How it differs from the neighbouring datasets:
 
-All AddressBase Core address have a UPRN and a rooftop geolocation available however they may not have a UDPRN.
+- **AddressBase Premium** (`abp`) is the full gazetteer: around 40 million UPRNs including historic and provisional records, the local authority address breakdown (`pao_*`, `sao_*`), lifecycle (`logical_status`, `blpu_state`), Welsh alternatives, the street record and cross references to the Valuation Office Agency and ONS, refreshed every six weeks. AddressBase Core carries none of these. Use it when one approved address per UPRN, with coordinates and a classification, is enough.
+- **Royal Mail PAF** (`paf`) lists delivery points only, keyed by UDPRN. AddressBase Core keys on UPRN and also holds non-postal objects (substations, car parks, land parcels, parent shells) with no delivery point. On those records `udprn` is `0` and `delivery_point_suffix` is empty. Where a record matches PAF, `ab` renders the same `line_1` to `line_3` as `paf` for that UDPRN, bar a handful of records with a trailing range in the building name, which AddressBase Core keeps whole.
+- The Ordnance Survey end of life notice for autumn 2027 covers AddressBase and AddressBase Plus, not AddressBase Core.
 
 **Schema name:** `AbAddress`
 
@@ -12,50 +14,94 @@ All AddressBase Core address have a UPRN and a rooftop geolocation available how
 
 | Field | Required | Type | Description | Example |
 |---|---|---|---|---|
-| `id` | yes | string | Global unique internally generated identifier for an address | `paf_8387729` |
-| `dataset` | yes | string | Indicates the provenance of an address |  |
+| `id` | yes | string | Global unique internally generated identifier for an address |  |
 | `country_iso` | yes | string | 3 letter country code (ISO 3166-1) |  |
-| `country_iso_2` | yes | string | 2 letter country code (ISO 3166-1) |  |
-| `country` | yes | string | Full country names (ISO 3166) | `England` |
+| `dataset` | yes | `ab` | Indicates the provenance of an address |  |
 | `language` | yes | string | Language represented by 2 letter ISO Code (639-1) |  |
-| `line_1` | yes | string | First Address Line. Often contains premise and thoroughfare information. In the case of a commercial premise, the first line is always the full name of the registered organisation. Never empty. | `Prime Minister &amp; First Lord of Treasury` |
-| `line_2` | yes | string | Second Address Line. Often contains thoroughfare and locality information. May be empty | `10 Downing Street` |
-| `line_3` | yes | string | Third address line. May be empty. | `` |
-| `post_town` | yes | string | **Filter by Town or City" | `London` |
-| `postcode` | yes | string | Correctly formatted postcode. Capitalised and spaced. | `SW1A 2AA` |
-| `county` | yes | string | Since postal, administrative or traditional counties may not apply to some addresses, the county field is designed to return whatever county data is available. Normally, the postal county is returned. If this is not present, the county field will fall back to the administrative county. If the administrative county is also not present, the county field will fall back to the traditional county. May be empty in cases where no administrative, postal or traditional county present. | `London` |
-| `county_code` | yes | string | Short code representing the county or province. May be empty (`""`) | `` |
-| `uprn` | yes | string | UPRN stands for Unique Property Reference Number and is maintained by the Ordnance Survey (OS). Local governments in the UK have allocated a unique number for each land or property. |  |
-| `udprn` | yes | integer | UDPRN stands for ‘Unique Delivery Point Reference Number’. Royal Mail assigns a unique UDPRN code for each premise on PAF. Simple, unique reference number for each Delivery Point. Unlikely to be reused when an address expires. | `23747771` |
-| `umprn` | yes |  | A small minority of individual premises (as identified by a UDPRN) may have multiple occupants behind the same letterbox. These are known as Multiple Residence occupants and can be queried via the Multiple Residence dataset. Simple, unique reference number for each Multiple Residence occupant. |  |
-| `postcode_outward` | yes | string | The first part of a postcode is known as the outward code. e.g. The outward code of ID1 1QD is ID1. Enables mail to be sorted to the correct local area for delivery. This part of the code contains the area and the district to which the mail is to be delivered, e.g. ‘PO1’, ‘SW1A’ or ‘B23’. | `SW1A` |
-| `postcode_inward` | yes | string | The second part of a postcode is known as the inward code. e.g. The inward code of ID1 1QD is 1QD. | `2AA` |
-| `dependant_locality` | yes | string | When the same thoroughfare name reoccurs in a Post town, it may not be possible to make it dependant on a dependant thoroughfare. In this case the thoroughfare is dependant on a locality. For example if we want to find 1 Back Lane in Huddersfield we see that there are three. | `` |
-| `double_dependant_locality` | yes | string | Used to supplement Dependant Locality. A Double Dependant Locality supplied along with a Dependant Locality if the Dependant Locality exists twice in the same locality. | `` |
-| `thoroughfare` | yes | string | Also known as the street or road name. In general each Thoroughfare Name will have a separate Postcode. Longer Thoroughfares with high number ranges often have multiple Postcodes covering the entire length of the road, with breaks at suitable points e.g. junctions or natural breaks in the road. | `Downing Street` |
-| `dependant_thoroughfare` | yes | string | Used to supplement thoroughfare. When a thoroughfare name is used twice in the same Post Town, the dependant thoroughfare is added to uniquely indentify a delivery point. | `` |
-| `building_number` | yes | string | Number to identify premise on a thoroughfare or dependant thoroughfare. | `10` |
-| `building_name` | yes | string | Name of residential or commercial premise. | `` |
-| `sub_building_name` | yes | string | When a premise is split into individual units such as flats, apartments or business units. Cannot be present without either building_name or building_number. E.g. Flat 1, A, 10B | `Flat 1` |
-| `po_box` | yes | string | When the PO Box Number field is populated it will contain PO BOX nnnnnn where n represents the PO Box number. Note that the PO Box details can occasionally consist of a combination of numbers and letters. PO Box Numbers are only allocated to Large Users. | `100` |
-| `department_name` | yes | string | Used to supplement Organisation Name to identify a department within the organisation. | `` |
-| `organisation_name` | yes | string | Name of the business or organisation receiving mail at this delivery point | `Prime Minister &amp; First Lord Of The Treasury` |
-| `postcode_type` | yes |  | This indicates the type of user. It can only take the values 'S' or 'L' indicating small or large respectively. Large User Postcodes. These are assigned to one single address either due to the large volume of mail received at that address, or because a PO Box or Selectapost service has been set up. Small User Postcodes. These identify a group of Delivery Points. |  |
-| `su_organisation_indicator` | yes | string | Small User Organisation Indicator can have the values 'Y' or space. A value of 'Y' indicates that a Small User Organisation is present at this address. | `Y` |
-| `delivery_point_suffix` | yes | string | A unique Royal Mail 2-character code (the first numeric & the second alphabetical), which, when added to the Postcode, enables each live Delivery Point to be uniquely identified. Once the Delivery Point is deleted from PAF the DPS may be reused (although they aren’t reused until all remaining Delivery Points in the range have been allocated). The DPS for a Large User is always '1A' as each Large User has its own Postcode. | `1A` |
-| `premise` | yes | string | A pre-computed string which sensibly combines building_number, building_name and sub_building_name. building_number, building_name and sub_building_name represent raw data from Royal Mail's and can be difficult to parse if you are unaware of how the Postcode Address File premise fields work together. For this reason, we also provide a pre-computed premise field which intelligently gathers these points into a single, simple premise string. This field is ideal if you want to pull premise information and thoroughfare information separately instead of using our address lines data. | `10` |
-| `administrative_county` | yes | string | The current administrative county to which the postcode has been assigned. | `` |
-| `postal_county` | yes | string | Postal counties were used for the distribution of mail before the Postcode system was introduced in the 1970s. The Former Postal County was the Administrative County at the time. This data rarely changes. May be empty. | `London` |
-| `traditional_county` | yes | string | Traditional counties are provided by the Association of British Counties. It is historical data, and can date from the 1800s. May be empty. | `Greater London` |
-| `district` | yes | string | The current district/unitary authority to which the postcode has been assigned. | `Westminster` |
-| `ward` | yes | string | The current administrative/electoral area to which the postcode has been assigned. May be empty for a small number of addresses. | `St. James'` |
-| `longitude` | yes |  | The longitude of the postcode (WGS84/ETRS89). |  |
-| `latitude` | yes |  | The latitude of the postcode (WGS84/ETRS89). |  |
-| `eastings` | yes |  | Eastings reference using the [Ordnance Survey National Grid reference system](https://en.wikipedia.org/wiki/Ordnance_Survey_National_Grid). |  |
-| `northings` | yes |  | Northings reference using the [Ordnance Survey National Grid reference system](https://en.wikipedia.org/wiki/Ordnance_Survey_National_Grid) |  |
-| `native` | yes |  | Represents a GB address in Ordnance Survey's AddressBase Core dataset |  |
+| `line_1` | yes | string | First Address Line. Often contains premise and thoroughfare information. In the case of a commercial premise, the first line is always the full name of the registered organisation. Never empty. |  |
+| `line_2` | yes | string | Second Address Line. Often contains thoroughfare and locality information. May be empty |  |
+| `line_3` | yes | string | Third address line. Takes the address elements left after `line_1` and `line_2` are filled; where the address needs more than three lines the remaining elements are joined into `line_3`, comma separated. May be empty. |  |
+| `premise` | yes | string | A pre-computed string which sensibly combines the building name, sub-building and building number fields into a single, simple premise string. Ideal if you want to pull premise information and thoroughfare information separately instead of using the address lines. |  |
+| `uprn` | yes | string | Unique Property Reference Number (UPRN) assigned by the LLPG Custodian or Ordnance Survey. |  |
+| `udprn` | yes | integer | Royal Mail's Unique Delivery Point Reference Number (UDPRN). `0` where the record has no matching PAF delivery point. |  |
+| `parent_uprn` | yes | string | UPRN of the parent record where a parent-child relationship exists. Empty where the record has no parent. |  |
+| `usrn` | yes | integer | Unique Street Reference Number assigned by the Street Name and Numbering Custodian or by Ordnance Survey, depending on the address record. |  |
+| `toid` | yes | string | The Topographic Identifier taken from OS MasterMap Topography Layer. This TOID is assigned to the UPRN by performing a spatial intersection between the two identifiers. It consists of the letters 'osgb' followed by up to sixteen digits. May be empty. |  |
+| `classification_code` | yes | string | A code that describes the classification of the address record to a maximum of a secondary level. The first letter is the primary class (e.g. `R` residential, `C` commercial, `L` land), the second the secondary class (e.g. `RD` dwelling). |  |
+| `eastings` | yes | number | A value in metres defining the x location in accordance with the British National Grid. |  |
+| `northings` | yes | number | A value in metres defining the y location in accordance with the British National Grid. |  |
+| `latitude` | yes | number | A value defining the Latitude location in accordance with the ETRS89 coordinate reference system. |  |
+| `longitude` | yes | number | A value defining the Longitude location in accordance with the ETRS89 coordinate reference system. |  |
+| `single_address_line` | yes | string | A single attribute containing text concatenation of the address elements separated by a comma. |  |
+| `street_name` | yes | string | Street / Road name for the address record. |  |
+| `locality` | yes | string | A locality defines an area or geographical identifier within a town, village or hamlet. Locality represents the lower level geographical area. The locality field should be used in conjunction with the town name and street description fields to uniquely identify geographic area where there may be more than one within an administrative area. |  |
+| `town_name` | yes | string | Geographical town name assigned by the Local Authority. Note this can differ from the post town assigned by Royal Mail. |  |
+| `delivery_point_suffix` | yes | string | A two-character code uniquely identifying an individual delivery point within a postcode, assigned by Royal Mail. May be empty. |  |
+| `post_town` | yes | string | The town or city in which the Royal Mail sorting office servicing this address record is located. |  |
+| `gss_code` | yes | string | The Office for National Statistics Governmental Statistical Service (GSS) code representing the contributing Local Authority. |  |
+| `rpc` | yes | integer | Representative Point Code describes the accuracy of the coordinate that has been allocated to the UPRN as indicated by the Local Authority and enhanced using large scale OS data. |  |
+| `last_update_date` | yes | string | The latest date on which any of the attributes on this record were last changed. |  |
+| `island` | yes | string | Third level of geographic area name to record island names where appropriate. May be empty. |  |
+| `change_code` | yes | `I` \| `U` \| `D` | The type of change last applied to the record. `I` insert, `U` update, `D` delete. |  |
+| `building_name` | yes | string | The building name is a description applied to a single address or a group of addresses. May be empty. |  |
+| `building_number` | yes | string | The building number is a number or range of numbers given to a single address or a group of addresses. May be empty. |  |
+| `sub_building` | yes | string | The sub-building name and/or number for the address record. May be empty. |  |
+| `postcode` | yes | string | A postcode assigned by Royal Mail for the address record. |  |
+| `po_box` | yes | string | Text concatenation of 'PO BOX' and the Post Office Box (PO Box) number or 'BFPO' and the British Forces Post Office number. May be empty. |  |
+| `organisation` | yes | string | The organisation name is the business name given, when appropriate, to an address record. May be empty. |  |
+| `country` | yes | string | Full country names (ISO 3166) |  |
+| `county` | yes | string | Since postal, administrative or traditional counties may not apply to some addresses, the county field is designed to return whatever county data is available. Normally, the postal county is returned. If this is not present, the county field will fall back to the administrative county. If the administrative county is also not present, the county field will fall back to the traditional county. May be empty in cases where no administrative, postal or traditional county present. |  |
+| `district` | yes | string | The current district/unitary authority to which the postcode has been assigned. |  |
+| `ward` | yes | string | The current administrative/electoral area to which the postcode has been assigned. May be empty for a small number of addresses. |  |
+| `traditional_county` | yes | string | Traditional counties are provided by the Association of British Counties. It is historical data, and can date from the 1800s. May be empty. |  |
+| `administrative_county` | yes | string | The current administrative county to which the postcode has been assigned. |  |
+| `postal_county` | yes | string | Postal counties were used for the distribution of mail before the Postcode system was introduced in the 1970s. The Former Postal County was the Administrative County at the time. This data rarely changes. May be empty. |  |
 
-## Used By
+## Example
 
-- [Postcodes](../endpoints/postcodes.md)
-- [ResolveAddress](../endpoints/resolve-address.md)
+```json
+{
+  "id": "ab_10070014461",
+  "country_iso": "GBR",
+  "dataset": "ab",
+  "language": "en",
+  "line_1": "Flat 27",
+  "line_2": "Henry House",
+  "line_3": "Ringers Road",
+  "premise": "Flat 27, Henry House",
+  "uprn": "10070014461",
+  "udprn": 53705246,
+  "parent_uprn": "10070014435",
+  "usrn": 20301384,
+  "toid": "osgb5000005186746874",
+  "classification_code": "RD",
+  "eastings": 540291,
+  "northings": 168873,
+  "latitude": 51.4015451,
+  "longitude": 0.0154405,
+  "single_address_line": "Flat 27, Henry House, Ringers Road, Bromley, BR1 1AA",
+  "street_name": "Ringers Road",
+  "locality": "",
+  "town_name": "Bromley",
+  "delivery_point_suffix": "2H",
+  "post_town": "Bromley",
+  "gss_code": "E09000006",
+  "rpc": 2,
+  "last_update_date": "2020-01-06T00:00:00.000Z",
+  "island": "",
+  "change_code": "I",
+  "building_name": "Henry House",
+  "building_number": "",
+  "sub_building": "Flat 27",
+  "postcode": "BR1 1AA",
+  "po_box": "",
+  "organisation": "",
+  "country": "England",
+  "county": "Kent",
+  "district": "Bromley",
+  "ward": "Bromley Town",
+  "traditional_county": "Kent",
+  "administrative_county": "",
+  "postal_county": "Kent"
+}
+```

@@ -54,7 +54,7 @@ shouldAddressPopulate: async function (address) {
 ## Reacting to the decision
 
 - **To show a message on cancel**, do it inside the predicate before `return false` (as above).
-- **To confirm population actually happened** - for example to gate a form submit - use the [`onAddressPopulated`](https://docs.addresszen.com/docs/address-lookup/callbacks) callback. It fires only when population proceeds, so a cancelled selection never trips it.
+- **To confirm population actually happened** - for example to gate a form submit - use the [`onAddressPopulated`](https://docs.addresszen.com/docs/address-lookup/callbacks) callback. It fires only when population proceeds, so a canceled selection never trips it.
 
 ## Live Demo
 

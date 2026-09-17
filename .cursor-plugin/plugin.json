@@ -2,7 +2,7 @@
   "name": "addresszen",
   "displayName": "AddressZen",
   "description": "Skills for integrating AddressZen APIs and widgets — address lookup, React address components, direct API integration, and the CLI.",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "author": {
     "name": "AddressZen",
     "url": "https://addresszen.com"
@@ -10,5 +10,11 @@
   "homepage": "https://addresszen.com",
   "repository": "https://github.com/addresszen/skills",
   "license": "SEE LICENSE IN LICENSE",
-  "keywords": ["address", "addresszen", "autocomplete", "lookup", "international"]
+  "keywords": [
+    "address",
+    "addresszen",
+    "autocomplete",
+    "lookup",
+    "international"
+  ]
 }

@@ -4,7 +4,7 @@ Manage stored credentials at `~/.config/addresszen/credentials.json` (or `%APPDA
 
 ## `azn auth login`
 
-Store an `api_key` (required) and `user_token` (optional) for later reuse. The api_key is verified against `GET /keys/{key}` before being written.
+Store an `api_key` (required) and `user_token` (optional) for later reuse. The `api_key` is verified against `GET /keys/{key}` before being written.
 
 | Flag | Description |
 | --- | --- |
@@ -60,4 +60,4 @@ Show where each credential was resolved from and call `GET /keys/{key}` to verif
 
 `source` is `flag`, `env`, or `config`. `preview` is the first 6 characters of the credential followed by `…`.
 
-Either credential may be `null` if it isn't configured. When `api_key` is `null` the API check is skipped — output omits `available` and reports `"live": false`.
+Either credential may be `null` if it isn't configured. When `api_key` is `null`, the API check is skipped — output omits `available` and reports `"live": false`.

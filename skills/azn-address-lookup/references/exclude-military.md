@@ -23,7 +23,7 @@ Remove military addresses from the list of suggestions.
   AddressLookup.setup({
     apiKey: "ak_test",
     queryOptions: {
-      set: "insular",
+      set: "nomilitary",
     },
     outputFields: {
       line_1: "#line_1",

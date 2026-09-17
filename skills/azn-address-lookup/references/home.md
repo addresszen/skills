@@ -1,8 +1,10 @@
+<img className="page-icon" src="/img/icons/address-lookup.svg" alt="" width="64" height="64" />
+
 # Address Lookup
 
 > Add Address Verification to your address forms in moments with our Address Lookup JavaScript package.
 
-![AddressZen Address Lookup Demo](https://docs.addresszen.com/../static/img/address-lookup.gif)
+![AddressZen Address Lookup Demo](https://docs.addresszen.com/img/address-lookup.gif)
 
 ## Features
 
@@ -10,7 +12,7 @@
 - **Fuzzy Search.** Reduce keystrokes by compensating for spelling mistakes.
 - **Word Abbreviations.** Accepts abbreviations such as av (avenue), hwy (highway), st (street), wy (way).
 - **Transposed Letters.** Handle accidental switching of letters, for instance Nwe York (New York).
-- **Inclusive.** WAI-ARIA compliant and works on screen readers for maximum accessibility.
+- **Inclusive.** Developed to WCAG 2.1 AA: screen reader friendly and fully keyboard operable. See [Accessibility](https://docs.addresszen.com/docs/address-lookup/accessibility).
 - **Customizable.** Extensively customizable behavior and styling.
 
 ## Quick Setup

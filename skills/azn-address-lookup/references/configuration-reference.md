@@ -138,7 +138,7 @@ To apply new parameters after setup, use `setQueryOptions` on the controller ins
 
 `object` · default `{}`
 
-Additional query parameters applied to the address resolve request - the second API call that retrieves the full address when a user selects a suggestion. See the [Resolve Address API Reference](https://docs.addresszen.com/docs/api/resolve-address).
+Additional query parameters applied to the address resolve request - the second API call that retrieves the full address when a user selects a suggestion. See the [Retrieve Address API Reference](https://docs.addresszen.com/docs/api/retrieve-address).
 
 To apply new parameters after setup, use `setResolveOptions` on the controller instance. Do not mutate `options.resolveOptions` directly.
 
@@ -233,7 +233,7 @@ Sets `position: fixed` on the suggestion list element.
 
 `"1.0" | "1.1"` · default `"1.0"`
 
-The WAI-ARIA specification version to target. `"1.0"` enables regressions that receive the widest screen-reader support (notably VoiceOver and NVDA); `"1.1"` targets the more recent spec.
+The WAI-ARIA specification version to target. `"1.0"` enables workarounds that receive the widest screen-reader support (notably VoiceOver and NVDA); `"1.1"` targets the more recent spec.
 
 ## Messages
 

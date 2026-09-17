@@ -6,7 +6,11 @@
 
 **Tags:** Place Search
 
-Resolves a place autocompletion by its place ID.
+Returns the full place for a place ID taken from a `/places` suggestion.
+
+On top of the fields carried by the suggestion, the response adds coordinates, language and the underlying dataset record.
+
+Each request decrements your lookup balance. An unknown ID returns `404`.
 
 ## Parameters
 
@@ -15,13 +19,73 @@ Resolves a place autocompletion by its place ID.
 | `place` | path | yes | string | ID of place suggestion |
 | `tags` | query | no | string | A comma separated list of tags to query over. |
 
+## Request Samples
+
+**curl**
+
+```bash
+curl -G 'https://api.addresszen.com/v1/places/geonames_5353' \
+  -d 'api_key=ak_test'
+```
+
+**JavaScript**
+
+```javascript
+const response = await fetch(
+  'https://api.addresszen.com/v1/places/geonames_5353?' +
+  new URLSearchParams({
+    api_key: 'ak_test',
+  })
+);
+
+const { result } = await response.json();
+```
+
+**Python**
+
+```python
+import requests
+
+response = requests.get(
+    "https://api.addresszen.com/v1/places/geonames_5353",
+    params={
+        "api_key": "ak_test",
+    },
+)
+result = response.json()["result"]
+```
+
+**Ruby**
+
+```ruby
+require "net/http"
+require "json"
+
+uri = URI("https://api.addresszen.com/v1/places/geonames_5353")
+uri.query = URI.encode_www_form(api_key: "ak_test")
+result = JSON.parse(Net::HTTP.get(uri))["result"]
+```
+
+**PHP**
+
+```php
+<?php
+$response = file_get_contents(
+  "https://api.addresszen.com/v1/places/geonames_5353?" .
+  http_build_query([
+    "api_key" => "ak_test",
+  ])
+);
+$result = json_decode($response, true)["result"];
+```
+
 ## Response Schema (200)
 
 | Field | Required | Type | Description |
 |---|---|---|---|
-| `code` | yes | integer |  |
-| `message` | yes | string |  |
-| `result` | yes |  | Represents a geographical place |
+| `code` | yes | `2000` |  |
+| `message` | yes | `Success` |  |
+| `result` | yes | Place | A geographical place: an administrative division, capital or seat of administration city drawn from GeoNames. `GET /places` returns a suggestion for each match and `GET /places/{place}` resolves a suggestion id to the full place. `native` holds the underlying GeoNames record. |
 
 ## Response Example
 

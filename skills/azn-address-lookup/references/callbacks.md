@@ -44,13 +44,15 @@ Invoked if checkKey is enabled and the check fails.
 
 Invoked when user selects or focuses address input field.
 
-## User inputs into Address Lookup Field
+## User Input into Address Lookup Field
 
 `onInput`
 
 Invoked when user edits Address Lookup field.
 
 ## User Presses a Key
+
+`onKeyDown`
 
 Invoked when keypress is triggered on input.
 
@@ -67,6 +69,8 @@ Invoked when Address Lookup has been successfully attached to the input element.
 Invoked when controller attaches to the DOM (`controller.view.attach()`).
 
 ## User Clicks on Suggestion List
+
+`onMouseDown`
 
 Invoked when mousedown event is triggered on suggestion list.
 
@@ -100,6 +104,8 @@ Examples of errors include "lookup balance exhausted" and "lookup limit reached"
 
 ## Address Suggestion is Selected
 
+`onSelect`
+
 Invoked when a suggestion has been selected.
 
 ## Address Suggestion Retrieval Fails
@@ -119,5 +125,7 @@ Examples of errors include "lookup balance exhausted" and "lookup limit reached"
 Invoked immediately after address suggestions are retrieved from the API. The first argument is an array of address suggestions.
 
 ## Hidden Address Fields are Unhidden
+
+`onUnhide`
 
 Invoked when hidden fields are unhidden (i.e. user selects an address or opts for manual input).

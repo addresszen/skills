@@ -6,43 +6,103 @@
 
 **Tags:** Place Search
 
-Query for geographical places across countries. Each query will return a list of place suggestions, which consists of a place name, descriptive name and id.
-
-This API returns geographical information such as countries, capitals, administrative areas and more. It is ideal for correctly identifying a place along with any other details like geolocation.
+Returns place suggestions for a query, ranked by relevance. Places cover countries, administrative areas, capitals and other administrative seats.
 
 ## Implementing Place Autocomplete
 
-Extracting the full information of a place is a 2 step process:
+Retrieving a full place takes two requests:
 
-1. Retrieve place suggestions via /places
-2. Retrieve the entire place with the ID provided in the suggestion
+1. Fetch suggestions from `/places`
+2. Fetch the place using the `id` on a suggestion
 
-## Suggestion Format
-
-Each place suggestion contains a descriptive name which you can provide to users to uniquely identify a place.
+A query returns at most 10 suggestions. An empty query returns an empty result set. Show users the `descriptive_name`. The API drops suggestions that share one, so each name in a response identifies a single place.
 
 ## Rate Limiting and Cost
 
-The rate limit for the Autocomplete API is 3000 requests per 5 minutes. HTTP Headers inform about the current rate limit.
+The rate limit is 3,000 requests per 5 minutes.
 
-Autocomplete API usage does not impact your balance, but resolving a suggestion to a full address requires a paid request. Autocomplete requests without subsequent paid requests may result in rate limitation or suspension.
+`/places` does not decrement your lookup balance, but resolving a suggestion to a full place does. We rate limit and then suspend integrations that repeatedly call `/places` without resolving.
 
 ## Parameters
 
 | Name | In | Required | Type | Description |
 |---|---|---|---|---|
-| `query` | query | no | string | Specifies the place you wish to query. Query can be shortened to `q=` |
+| `query` | query | no | string | Specifies the place to query. Can be shortened to `q=` |
 | `country_iso` | query | no | string | Filter by country ISO code. Uses 3 letter country code (ISO 3166-1) standard. |
 | `bias_country_iso` | query | no | string | Bias by country ISO code. Uses 3 letter country code (ISO 3166-1) standard. |
-| `bias_lonlat` | query | no | string | Bias search to a geospatial circle determined by an origin and radius in meters. Max radius is `50000`. |
+| `bias_lonlat` | query | no | string | Bias search to a geospatial circle determined by an origin and radius in metres. Max radius is `50000`. |
 | `bias_ip` | query | no | `true` | Biases search based on approximate geolocation of IP address. |
+
+## Request Samples
+
+**curl**
+
+```bash
+curl -G 'https://api.addresszen.com/v1/places' \
+  -d 'api_key=ak_test' \
+  -d 'query=london'
+```
+
+**JavaScript**
+
+```javascript
+const response = await fetch(
+  'https://api.addresszen.com/v1/places?' +
+  new URLSearchParams({
+    api_key: 'ak_test',
+    query: 'london',
+  })
+);
+
+const { result } = await response.json();
+```
+
+**Python**
+
+```python
+import requests
+
+response = requests.get(
+    "https://api.addresszen.com/v1/places",
+    params={
+        "api_key": "ak_test",
+        "query": "london",
+    },
+)
+result = response.json()["result"]
+```
+
+**Ruby**
+
+```ruby
+require "net/http"
+require "json"
+
+uri = URI("https://api.addresszen.com/v1/places")
+uri.query = URI.encode_www_form(api_key: "ak_test", query: "london")
+result = JSON.parse(Net::HTTP.get(uri))["result"]
+```
+
+**PHP**
+
+```php
+<?php
+$response = file_get_contents(
+  "https://api.addresszen.com/v1/places?" .
+  http_build_query([
+    "api_key" => "ak_test",
+    "query" => "london",
+  ])
+);
+$result = json_decode($response, true)["result"];
+```
 
 ## Response Schema (200)
 
 | Field | Required | Type | Description |
 |---|---|---|---|
-| `code` | yes | integer |  |
-| `message` | yes | string |  |
+| `code` | yes | `2000` |  |
+| `message` | yes | `Success` |  |
 | `result` | yes | object |  |
 
 ## Response Example
@@ -64,12 +124,6 @@ Autocomplete API usage does not impact your balance, but resolving a suggestion 
   "message": "Success"
 }
 ```
-
-## Error Status Codes
-
-| HTTP | Code | Message |
-|---|---|---|
-| 400 |  | Bad Request |
 
 ## See also
 

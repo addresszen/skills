@@ -21,8 +21,9 @@ inputs:
     description: API key for the AddressZen API. Get one at addresszen.com
     required: true
 references:
+  - accessibility.md
   - additional-data.md
-  - behaviours.md
+  - behavior.md
   - bias-by-geolocation.md
   - bias-by-ip.md
   - callbacks.md
@@ -173,7 +174,7 @@ The references below are organised by intent. Read only the ones relevant to the
 
 ### Concepts
 - [`how-it-works.md`](./references/how-it-works.md) — internal model: input field, dropdown, key check
-- [`behaviours.md`](./references/behaviours.md) — the DOM the widget renders and how it reacts
+- [`behavior.md`](./references/behavior.md) — the DOM the widget renders and how it reacts
 - [`home.md`](./references/home.md) — feature overview
 
 ### Troubleshooting
