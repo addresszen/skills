@@ -9,11 +9,11 @@ Every response carries a numeric `code` and a `message`. A successful request re
 ```json
 {
   "code": 4010,
-  "message": "Invalid Key"
+  "message": "Invalid Key. For more information see https://docs.addresszen.com/docs/guides/error-codes#4010"
 }
 ```
 
-Check `code`, not the message text. Request validation failures (`code` 4000 on the validated endpoints) add `errors`, an array of `{ path, message }` naming each invalid field.
+Check `code`, not the message text. Some messages end with a link to the matching section of the error codes guide. Request validation failures (`code` 4000 on the validated endpoints) add `errors`, an array of `{ path, message }` naming each invalid field.
 
 With a JSONP `callback` parameter the API returns every error with HTTP 200, so read `code` from the body rather than relying on the status.
 
