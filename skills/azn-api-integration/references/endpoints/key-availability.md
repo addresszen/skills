@@ -8,11 +8,11 @@
 
 Returns public information on an API Key: whether it can be used right now (`available`), the search contexts the key is licensed for (`contexts`) and the context that best matches the caller's IP address (`context`).
 
-The endpoint accepts API Keys (beginning `ak_`) and sub-licensed keys (beginning `sl_`), and needs no `user_token`.
+The endpoint accepts API Keys (beginning `ak_`) and sub-licensed keys (beginning `sl_`), and needs no Management Key.
 
 A key that exists but cannot be used, because it has no lookups left or has breached a limit, returns `200` with `"available": false`. An unknown or malformed key returns an error.
 
-Supply a valid `user_token` and the endpoint returns the key's private details instead, as `GET /keys/{key}/details` does. A `user_token` that does not own the key is rejected.
+Supply a valid Management Key and the endpoint returns the key's private details instead, as `GET /keys/{key}/details` does. A Management Key that does not own the key is rejected.
 
 ## Parameters
 

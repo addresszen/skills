@@ -30,7 +30,7 @@ The rate limit is 3,000 requests per 5 minutes.
 | `query` | query | no | string | Specifies the place to query. Can be shortened to `q=` |
 | `country_iso` | query | no | string | Filter by country ISO code. Uses 3 letter country code (ISO 3166-1) standard. |
 | `bias_country_iso` | query | no | string | Bias by country ISO code. Uses 3 letter country code (ISO 3166-1) standard. |
-| `bias_lonlat` | query | no | string | Bias search to a geospatial circle determined by an origin and radius in metres. Max radius is `50000`. |
+| `bias_lonlat` | query | no | string | Bias search to a geospatial circle determined by an origin and radius in meters. Max radius is `50000`. |
 | `bias_ip` | query | no | `true` | Biases search based on approximate geolocation of IP address. |
 
 ## Request Samples

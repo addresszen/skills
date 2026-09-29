@@ -1,6 +1,6 @@
 # Update Licensee
 
-**Endpoint:** `PUT /keys/{key}/licensees/{licensee}`
+**Endpoint:** `POST /keys/{key}/licensees/{licensee}`
 
 **Operation ID:** `UpdateLicensee`
 
@@ -14,7 +14,7 @@ Updates a licensee's address, postcode, allowed URLs and daily limit. Returns th
 |---|---|---|---|---|
 | `key` | path | yes | string | The API Key to retrieve. Begins `ak_`. |
 | `licensee` | path | yes | string | Uniquely identifies a licensee. |
-| `user_token` | query | no | string | A secret key used for sensitive operations on your account and API Keys. |
+| `user_token` | query | no | string | A secret key used to manage your account and API Keys. It was previously called the user token. |
 
 ## Request Body
 
@@ -25,7 +25,7 @@ Content-Type: `application/json` (required)
 | `name` | no | string | Licensee individual or organisation name |
 | `address` | no | string | Licensee's first, second and third line address as well as post town concatenated by commas |
 | `postcode` | no | string | Licensee's postcode |
-| `whitelist` | no | array<string> | A list of allowed URLs. An empty list means that whitelisting is disabled |
+| `whitelist` | no | array<string> | A list of allowed URLs. An empty list disables the check. |
 | `daily` | no | object |  |
 
 ## Request Samples
@@ -33,7 +33,7 @@ Content-Type: `application/json` (required)
 **curl**
 
 ```bash
-curl -X PUT 'https://api.addresszen.com/v1/keys/ak_test/licensees/sl_ijoiqsxeQgXW2gkiE0X94?user_token=uk_secret' \
+curl -X POST 'https://api.addresszen.com/v1/keys/ak_test/licensees/sl_ijoiqsxeQgXW2gkiE0X94?user_token=uk_secret' \
   -H 'Content-Type: application/json' \
   -d '{
     "daily": {
@@ -46,7 +46,7 @@ curl -X PUT 'https://api.addresszen.com/v1/keys/ak_test/licensees/sl_ijoiqsxeQgX
 
 ```javascript
 const response = await fetch('https://api.addresszen.com/v1/keys/ak_test/licensees/sl_ijoiqsxeQgXW2gkiE0X94?user_token=uk_secret', {
-  method: 'PUT',
+  method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
     daily: {
@@ -63,7 +63,7 @@ const { result } = await response.json();
 ```python
 import requests
 
-response = requests.put(
+response = requests.post(
     "https://api.addresszen.com/v1/keys/ak_test/licensees/sl_ijoiqsxeQgXW2gkiE0X94",
     params={"user_token": "uk_secret"},
     json={
@@ -87,7 +87,7 @@ body = {
     limit: 20000,
   },
 }
-response = Net::HTTP.put(uri, body.to_json, "Content-Type" => "application/json")
+response = Net::HTTP.post(uri, body.to_json, "Content-Type" => "application/json")
 result = JSON.parse(response.body)["result"]
 ```
 
@@ -97,7 +97,7 @@ result = JSON.parse(response.body)["result"]
 <?php
 $ch = curl_init("https://api.addresszen.com/v1/keys/ak_test/licensees/sl_ijoiqsxeQgXW2gkiE0X94?user_token=uk_secret");
 curl_setopt_array($ch, [
-  CURLOPT_CUSTOMREQUEST => "PUT",
+  CURLOPT_CUSTOMREQUEST => "POST",
   CURLOPT_HTTPHEADER => ["Content-Type: application/json"],
   CURLOPT_POSTFIELDS => json_encode([
     "daily" => [

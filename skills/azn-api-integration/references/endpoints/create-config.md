@@ -13,7 +13,7 @@ Creates a named configuration on a key and returns it.
 | Name | In | Required | Type | Description |
 |---|---|---|---|---|
 | `key` | path | yes | string | The API Key to retrieve. Begins `ak_`. |
-| `user_token` | query | no | string | A secret key used for sensitive operations on your account and API Keys. |
+| `user_token` | query | no | string | A secret key used to manage your account and API Keys. It was previously called the user token. |
 
 ## Request Body
 

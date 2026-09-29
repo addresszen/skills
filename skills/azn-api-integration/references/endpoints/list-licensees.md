@@ -6,7 +6,7 @@
 
 **Tags:** Licensees
 
-Returns a key's licensees, oldest first, up to 100 per request. The list omits cancelled licensees. The key must be enabled for sub-licensing.
+Returns a key's licensees, oldest first, up to 100 per request. The list omits canceled licensees. The key must be enabled for sub-licensing.
 
 ## Parameters
 
@@ -14,7 +14,7 @@ Returns a key's licensees, oldest first, up to 100 per request. The list omits c
 |---|---|---|---|---|
 | `key` | path | yes | string | The API Key to retrieve. Begins `ak_`. |
 | `starting_after` | query | no | integer | ID of the licensee after which to list results |
-| `user_token` | query | no | string | A secret key used for sensitive operations on your account and API Keys. |
+| `user_token` | query | no | string | A secret key used to manage your account and API Keys. It was previously called the user token. |
 | `limit` | query | no | integer | Specifies the maximum number of records to retrieve. |
 | `query` | query | no | string | Filter results by licensee name. Can be shortened to `q=` |
 

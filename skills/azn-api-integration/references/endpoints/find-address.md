@@ -46,7 +46,7 @@ Autocomplete requests do not draw on your balance. Resolving a suggestion to a f
 | `dataset` | query | no | array | Comma-separated list of datasets to search within. |
 | `context` | query | no | string | Limits search results, typically within a country. |
 | `limit` | query | no | integer | Specifies the maximum number of records to retrieve. |
-| `bias_lonlat` | query | no | string | Bias search to a geospatial circle determined by an origin and radius in metres. Max radius is `50000`. |
+| `bias_lonlat` | query | no | string | Bias search to a geospatial circle determined by an origin and radius in meters. Max radius is `50000`. |
 | `bias_ip` | query | no | `true` | Biases search based on approximate geolocation of IP address. |
 | `box` | query | no | string | Restrict search to a geospatial box determined by the "top-left" and "bottom-right" geolocations. |
 | `postal_code` | query | no | string | Restrict results to addresses with a matching full postal code. Case, spaces and hyphens are ignored. For US addresses the full postal code is the nine digit ZIP+4 (`941021234`); filter on `postal_code_3` for a five digit ZIP. For UK addresses use `postcode`. |

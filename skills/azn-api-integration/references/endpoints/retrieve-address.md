@@ -26,7 +26,7 @@ Every address comes back in one US-shaped format, whatever country or dataset it
 **curl**
 
 ```bash
-curl -G 'https://api.addresszen.com/v1/autocomplete/addresses/usps_Z222446599|1||1101/usa' \
+curl -G 'https://api.addresszen.com/v1/autocomplete/addresses/usps_V118834572|310||3191/usa' \
   -d 'api_key=ak_test'
 ```
 
@@ -34,7 +34,7 @@ curl -G 'https://api.addresszen.com/v1/autocomplete/addresses/usps_Z222446599|1|
 
 ```javascript
 const response = await fetch(
-  'https://api.addresszen.com/v1/autocomplete/addresses/usps_Z222446599%7C1%7C%7C1101/usa?' +
+  'https://api.addresszen.com/v1/autocomplete/addresses/usps_V118834572%7C310%7C%7C3191/usa?' +
   new URLSearchParams({
     api_key: 'ak_test',
   })
@@ -49,7 +49,7 @@ const { result } = await response.json();
 import requests
 
 response = requests.get(
-    "https://api.addresszen.com/v1/autocomplete/addresses/usps_Z222446599%7C1%7C%7C1101/usa",
+    "https://api.addresszen.com/v1/autocomplete/addresses/usps_V118834572%7C310%7C%7C3191/usa",
     params={
         "api_key": "ak_test",
     },
@@ -63,7 +63,7 @@ result = response.json()["result"]
 require "net/http"
 require "json"
 
-uri = URI("https://api.addresszen.com/v1/autocomplete/addresses/usps_Z222446599%7C1%7C%7C1101/usa")
+uri = URI("https://api.addresszen.com/v1/autocomplete/addresses/usps_V118834572%7C310%7C%7C3191/usa")
 uri.query = URI.encode_www_form(api_key: "ak_test")
 result = JSON.parse(Net::HTTP.get(uri))["result"]
 ```
@@ -73,7 +73,7 @@ result = JSON.parse(Net::HTTP.get(uri))["result"]
 ```php
 <?php
 $response = file_get_contents(
-  "https://api.addresszen.com/v1/autocomplete/addresses/usps_Z222446599%7C1%7C%7C1101/usa?" .
+  "https://api.addresszen.com/v1/autocomplete/addresses/usps_V118834572%7C310%7C%7C3191/usa?" .
   http_build_query([
     "api_key" => "ak_test",
   ])

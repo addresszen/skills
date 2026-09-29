@@ -13,7 +13,7 @@ Updates a key's settings and returns its private details. Only the fields you se
 | Name | In | Required | Type | Description |
 |---|---|---|---|---|
 | `key` | path | yes | string | The API Key to retrieve. Begins `ak_`. |
-| `user_token` | query | no | string | A secret key used for sensitive operations on your account and API Keys. |
+| `user_token` | query | no | string | A secret key used to manage your account and API Keys. It was previously called the user token. |
 
 ## Request Body
 
@@ -25,7 +25,7 @@ Content-Type: `application/json` (required)
 | `daily_limit` | no | object |  |
 | `monthly_limit` | no | object |  |
 | `individual_limit` | no | object |  |
-| `allowed_urls` | no | array<string> | A list of allowed URLs. An empty list means that allowed URLs are disabled. Up to 10 allowed. |
+| `allowed_urls` | no | array<string> | A list of allowed URLs. An empty list disables the check. Up to 10 allowed. |
 | `redact_days` | no | integer | Number of days to preserve personal data stored in your key usage history. Set to 0 to prevent personal data storage |
 | `notifications` | no | object |  |
 | `ip_forwarding` | no | boolean | Accept IP addresses forwarded in the `AZ-Source-IP` header |

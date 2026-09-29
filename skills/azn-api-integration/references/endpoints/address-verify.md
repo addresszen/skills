@@ -14,6 +14,12 @@ A match returns the standardized address lines, city, state and ZIP+4, scored by
 
 Only a match draws on your balance. A key without address verification enabled returns `401`. A verification still running after 9.5 seconds aborts with `429`.
 
+## Countries
+
+Verify defaults to the United States, where it is CASS certified. Pass `context` with an ISO 3166-1 alpha-3 country code to verify an address elsewhere, e.g. `context=GBR` or `context=FRA`. The address datasets your key is licensed for decide which countries it can verify.
+
+Outside the United States there is no CASS record to return, so `match` carries the standardized address from that country's dataset instead. The top-level fields (`address_line_one`, `city`, `state`, `zip_code`, `country_iso_2`) are populated for every country, along with `confidence` and `fit`.
+
 ## Parameters
 
 | Name | In | Required | Type | Description |

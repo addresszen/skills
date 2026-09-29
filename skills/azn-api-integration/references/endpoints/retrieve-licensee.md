@@ -6,7 +6,7 @@
 
 **Tags:** Licensees
 
-Returns a licensee by its `sl_` key. A cancelled or unknown licensee returns `404`.
+Returns a licensee by its `sl_` key. A canceled or unknown licensee returns `404`.
 
 ## Parameters
 
@@ -14,7 +14,7 @@ Returns a licensee by its `sl_` key. A cancelled or unknown licensee returns `40
 |---|---|---|---|---|
 | `key` | path | yes | string | The API Key to retrieve. Begins `ak_`. |
 | `licensee` | path | yes | string | Uniquely identifies a licensee. |
-| `user_token` | query | no | string | A secret key used for sensitive operations on your account and API Keys. |
+| `user_token` | query | no | string | A secret key used to manage your account and API Keys. It was previously called the user token. |
 
 ## Request Samples
 

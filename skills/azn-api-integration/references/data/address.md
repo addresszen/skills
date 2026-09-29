@@ -34,7 +34,7 @@ Every address is returned in this shape, whatever dataset it came from. US and n
 | `street_name` | yes | string | The official name of the street as assigned by the local governing authority. Contains the street name only, without directionals (EAST, WEST, etc.) or suffixes (ST, DR, BLVD, etc.). May also contain literals such as PO BOX, GENERAL DELIVERY, USS, PSC or UNIT. |  |
 | `street_suffix_abbreviation` | yes | string | Standard abbreviation for the trailing designator in a street address. |  |
 | `street_post_directional_abbreviation` | yes | string | A geographic direction that follows the street name. |  |
-| `building_or_firm_name` | yes | string | The name of a company, building, apartment complex, shopping center, or other distinguishing secondary address information. |  |
+| `building_or_firm_name` | yes | string | The name of a company, building, apartment complex, shopping center or other distinguishing secondary address information. |  |
 | `address_secondary_abbreviation` | yes | string | A descriptive code identifying the type of secondary range held in the secondary number field, e.g. apartment, suite or trailer. |  |
 | `base_alternate_code` | yes | `A` \| `B` \| `""` | Code specifying whether the backing USPS record is a base (preferred) or alternate record. |  |
 | `lacs_status_indicator` | yes | `""` \| `L` | The Locatable Address Conversion Service (LACS) indicator marks USPS records converted to the LACS system, which lets mailers convert a rural route address to a city-style address so emergency services can locate it. |  |
@@ -49,7 +49,7 @@ Every address is returned in this shape, whatever dataset it came from. US and n
 | `city_abbreviation` | yes | string | A standard 13-character abbreviation for a city/state name. Only used for names longer than 13 characters with a city state mailing name indicator of "Y"; blank otherwise. |  |
 | `preferred_city` | yes | string | The default preferred or alternate preferred last-line name for a ZIP Code. |  |
 | `city_state_name_facility_code` | yes | `B` \| `C` \| `N` \| `P` \| `S` \| `U` \| `Y` \| `""` | The type of locale identified in the city/state name. The facility may be a USPS facility, such as a post office, station or branch, or a non-postal place name. |  |
-| `zip_classification_code` | yes | `""` \| `M` \| `P` \| `U` | Describes the type of ZIP area a 5-digit ZIP Code serves, e.g. a single educational institution, post office boxes only, or a single address with unusually high mail volume. |  |
+| `zip_classification_code` | yes | `""` \| `M` \| `P` \| `U` | Describes the type of ZIP area a 5-digit ZIP Code serves, e.g. a single educational institution, post office boxes only or a single address with unusually high mail volume. |  |
 | `city_state_mailing_name_indicator` | yes | string | Specifies whether the city state name can be used as the last line of an address on a mail piece. |  |
 | `carrier_route_rate_sortation` | yes | string | Identifies where automation Carrier Route rates are available and where the commingling of automation and non-automation mail, including Enhanced Carrier Routes and 5-digit presort, on the same pallet or in the same container is allowed. |  |
 | `finance_number` | yes | string \| number | A code assigned to USPS facilities (primarily Post Offices) to collect cost and statistical data and compile revenue and expense data. |  |

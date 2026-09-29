@@ -14,7 +14,7 @@ Cancels a licensee. Its key stops working and it drops out of the licensee list.
 |---|---|---|---|---|
 | `key` | path | yes | string | The API Key to retrieve. Begins `ak_`. |
 | `licensee` | path | yes | string | Uniquely identifies a licensee. |
-| `user_token` | query | no | string | A secret key used for sensitive operations on your account and API Keys. |
+| `user_token` | query | no | string | A secret key used to manage your account and API Keys. It was previously called the user token. |
 
 ## Request Samples
 
