@@ -2,29 +2,29 @@
 
 Inspect and manage API keys.
 
-Every subcommand accepts `[key]` as an optional first positional. If omitted, the resolved api_key is used — so `azn keys details` and `azn keys details ak_xxx` behave the same when your own key is configured.
+Every subcommand accepts `[key]` as an optional first positional. If omitted, the resolved api_key is used, so `azn keys details` and `azn keys details ak_xxx` behave the same when your own key is configured.
 
 All subcommands except `keys get` and `keys context` **require a user_token**. The CLI preflights this before any HTTP call: if no user_token is found via `--user-token`, `AZN_USER_TOKEN`, or `azn auth login`, the command exits with `code: missing_user_token` and a hint pointing to those three sources.
 
 ## `azn keys get [key]`
 
-Public availability info — `GET /keys/{key}`. No user_token is attached (the response shape changes if one is present, so the CLI explicitly omits it even when available). The response reports `available`; geographic context lives under `keys context`.
+Public availability info: `GET /keys/{key}`. No user_token is attached (the response shape changes if one is present, so the CLI explicitly omits it even when available). The response reports `available`; geographic context lives under `keys context`.
 
 ## `azn keys context [key]`
 
-Geographic context for a key — `GET /keys/{key}`. Reports `context` (the likely context for the requesting agent) and `contexts` (every context available to the key). No user_token is attached.
+Geographic context for a key: `GET /keys/{key}`. Reports `context` (the likely context for the requesting agent) and `contexts` (every context available to the key). No user_token is attached.
 
 ## `azn keys details [key]`
 
-Private key details — `GET /keys/{key}/details`. **Requires user_token.** Reports name, limits, allowed URLs, notifications, and purchases. Dataset availability lives under `keys datasets`; available contexts under `keys context`.
+Private key details: `GET /keys/{key}/details`. **Requires user_token.** Reports name, limits, allowed URLs, notifications, and purchases. Dataset availability lives under `keys datasets`; available contexts under `keys context`.
 
 ## `azn keys datasets [key]`
 
-Dataset availability for a key — `GET /keys/{key}/details`. **Requires user_token.** Reports the `datasets` map (each dataset → boolean).
+Dataset availability for a key: `GET /keys/{key}/details`. **Requires user_token.** Reports the `datasets` map (each dataset → boolean).
 
 ### `update [key]`
 
-Enable or disable datasets — `PUT /keys/{key}/details`. **Requires user_token.** Returns the updated `datasets` map.
+Enable or disable datasets: `PUT /keys/{key}/details`. **Requires user_token.** Returns the updated `datasets` map.
 
 | Flag | Description |
 |---|---|
@@ -39,7 +39,7 @@ azn keys datasets update -e paf -e abp -d mr
 
 ## `azn keys update [key]`
 
-Update key details — `PUT /keys/{key}/details`. **Requires user_token.**
+Update key details: `PUT /keys/{key}/details`. **Requires user_token.**
 
 | Flag | Description |
 |---|---|
@@ -51,7 +51,7 @@ azn keys update --json-body '{"notifications":{"email":"ops@example.com"}}'
 
 ## `azn keys usage [key]`
 
-Lookup counts over a date range — `GET /keys/{key}/usage`. **Requires user_token.**
+Lookup counts over a date range: `GET /keys/{key}/usage`. **Requires user_token.**
 
 | Flag | Description |
 |---|---|
@@ -62,7 +62,7 @@ Lookup counts over a date range — `GET /keys/{key}/usage`. **Requires user_tok
 
 ## `azn keys logs [key]`
 
-Paid lookup logs — `GET /keys/{key}/lookups`. Emits **raw CSV to stdout**. **Requires user_token.**
+Paid lookup logs: `GET /keys/{key}/lookups`. Emits **raw CSV to stdout**. **Requires user_token.**
 
 | Flag | Description |
 |---|---|
@@ -70,7 +70,7 @@ Paid lookup logs — `GET /keys/{key}/lookups`. Emits **raw CSV to stdout**. **R
 | `--end <date>` | End date |
 | `--licensee <id>` | Filter by licensee id |
 
-This command is CSV-only and does not support `--json` / `-q` — passing either errors with `invalid_input`. Redirect to a file or pipe into CSV tooling:
+This command is CSV-only and does not support `--json` / `-q`; passing either errors with `invalid_input`. Redirect to a file or pipe into CSV tooling:
 
 ```bash
 azn keys logs --start 2026-01-01 --end 2026-01-31 > lookups.csv
@@ -84,15 +84,15 @@ A config's `payload` is an opaque serialized-JSON **string** (matching the API's
 
 ### `list [key]`
 
-`GET /keys/{key}/configs` — list all configs.
+`GET /keys/{key}/configs`: list all configs.
 
 ### `get <config> [key]`
 
-`GET /keys/{key}/configs/{config}` — retrieve one.
+`GET /keys/{key}/configs/{config}`: retrieve one.
 
 ### `create <name> [key]`
 
-`POST /keys/{key}/configs` — create a new config.
+`POST /keys/{key}/configs`: create a new config.
 
 | Flag | Description |
 |---|---|
@@ -104,7 +104,7 @@ azn keys configs create my-site --payload '{"allowedUrls":["https://example.com"
 
 ### `update <config> [key]`
 
-`POST /keys/{key}/configs/{config}` — update in place.
+`POST /keys/{key}/configs/{config}`: update in place.
 
 | Flag | Description |
 |---|---|

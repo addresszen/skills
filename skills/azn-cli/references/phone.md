@@ -1,6 +1,6 @@
 # azn phone
 
-Validate phone numbers — `GET /phone_numbers`. Requires `api_key`. Each input counts as a paid lookup.
+Validate phone numbers: `GET /phone_numbers`. Requires `api_key`. Each input counts as a paid lookup.
 
 ## Usage
 
@@ -51,7 +51,7 @@ Include the country code (for example `+12025550173`) for reliable parsing.
 query,status,valid,national_format,international_format,iso_country,iso_country_2,country,current_carrier,original_carrier
 ```
 
-A row that fails its lookup doesn't abort the batch: in CSV its `status` becomes `Error: <message>`; in JSON its entry is `{ query, error: { code, message } }`. The batch still exits `0` — filter on `status` or the `error` key to find failures. Auth/permission failures (`auth_failed`, `forbidden`) are the exception: they abort the whole run since every row would fail identically.
+A row that fails its lookup doesn't abort the batch: in CSV its `status` becomes `Error: <message>`; in JSON its entry is `{ query, error: { code, message } }`. The batch still exits `0`; filter on `status` or the `error` key to find failures. Auth/permission failures (`auth_failed`, `forbidden`) are the exception: they abort the whole run since every row would fail identically.
 
 ## Agent patterns
 
@@ -68,7 +68,7 @@ cat numbers.txt | azn phone --stdin --json | jq '.results[] | select(.response.r
 
 ## Error codes
 
-- `missing_argument` — no `[query]`, `--file`, or `--stdin` supplied
-- `auth_failed` — invalid key, or key lacks paid phone validation permission
-- `rate_limited` — back off and retry
-- `invalid_input` — malformed request rejected by the API
+- `missing_argument`: no `[query]`, `--file`, or `--stdin` supplied
+- `auth_failed`: invalid key, or key lacks paid phone validation permission
+- `rate_limited`: back off and retry
+- `invalid_input`: malformed request rejected by the API

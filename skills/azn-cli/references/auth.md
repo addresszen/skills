@@ -27,9 +27,9 @@ Interactive: prompts for the api_key (required) then the user_token (press enter
 
 ### Error codes
 
-- `invalid_input` — non-interactive mode missing `--api-key`
-- `auth_failed` — API rejected the supplied credentials during verification
-- `write_failed` — unable to write credentials file
+- `invalid_input`: non-interactive mode missing `--api-key`
+- `auth_failed`: API rejected the supplied credentials during verification
+- `write_failed`: unable to write credentials file
 
 ## `azn auth logout`
 
@@ -41,7 +41,7 @@ Remove the credentials file.
 { "success": true, "removed": true, "config_path": "..." }
 ```
 
-`removed: false` means there was no file to remove — not an error.
+`removed: false` means there was no file to remove, not an error.
 
 ## `azn auth whoami`
 
@@ -60,4 +60,4 @@ Show where each credential was resolved from and call `GET /keys/{key}` to verif
 
 `source` is `flag`, `env`, or `config`. `preview` is the first 6 characters of the credential followed by `…`.
 
-Either credential may be `null` if it isn't configured. When `api_key` is `null`, the API check is skipped — output omits `available` and reports `"live": false`.
+Either credential may be `null` if it isn't configured. When `api_key` is `null`, the API check is skipped; output omits `available` and reports `"live": false`.

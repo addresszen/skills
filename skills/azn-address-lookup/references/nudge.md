@@ -4,7 +4,7 @@ From time to time, you may want to tweak the default style of Address Lookup to 
 
 [Style Adjustments](https://docs.addresszen.com/docs/address-lookup/style-tweaks) are the recommended means to make small changes.
 
-A common issue is the alignment of the Address Lookup dropdown — this may be a few pixels too high or low. In these instances, we recommend a positive or negative `margin-top` style attribute.
+A common issue is the alignment of the Address Lookup dropdown; this may be a few pixels too high or low. In these instances, we recommend a positive or negative `margin-top` style attribute.
 
 ```html
 <form>
