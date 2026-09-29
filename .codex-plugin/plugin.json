@@ -1,8 +1,8 @@
 {
   "name": "addresszen",
   "displayName": "AddressZen",
-  "description": "Skills for integrating AddressZen APIs and widgets — address lookup, React address components, direct API integration, and the CLI.",
-  "version": "1.0.2",
+  "description": "Skills for integrating AddressZen APIs and widgets — address lookup, React address components, direct API integration, the TypeScript SDK, and the CLI.",
+  "version": "1.1.0",
   "skills": "./skills/",
   "author": {
     "name": "AddressZen",

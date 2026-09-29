@@ -8,6 +8,7 @@ A collection of skills for AI coding agents (Claude Code, Cursor, Codex) providi
 - **`azn-api-integration`** — integrating the AddressZen API directly over HTTP.
 - **`azn-react`** — integrating `@addresszen/react`, the React component for AddressZen Address Lookup.
 - **`azn-cli`** - driving the API from the terminal with the `azn` CLI (`@addresszen/cli`).
+- **`azn-js-sdk`** - integrating `@addresszen/sdk`, the fetch-based TypeScript SDK: typed API calls, autocomplete, error handling and React or Preact Query adapters.
 
 ## Install
 
