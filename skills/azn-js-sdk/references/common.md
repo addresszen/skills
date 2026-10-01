@@ -17,6 +17,8 @@ controller.abort();
 await pending.catch(console.error);
 ```
 
+To cap how long every request may run, set [`timeoutMs`](https://docs.addresszen.com/docs/sdks/typescript/setup#how-do-i-set-a-request-timeout) on the client.
+
 ## How do I import types?
 
 Import request and response types with `import type`, for example `FindAddressData` and `FindAddressResponse`. Every address comes back in the flat `Address` model, whatever the country. Its `native` field is a union of each dataset's raw record. Narrow it on `dataset` before reading dataset-specific fields.

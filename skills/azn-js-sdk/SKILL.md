@@ -45,7 +45,7 @@ Set `apiKey` on the client. Private account operations also need a Management Ke
 
 ## References
 
-- [Setup](./references/setup.md)
+- [Setup](./references/setup.md): client options, request timeouts and default headers
 - [Autocomplete](./references/autocomplete.md)
 - [Filter and bias](./references/filter-and-bias.md)
 - [Address verification](./references/address-verify.md)
