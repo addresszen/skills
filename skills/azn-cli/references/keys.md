@@ -4,7 +4,7 @@ Inspect and manage API keys.
 
 Every subcommand accepts `[key]` as an optional first positional. If omitted, the resolved api_key is used, so `azn keys details` and `azn keys details ak_xxx` behave the same when your own key is configured.
 
-All subcommands except `keys get` and `keys context` **require a user_token**. The CLI preflights this before any HTTP call: if no user_token is found via `--user-token`, `AZN_USER_TOKEN`, or `azn auth login`, the command exits with `code: missing_user_token` and a hint pointing to those three sources.
+All subcommands except `keys get`, `keys context` and `keys configs get` **require a user_token**. The CLI preflights this before any HTTP call: if no user_token is found via `--user-token`, `AZN_USER_TOKEN`, or `azn auth login`, the command exits with `code: missing_user_token` and a hint pointing to those three sources.
 
 ## `azn keys get [key]`
 
@@ -78,7 +78,7 @@ azn keys logs --start 2026-01-01 --end 2026-01-31 > lookups.csv
 
 ## `azn keys configs`
 
-All subcommands **require user_token** (including `get` and `list`).
+All subcommands except `get` **require user_token**. `get` needs only the API key.
 
 A config's `payload` is an opaque serialized-JSON **string** (matching the API's `ConfigNewParam` / `ConfigUpdateParam`). The CLI validates that it parses as JSON but does not interpret its contents.
 

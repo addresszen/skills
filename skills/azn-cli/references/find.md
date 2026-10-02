@@ -2,17 +2,17 @@
 
 Address autocomplete: two-step by design. Useful when you need to pin a specific address from partial info before using it downstream.
 
-## `azn find [query]`
+## `azn find <query>`
 
 `GET /autocomplete/addresses`.
 
 | Flag | Description |
 |---|---|
-| `--country <iso3>` | Filter by ISO-3 (for example USA, GBR) |
+| `--country <iso3>` | Limit suggestions to one country, by ISO-3 code (for example USA, GBR) |
 
-**TTY (human):** prompts for input if no query, shows a `select` picker, auto-resolves the chosen suggestion, and prints the full address.
+**TTY (human):** prints a numbered list of suggestions with their ids.
 
-**Non-TTY (agent):** the query is required. Emits suggestions as JSON:
+**Non-TTY (agent):** emits suggestions as JSON:
 
 ```json
 {
@@ -26,13 +26,9 @@ Address autocomplete: two-step by design. Useful when you need to pin a specific
 
 ## `azn resolve <id>`
 
-`GET /autocomplete/addresses/{id}/{country}`.
+`GET /autocomplete/addresses/{id}/usa`.
 
-| Flag | Description |
-|---|---|
-| `--country <iso3>` | Resolution dataset: `usa` (default) or `gbr` |
-
-Returns the resolved address object.
+Returns the resolved address as `result`, in US format for addresses in any country. On a TTY, prints the address lines.
 
 ## Agent pattern
 

@@ -34,6 +34,8 @@ references:
 
 ## Installation
 
+Requires Node.js 22 or later.
+
 ```bash
 npm install -g @addresszen/cli
 azn --version

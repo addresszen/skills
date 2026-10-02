@@ -4,7 +4,7 @@ Manage stored credentials at `~/.config/addresszen/credentials.json` (or `%APPDA
 
 ## `azn auth login`
 
-Store an `api_key` (required) and `user_token` (optional) for later reuse. The `api_key` is verified against `GET /keys/{key}` before being written.
+Store an `api_key` (required) and `user_token` (optional) for later reuse. The `api_key` is verified against `GET /keys/{key}`, and a supplied `user_token` against `GET /keys/{key}/details`, before either is written.
 
 | Flag | Description |
 | --- | --- |
