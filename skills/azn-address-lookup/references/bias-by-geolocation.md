@@ -22,7 +22,7 @@ Uses the format `bias_lonlat=[longitude],[latitude],[radius in meters]`. Only on
   import { AddressLookup } from "@addresszen/address-lookup";
 
   AddressLookup.setup({
-    apiKey: "zenkey",
+    apiKey: "ak_test",
     queryOptions: {
       bias_lonlat: "74.0445,40.6892,100",
     },

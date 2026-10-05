@@ -22,7 +22,7 @@ Only one geospatial box can be provided.
   import { AddressLookup } from "@addresszen/address-lookup";
 
   AddressLookup.setup({
-    apiKey: "zenkey",
+    apiKey: "ak_test",
     queryOptions: {
       box: "-73.989801,40.698141,-73.899698,40.652793",
     },

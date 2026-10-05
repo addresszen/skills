@@ -14,7 +14,7 @@ The fastest and simplest way to start is to drop our pre-bundled script onto a w
 <script src="https://cdn.jsdelivr.net/npm/@addresszen/address-lookup"></script>
 <script>
   AddressZen.AddressLookup.setup({
-    apiKey: "zenkey",
+    apiKey: "ak_test",
     outputFields: {
       line_1: "#line_1",
       line_2: "#line_2",
@@ -68,7 +68,7 @@ The latest build can be downloaded [here](https://www.npmjs.com/package/@address
 <script type="module">
   import { AddressLookup } from "https://cdn.jsdelivr.net/npm/@addresszen/address-lookup/dist/address-lookup.esm.js";
   AddressLookup.setup({
-    apiKey: "zenkey",
+    apiKey: "ak_test",
     outputFields: {
       line_1: "#line_1",
       line_2: "#line_2",

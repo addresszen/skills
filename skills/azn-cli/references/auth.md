@@ -51,8 +51,8 @@ Show where each credential was resolved from and call `GET /keys/{key}` to verif
 
 ```json
 {
-  "api_key": { "source": "env", "preview": "ak_mpl…" },
-  "user_token": { "source": "config", "preview": "uk_jc6…" },
+  "api_key": { "source": "env", "preview": "ak_tes…" },
+  "user_token": { "source": "config", "preview": "uk_exa…" },
   "live": true,
   "available": true
 }

@@ -24,7 +24,7 @@ Instantiate Address Lookup with `AddressLookup.setup`.
 import { AddressLookup } from "@addresszen/address-lookup";
 
 const controller = AddressLookup.setup({
-  apiKey: "zenkey",
+  apiKey: "ak_test",
   outputFields: {
       line_1: "#line_1",
       line_2: "#line_2",
