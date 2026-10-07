@@ -134,51 +134,24 @@ A verification still running after 9.5 seconds fails with `429`. See [`addressVe
 
 ## Try it
 
-Enter a browser API key and select **Start example**. Requests use your account. Do not enter a Management Key.
+Select **Verify** to run the verification. Edit the address in the code to try another.
 
 ```html
-<form id="credentials">
-  <label>API key <input id="api-key" type="password" required autocomplete="off" /></label>
-  <button disabled>Start example</button>
-</form>
-<div id="app"></div>
-<pre id="output" role="status">Loading example...</pre>
+<button>Verify</button>
+<pre></pre>
 ```
 
-```ts
-import { createZenClient, addressVerify } from "@addresszen/sdk";
+```javascript
+  import { createZenClient, addressVerify } from "@addresszen/sdk";
 
-const form = document.querySelector<HTMLFormElement>("#credentials")!;
-const key = document.querySelector<HTMLInputElement>("#api-key")!;
-const output = document.querySelector<HTMLElement>("#output")!;
+  const apiKey = "ak_test"; // Replace with your own API key
+  const client = createZenClient({ apiKey });
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const client = createZenClient({ apiKey: key.value });
-  const search = document.createElement("form");
-  const input = document.createElement("input");
-  input.value = "1010 Cauthen Ln, Alamogordo, NM 88310";
-  input.setAttribute("aria-label", "Address");
-  const button = document.createElement("button");
-  button.textContent = "Verify";
-  const list = document.createElement("ul");
-  search.append(input, button);
-  document.querySelector<HTMLElement>("#app")!.replaceChildren(search, list);
-  search.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    list.replaceChildren();
-    output.textContent = "";
-    try {
-      const { data } = await addressVerify({ client, body: { query: input.value } });
-      const result = data.result;
-      output.textContent = result.fit > 0 && result.match
-        ? [result.address_line_one, result.address_line_two, result.city + ", " + result.state + " " + result.zip_code].filter(Boolean).join(", ") + " (confidence " + result.confidence + ")"
-        : "No match";
-    } catch (error) {
-      output.textContent = "Request failed: " + String(error);
-    }
+  document.querySelector("button").addEventListener("click", async () => {
+    const { data } = await addressVerify({
+      client,
+      body: { query: "1010 Cauthen Ln, Alamogordo, NM 88310" },
+    });
+    document.querySelector("pre").textContent = JSON.stringify(data, null, 2);
   });
-});
-form.querySelector<HTMLButtonElement>("button")!.disabled = false;
-output.textContent = "";
 ```
