@@ -80,60 +80,43 @@ export function Search() {
 
 ## Try it
 
-Enter a browser API key and select **Start example**. Requests use your account. Do not enter a Management Key.
+Type an address to see suggestions. Finding suggestions does not draw on your balance.
 
 ```html
-<form id="credentials">
-  <label>API key <input id="api-key" type="password" required autocomplete="off" /></label>
-  <button disabled>Start example</button>
-</form>
 <div id="app"></div>
-<pre id="output" role="status">Loading example...</pre>
 ```
 
-```tsx
-import React from "react";
-import { createRoot } from "react-dom/client";
-import { useEffect, useState } from "react";
-import { createZenClient } from "@addresszen/sdk";
-import { createAutocomplete, type Autocomplete, type Hit } from "@addresszen/sdk/autocomplete";
+```jsx
+  import { useEffect, useState } from "react";
+  import { createRoot } from "react-dom/client";
+  import { createZenClient } from "@addresszen/sdk";
+  import { createAutocomplete } from "@addresszen/sdk/autocomplete";
 
-let autocomplete: Autocomplete;
+  const apiKey = "ak_test"; // Replace with your own API key
+  const autocomplete = createAutocomplete({ client: createZenClient({ apiKey }) });
 
-function Search() {
-  const [query, setQuery] = useState("");
-  const [hits, setHits] = useState<Hit[]>([]);
+  function Search() {
+    const [query, setQuery] = useState("");
+    const [hits, setHits] = useState([]);
 
-  useEffect(() => {
-    if (query.length < 3) return setHits([]);
-    autocomplete
-      .find({ query })
-      .then((found) => found && setHits(found))
-      .catch((error) => (output.textContent = "Request failed: " + String(error)));
-    return () => autocomplete.cancel();
-  }, [query]);
+    useEffect(() => {
+      if (query.length < 3) return setHits([]);
+      autocomplete
+        .find({ query })
+        .then((found) => found && setHits(found))
+        .catch(console.error);
+      return () => autocomplete.cancel();
+    }, [query]);
 
-  return (
-    <div>
-      <input value={query} placeholder="123 Main St" onInput={(event) => setQuery(event.currentTarget.value)} aria-label="Address" />
-      <ul>{hits.map((hit) => <li key={hit.id}>{hit.suggestion}</li>)}</ul>
-    </div>
-  );
-}
+    return (
+      <div>
+        <input value={query} placeholder="123 Main St" onInput={(event) => setQuery(event.currentTarget.value)} aria-label="Address" />
+        <ul>{hits.map((hit) => <li key={hit.id}>{hit.suggestion}</li>)}</ul>
+      </div>
+    );
+  }
 
-const form = document.querySelector<HTMLFormElement>("#credentials")!;
-const apiKey = document.querySelector<HTMLInputElement>("#api-key")!;
-const output = document.querySelector<HTMLElement>("#output")!;
-
-const root = createRoot(document.querySelector("#app")!);
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  autocomplete?.cancel();
-  autocomplete = createAutocomplete({ client: createZenClient({ apiKey: apiKey.value }) });
-  root.render(<Search key={apiKey.value} />);
-});
-form.querySelector<HTMLButtonElement>("button")!.disabled = false;
-output.textContent = "";
+  createRoot(document.getElementById("app")).render(<Search />);
 ```
 
 ## How do I use TanStack Query?
