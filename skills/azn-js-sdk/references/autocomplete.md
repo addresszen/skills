@@ -25,7 +25,7 @@ await suggest("1425 James St", "CAN");
 autocomplete.cancel();
 ```
 
-## How do I find suggestions?
+## Find suggestions
 
 Call `find` with `query` and any other [`findAddress`](https://docs.addresszen.com/docs/sdks/typescript/endpoints/find-address) parameter, such as `context` or `limit`, in one object. It waits for typing to pause, then resolves to an array of hits. An empty array means nothing matched.
 
@@ -35,7 +35,7 @@ A newer `find` resolves the previous pending call with `undefined` and aborts it
 
 Show each hit's `suggestion` as it arrives. The API may change the suggestion format, so do not parse it.
 
-## How do I let users switch country?
+## Switch country
 
 Load the countries your key can search with [`keyAvailability`](https://docs.addresszen.com/docs/sdks/typescript/endpoints/key-availability), show them in a picker, then pass the chosen code as `context`. Each key is licensed for its own set of countries. The check needs only the API key, so it can run in the browser.
 
@@ -62,11 +62,11 @@ await autocomplete.find({ query: "100 Queen St W, Toronto", context: country });
 
 Each entry in `contexts` has `iso_3` (the `context` code), `iso_2`, `description` and `emoji`. `context` is the licensed country that best matches the caller's IP address, or an empty string when none does.
 
-## How do I retrieve an address?
+## Retrieve an address
 
 Pass a hit from `find` to `retrieve`, which calls [`retrieveAddress`](https://docs.addresszen.com/docs/sdks/typescript/endpoints/retrieve-address) at once, without a debounce. Finding suggestions does not draw on your balance. Retrieving an address costs one lookup. The API rate limits, then suspends, keys that find suggestions without retrieving any.
 
-## What does a retrieved address look like in each country?
+## Address format by country
 
 `retrieve` returns every address in one US-shaped format, whatever the country: up to two address lines and US field names such as `zip_code`, `state` and `city`. A field the country's dataset does not carry is an empty string. `dataset` names the source, and `native` carries the dataset's raw record for every dataset except `usps`.
 
@@ -91,7 +91,7 @@ const region = (address: Address): string => {
 
 [Supported countries](https://docs.addresszen.com/docs/data/supported-countries) lists every country and its `context` code.
 
-## Which options does the helper take?
+## Options
 
 | Option | Default | Effect |
 | --- | --- | --- |
@@ -100,15 +100,15 @@ const region = (address: Address): string => {
 
 The cache belongs to one helper instance. Create a new client and helper when credentials change.
 
-## Which types does it export?
+## Exported types
 
 `@addresszen/sdk/autocomplete` exports `CreateAutocompleteOptions`, `Autocomplete`, `Hit`, `RetrievedAddress`, `FindInput` and `RetrieveInput` for typing your own wrappers.
 
-## How does it report errors?
+## Errors
 
 HTTP errors reject with [`ApiError`](https://docs.addresszen.com/docs/sdks/typescript/errors). Network failures reject with the runtime's native error. The helper does not cache failed requests. Pass `signal` to `find` or `retrieve` to abort a request yourself. The call then rejects with `AbortError`.
 
-Framework consumers can use [TanStack Query](https://docs.addresszen.com/docs/sdks/typescript/react#how-do-i-use-tanstack-query) for query caching instead.
+Framework consumers can use [TanStack Query](https://docs.addresszen.com/docs/sdks/typescript/react#tanstack-query) for query caching instead.
 
 ## Try it
 

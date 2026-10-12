@@ -2,7 +2,7 @@
 
 Every operation rejects with `ApiError`, a subclass of `Error`, when the API returns an HTTP error.
 
-## What does `ApiError` contain?
+## `ApiError` properties
 
 | Property | Contents |
 | --- | --- |
@@ -27,7 +27,7 @@ try {
 
 A network failure or an aborted request rejects with the runtime's native error instead, such as `TypeError` or `AbortError`. The [error codes guide](https://docs.addresszen.com/docs/guides/error-codes) lists each API error `code` and how to fix it.
 
-## How do I tell a timeout from a cancellation?
+## Timeout or cancellation
 
 Check the error's `name`. A request that runs past `timeoutMs` or an `AbortSignal.timeout` rejects with `TimeoutError`. A request cancelled through an `AbortController` rejects with `AbortError`. Both are `DOMException`s, not `ApiError`s.
 
@@ -40,7 +40,7 @@ try {
 }
 ```
 
-## How do I handle errors without exceptions?
+## Errors without throwing
 
 Pass `throwOnError: false` to get `{ data, error }` instead of a rejection. For an HTTP error, `error` is the API's error body, typed per operation, and `response` holds the HTTP status. For a network failure, `error` is the native error and `response` is `undefined`.
 

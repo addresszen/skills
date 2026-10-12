@@ -20,7 +20,7 @@ if (result.fit > 0 && result.match) {
 
 Your key needs address verification enabled, or the request fails with `401`. Only a match draws on your balance.
 
-## What does a match return?
+## Match result
 
 A match returns the standardized address at the top level and the CASS record behind it in `match`. This is the response for the example above, trimmed:
 
@@ -63,7 +63,7 @@ A match returns the standardized address at the top level and the CASS record be
 }
 ```
 
-## What do the CASS fields mean?
+## CASS fields
 
 | Field | Meaning |
 | --- | --- |
@@ -80,15 +80,15 @@ A match returns the standardized address at the top level and the CASS record be
 
 The DPV flags are empty strings when the address was not DPV validated. The [API reference](https://docs.addresszen.com/docs/api/address-verify) lists every field, including eLOT, county, congressional district and coordinates.
 
-## Is the address deliverable?
+## Deliverability
 
 Check `match.dpv`. `confidence` measures how well your input matched an address; `dpv` says whether USPS confirms it as a delivery point. The two can disagree. `123 Main St, Springfield, CO 81073` verifies with a `confidence` of `1`, a five-digit `zip_code` of `81073` and a `dpv` of `N`: the street exists but USPS does not confirm the number. Treat `dpv` `Y` as deliverable.
 
-## What is the difference between fit and confidence?
+## Fit and confidence
 
 Both are scores from 0 to 1. `fit` compares only the elements you sent with the matched address, so a first line with no city, state or ZIP code can score a `fit` of 1. `confidence` also counts missing elements, so the same input scores below 1. A `confidence` of 1 is a full match.
 
-## What does no match look like?
+## No match
 
 No match still returns HTTP `200`, with `fit` and `confidence` of `0` and the reason in `match_information`. The response still carries a `match` record and echoes your input in the address fields, so check `fit`, not `match`, to detect it. This response is trimmed:
 
@@ -119,9 +119,9 @@ No match still returns HTTP `200`, with `fit` and `confidence` of `0` and the re
 }
 ```
 
-## Can I send the address in parts?
+## Address in parts
 
-Yes. Put the first address line in `query` and add either `zip_code`, or `city` and `state`. `zip_code` accepts `88310-5631`, `883105631` or `88310`. `state` takes the two-letter abbreviation.
+Put the first address line in `query` and add either `zip_code`, or `city` and `state`. `zip_code` accepts `88310-5631`, `883105631` or `88310`. `state` takes the two-letter abbreviation.
 
 ```ts title="address-verify-parts.ts"
 const { data } = await addressVerify({

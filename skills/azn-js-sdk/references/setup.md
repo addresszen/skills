@@ -12,7 +12,7 @@ import { createZenClient } from "@addresszen/sdk";
 const client = createZenClient({ apiKey: "ak_test" });
 ```
 
-## Which options does the client take?
+## Client options
 
 | Option | Type | Purpose |
 | --- | --- | --- |
@@ -23,9 +23,9 @@ const client = createZenClient({ apiKey: "ak_test" });
 | `headers` | `HeadersInit` | Headers sent with every request, such as `User-Agent`. Per-call `headers` take precedence |
 | `timeoutMs` | `number` | Milliseconds before each request rejects with `TimeoutError`. No timeout by default |
 
-## How do I set a request timeout?
+## Request timeout
 
-Set `timeoutMs` on the client. A request that runs longer rejects with a `DOMException` named `TimeoutError`, as described in [error handling](https://docs.addresszen.com/docs/sdks/typescript/errors#how-do-i-tell-a-timeout-from-a-cancellation). A per-call `signal` can still cancel the request sooner.
+Set `timeoutMs` on the client. A request that runs longer rejects with a `DOMException` named `TimeoutError`, as described in [error handling](https://docs.addresszen.com/docs/sdks/typescript/errors#timeout-or-cancellation). A per-call `signal` can still cancel the request sooner.
 
 ```ts title="timeout.ts"
 const client = createZenClient({ apiKey: "ak_test", timeoutMs: 30_000 });
@@ -33,7 +33,7 @@ const client = createZenClient({ apiKey: "ak_test", timeoutMs: 30_000 });
 
 To time out a single call, pass `signal: AbortSignal.timeout(5_000)` to the operation instead.
 
-## How do I send default headers?
+## Default headers
 
 Pass `headers` to the client to send them with every request, for example a `User-Agent` that identifies your app. Headers passed to an operation take precedence. Browsers may drop a custom `User-Agent`, so set it on server-side clients.
 
@@ -44,14 +44,14 @@ const client = createZenClient({
 });
 ```
 
-## When do I need a Management Key?
+## Management Key
 
 Set `userToken` to a Management Key only to call the account operations that need it: key details, usage and logs, licensees and configs. Each [operation page](https://docs.addresszen.com/docs/sdks/typescript/endpoints) says whether it needs one. A Management Key controls your account, so keep it on your server and never use it in a client that runs in the browser. The SDK sends it in the `Authorization` header, and only to operations that accept it.
 
-## What else do I need to install?
+## Dependencies
 
-The root package has no runtime dependencies. Install `@tanstack/react-query` or `@tanstack/preact-query` only when using the matching [adapter](https://docs.addresszen.com/docs/sdks/typescript/react#how-do-i-use-tanstack-query).
+The root package has no runtime dependencies. Install `@tanstack/react-query` or `@tanstack/preact-query` only when using the matching [adapter](https://docs.addresszen.com/docs/sdks/typescript/react#tanstack-query).
 
-## Which module formats are supported?
+## Module formats
 
 TypeScript consumers can use either NodeNext or bundler module resolution. CommonJS consumers can use `require("@addresszen/sdk")`. Use ESM imports for tree-shaking.

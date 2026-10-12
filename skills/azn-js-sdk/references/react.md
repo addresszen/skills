@@ -4,7 +4,7 @@ To add address search to a form, use [Address Lookup for React](https://docs.add
 
 To build your own component, use the SDK. The examples below search as the user types. `autocomplete.find` and `findAddressOptions` take the same query parameters as `findAddress`, so set `context` to search a country other than your account's default and add a [filter or bias term](https://docs.addresszen.com/docs/sdks/typescript/filter-and-bias) to narrow the results.
 
-## How do I build it without dependencies?
+## Without dependencies
 
 The [autocomplete helper](https://docs.addresszen.com/docs/sdks/typescript/autocomplete) debounces keystrokes and drops stale requests, so a hook needs no data-fetching library.
 
@@ -119,7 +119,7 @@ Type an address to see suggestions. Finding suggestions does not draw on your ba
   createRoot(document.getElementById("app")).render(<Search />);
 ```
 
-## How do I use TanStack Query?
+## TanStack Query
 
 The SDK exports TanStack Query options, query keys and mutations for every operation from `@addresszen/sdk/react-query` and `@addresszen/sdk/preact-query`. Install the matching peer, `@tanstack/react-query` or `@tanstack/preact-query`. Wrap the component in a `QueryClientProvider`.
 

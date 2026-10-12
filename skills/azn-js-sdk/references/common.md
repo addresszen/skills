@@ -2,7 +2,7 @@
 
 Every operation resolves to `{ data, request, response }`. A successful JSON response is in `data`, except `keyLogs`, which returns CSV text. See [error handling](https://docs.addresszen.com/docs/sdks/typescript/errors) for failures.
 
-## How do I cancel a request?
+## Cancel a request
 
 Pass an `AbortController` signal to the operation, then call `abort()`:
 
@@ -17,12 +17,12 @@ controller.abort();
 await pending.catch(console.error);
 ```
 
-To cap how long every request may run, set [`timeoutMs`](https://docs.addresszen.com/docs/sdks/typescript/setup#how-do-i-set-a-request-timeout) on the client.
+To cap how long every request may run, set [`timeoutMs`](https://docs.addresszen.com/docs/sdks/typescript/setup#request-timeout) on the client.
 
-## How do I import types?
+## Types
 
 Import request and response types with `import type`, for example `FindAddressData` and `FindAddressResponse`. Every address comes back in the flat `Address` model, whatever the country. Its `native` field is a union of each dataset's raw record. Narrow it on `dataset` before reading dataset-specific fields.
 
-## How do I keep the bundle small?
+## Tree-shaking
 
 Use named ESM imports so a bundler can remove the operations you do not use. The fetch transport is shared overhead. Autocomplete and the React and Preact adapters live behind separate subpaths, so a bare `@addresszen/sdk` import includes neither those helpers nor a framework runtime.

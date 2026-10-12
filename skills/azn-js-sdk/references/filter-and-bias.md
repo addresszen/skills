@@ -27,13 +27,13 @@ const hits = await autocomplete.find({
 });
 ```
 
-## Should I filter or bias?
+## Filter or bias
 
 Filter when an address outside the constraint is wrong for your form, such as a checkout that ships to one state. Bias when it is only less likely, such as a customer who probably lives near their store. A filter that matches no address returns an empty array. A bias term never removes a result.
 
 Filters and bias terms do not affect your lookup balance.
 
-## How do I choose the country?
+## Country
 
 Set `context` to the country's three-letter ISO 3166-1 code, the same code the API returns in `country_iso`. A missing or unrecognized `context` falls back to your account's default country, so set it on every request if your users are in more than one country. The [supported countries](https://docs.addresszen.com/docs/data/supported-countries) page lists each code.
 
@@ -44,7 +44,7 @@ const { data } = await findAddress({
 });
 ```
 
-## How do I filter by ZIP or postal code?
+## ZIP and postal codes
 
 Use one of three postal code filters. For US addresses:
 
@@ -69,7 +69,7 @@ const { data } = await findAddress({
 });
 ```
 
-## How do I filter or bias by state?
+## State
 
 Filter with `state_code` or `state`. `state_code` takes a state or region code, such as the two-letter USPS abbreviation `CA`. `state` takes the full name, such as `California`. Both ignore case.
 
@@ -89,7 +89,7 @@ const { data } = await findAddress({
 });
 ```
 
-## How do I limit search to an area?
+## Location
 
 Bias toward a point with `bias_lonlat`, or restrict to a rectangle with `box`. Both take longitude first.
 
@@ -112,7 +112,7 @@ const { data } = await findAddress({
 
 Each request takes one `bias_lonlat` and one `box` at most.
 
-## How do I find or exclude PO Boxes and businesses?
+## PO Boxes and businesses
 
 Set `is_pobox` or `is_business` to `"true"` to return only those addresses, or `"false"` to exclude them. Both are defined for US addresses, where the API derives them from the USPS record type: `P` for a PO Box and `F` for a firm.
 
@@ -123,7 +123,7 @@ const { data } = await findAddress({
 });
 ```
 
-## How do filters combine?
+## Combining filters
 
 Different filters combine with AND, so `state_code: "CA"` with `city: "San Francisco"` requires both. Comma-separated terms within one filter combine with OR. A request takes up to 10 filter terms and 5 bias terms. The API ignores a filter name it does not recognize and a bias term it cannot read.
 
