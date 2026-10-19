@@ -29,7 +29,7 @@ A network failure or an aborted request rejects with the runtime's native error 
 
 ## Timeout or cancellation
 
-Check the error's `name`. A request that runs past `timeoutMs` or an `AbortSignal.timeout` rejects with `TimeoutError`. A request cancelled through an `AbortController` rejects with `AbortError`. Both are `DOMException`s, not `ApiError`s.
+Check the error's `name`. A request that runs past `timeoutMs` or an `AbortSignal.timeout` rejects with `TimeoutError`. A request canceled through an `AbortController` rejects with `AbortError`. Both are `DOMException`s, not `ApiError`s.
 
 ```ts title="timeout-error.ts"
 try {
