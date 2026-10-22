@@ -12,7 +12,7 @@ Permanently deletes a configuration object.
 
 | Name | In | Required | Type | Description |
 |---|---|---|---|---|
-| `key` | path | yes | string | The API Key to retrieve. Begins `ak_`. |
+| `key` | path | yes | string | The API Key. Begins `ak_`. |
 | `config` | path | yes | string | User-provided configuration object name. |
 | `user_token` | query | no | string | A secret key used to manage your account and API Keys. It was previously called the user token. |
 
@@ -27,21 +27,24 @@ curl -X DELETE 'https://api.addresszen.com/v1/keys/ak_test/configs/woocommerce?u
 **JavaScript**
 
 ```javascript
-const response = await fetch('https://api.addresszen.com/v1/keys/ak_test/configs/woocommerce?user_token=uk_secret', {
-  method: 'DELETE',
+import { createZenClient, deleteConfig } from '@addresszen/sdk';
+
+const client = createZenClient({ apiKey: 'ak_test', userToken: 'uk_secret' });
+
+const { data } = await deleteConfig({
+  client,
+  path: { key: 'ak_test', config: 'woocommerce' },
 });
 ```
 
 **Python**
 
 ```python
-import requests
+# pip install addresszen
+from addresszen import AddressZen
 
-response = requests.delete(
-    "https://api.addresszen.com/v1/keys/ak_test/configs/woocommerce",
-    params={"user_token": "uk_secret"},
-)
-response.raise_for_status()
+with AddressZen("ak_test") as client:
+    result = client.delete_config("ak_test", "woocommerce", user_token="uk_secret")
 ```
 
 **Ruby**

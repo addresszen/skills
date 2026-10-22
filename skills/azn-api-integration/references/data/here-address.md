@@ -17,7 +17,7 @@ Conventions:
 
 | Field | Required | Type | Description | Example |
 |---|---|---|---|---|
-| `id` | yes | string | Global unique internally generated identifier for an address |  |
+| `id` | yes | string | Globally unique internally generated identifier for an address |  |
 | `country_iso` | yes | string | Three character country code based on ISO Standard 3166. |  |
 | `dataset` | yes | string | HERE regional dataset the address was sourced from. |  |
 | `language` | yes | string | ISO 639-1 language code of the record, mapped down from HERE's three-letter code. Taken from the address point, the road for a range, the point of interest or the administrative place for a locality. |  |

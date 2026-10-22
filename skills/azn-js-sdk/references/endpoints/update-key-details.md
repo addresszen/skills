@@ -2,7 +2,7 @@
 
 Update Details
 
-Updates a key's settings and returns its private details. Only the fields you send change. A key on an unlimited plan ignores changes to `datasets`, `daily_limit` and `monthly_limit`.
+Updates a key's settings and returns its private details. Only the fields you send change. A key on an unlimited plan ignores changes to `datasets`, `daily_limit` and `monthly_limit`. Datasets set by your plan cannot be changed here: sending one with a different value returns a 400.
 
 ## Endpoint
 
@@ -22,7 +22,7 @@ import { updateKeyDetails } from "@addresszen/sdk";
 
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| `key` | `string` | yes | **API Key** The API Key to retrieve. Begins `ak_`. |
+| `key` | `string` | yes | **API Key** The API Key. Begins `ak_`. |
 
 ## Query Parameters
 
@@ -31,13 +31,19 @@ _None._
 ## Request Body
 
 ```ts
-ApiKeyDetailsEditable
+import type { ApiKeyDetailsEditable } from "@addresszen/sdk";
 ```
 
 ## Response Type
 
 ```ts
 import type { UpdateKeyDetailsResponse } from "@addresszen/sdk";
+```
+
+The `result` property has the type `ApiKeyDetails`.
+
+```ts
+import type { ApiKeyDetails } from "@addresszen/sdk";
 ```
 
 ## Errors
@@ -50,10 +56,7 @@ HTTP errors throw an `ApiError` with the HTTP `status` and the API error `code` 
 import { createZenClient, updateKeyDetails } from "@addresszen/sdk";
 
 export const example = async () => {
-  const client = createZenClient({
-    apiKey: "ak_test",
-    userToken: "uk_example",
-  });
+  const client = createZenClient({ userToken: "uk_example" });
   const { data } = await updateKeyDetails({
     client,
     path: { key: "ak_test" },

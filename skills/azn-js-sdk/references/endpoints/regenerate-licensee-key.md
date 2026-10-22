@@ -20,7 +20,7 @@ import { regenerateLicenseeKey } from "@addresszen/sdk";
 
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| `key` | `string` | yes | **API Key** The API Key to retrieve. Begins `ak_`. |
+| `key` | `string` | yes | **API Key** The API Key. Begins `ak_`. |
 | `licensee` | `string` | yes | **Licensee Key** Uniquely identifies a licensee. |
 
 ## Query Parameters
@@ -33,6 +33,12 @@ _None._
 import type { RegenerateLicenseeKeyResponse } from "@addresszen/sdk";
 ```
 
+The `result` property has the type `Licensee`.
+
+```ts
+import type { Licensee } from "@addresszen/sdk";
+```
+
 ## Errors
 
 HTTP errors throw an `ApiError` with the HTTP `status` and the API error `code` and `message`. Network failures and aborts reject with the runtime's native error. Pass `throwOnError: false` to get `{ data, error }` instead. See [error handling](https://docs.addresszen.com/docs/sdks/typescript/errors).
@@ -43,10 +49,7 @@ HTTP errors throw an `ApiError` with the HTTP `status` and the API error `code` 
 import { createZenClient, regenerateLicenseeKey } from "@addresszen/sdk";
 
 export const example = async () => {
-  const client = createZenClient({
-    apiKey: "ak_test",
-    userToken: "uk_example",
-  });
+  const client = createZenClient({ userToken: "uk_example" });
   const { data } = await regenerateLicenseeKey({
     client,
     path: { key: "ak_test", licensee: "sl_example" },

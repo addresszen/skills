@@ -31,28 +31,24 @@ curl -G 'https://api.addresszen.com/v1/places/geonames_5353' \
 **JavaScript**
 
 ```javascript
-const response = await fetch(
-  'https://api.addresszen.com/v1/places/geonames_5353?' +
-  new URLSearchParams({
-    api_key: 'ak_test',
-  })
-);
+import { createZenClient, resolvePlace } from '@addresszen/sdk';
 
-const { result } = await response.json();
+const client = createZenClient({ apiKey: 'ak_test' });
+
+const { data } = await resolvePlace({
+  client,
+  path: { place: 'geonames_5353' },
+});
 ```
 
 **Python**
 
 ```python
-import requests
+# pip install addresszen
+from addresszen import AddressZen
 
-response = requests.get(
-    "https://api.addresszen.com/v1/places/geonames_5353",
-    params={
-        "api_key": "ak_test",
-    },
-)
-result = response.json()["result"]
+with AddressZen("ak_test") as client:
+    result = client.resolve_place("geonames_5353")
 ```
 
 **Ruby**

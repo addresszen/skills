@@ -22,7 +22,7 @@ import { createConfig } from "@addresszen/sdk";
 
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| `key` | `string` | yes | **API Key** The API Key to retrieve. Begins `ak_`. |
+| `key` | `string` | yes | **API Key** The API Key. Begins `ak_`. |
 
 ## Query Parameters
 
@@ -31,13 +31,19 @@ _None._
 ## Request Body
 
 ```ts
-ConfigNewParam
+import type { ConfigNewParam } from "@addresszen/sdk";
 ```
 
 ## Response Type
 
 ```ts
 import type { CreateConfigResponse } from "@addresszen/sdk";
+```
+
+The `result` property has the type `Config`.
+
+```ts
+import type { Config } from "@addresszen/sdk";
 ```
 
 ## Errors
@@ -50,10 +56,7 @@ HTTP errors throw an `ApiError` with the HTTP `status` and the API error `code` 
 import { createZenClient, createConfig } from "@addresszen/sdk";
 
 export const example = async () => {
-  const client = createZenClient({
-    apiKey: "ak_test",
-    userToken: "uk_example",
-  });
+  const client = createZenClient({ userToken: "uk_example" });
   const { data } = await createConfig({
     client,
     path: { key: "ak_test" },

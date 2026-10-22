@@ -38,7 +38,7 @@ The default retention is 28 days. Change the period from your dashboard. Set it 
 
 | Name | In | Required | Type | Description |
 |---|---|---|---|---|
-| `key` | path | yes | string | The API Key to retrieve. Begins `ak_`. |
+| `key` | path | yes | string | The API Key. Begins `ak_`. |
 | `user_token` | query | no | string | A secret key used to manage your account and API Keys. It was previously called the user token. |
 | `start` | query | no | integer | A start date/time in the form of a UNIX Timestamp in milliseconds. E.g. `1418556452651` |
 | `end` | query | no | integer | An end date/time in the form of a UNIX Timestamp in milliseconds. E.g.  `1418556477882` |
@@ -56,28 +56,24 @@ curl -G 'https://api.addresszen.com/v1/keys/ak_test/lookups' \
 **JavaScript**
 
 ```javascript
-const response = await fetch(
-  'https://api.addresszen.com/v1/keys/ak_test/lookups?' +
-  new URLSearchParams({
-    user_token: 'uk_secret',
-  })
-);
+import { createZenClient, keyLogs } from '@addresszen/sdk';
 
-const { result } = await response.json();
+const client = createZenClient({ apiKey: 'ak_test', userToken: 'uk_secret' });
+
+const { data: csv } = await keyLogs({
+  client,
+  path: { key: 'ak_test' },
+});
 ```
 
 **Python**
 
 ```python
-import requests
+# pip install addresszen
+from addresszen import AddressZen
 
-response = requests.get(
-    "https://api.addresszen.com/v1/keys/ak_test/lookups",
-    params={
-        "user_token": "uk_secret",
-    },
-)
-result = response.json()["result"]
+with AddressZen("ak_test") as client:
+    result = client.key_logs("ak_test", user_token="uk_secret")
 ```
 
 **Ruby**

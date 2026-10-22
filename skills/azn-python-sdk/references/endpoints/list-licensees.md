@@ -24,7 +24,7 @@ Call `list_licensees` on the `AddressZen` client. Path parameters are positional
 
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| `key` | `str` | yes | **API Key** The API Key to retrieve. Begins `ak_`. |
+| `key` | `str` | yes | **API Key** The API Key. Begins `ak_`. |
 
 ## Query Parameters
 

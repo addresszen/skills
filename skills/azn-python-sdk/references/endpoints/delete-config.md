@@ -24,7 +24,7 @@ Call `delete_config` on the `AddressZen` client. Path parameters are positional;
 
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| `key` | `str` | yes | **API Key** The API Key to retrieve. Begins `ak_`. |
+| `key` | `str` | yes | **API Key** The API Key. Begins `ak_`. |
 | `config` | `str` | yes | **Configuration Name** User-provided configuration object name. |
 
 ## Query Parameters

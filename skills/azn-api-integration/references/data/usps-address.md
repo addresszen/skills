@@ -9,7 +9,7 @@ Carries the complete USPS field set for the delivery point, including elements t
 
 | Field | Required | Type | Description | Example |
 |---|---|---|---|---|
-| `id` | yes | string | Global unique internally generated identifier for an address |  |
+| `id` | yes | string | Globally unique internally generated identifier for an address |  |
 | `dataset` | yes | `usps` | Identifies the address as sourced from USPS |  |
 | `country` | yes | string | Full country names (ISO 3166) |  |
 | `country_iso` | yes | string | 3 letter country code (ISO 3166-1) |  |

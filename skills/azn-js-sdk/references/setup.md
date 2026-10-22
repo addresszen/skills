@@ -16,7 +16,7 @@ const client = createZenClient({ apiKey: "ak_test" });
 
 | Option | Type | Purpose |
 | --- | --- | --- |
-| `apiKey` | `string` | Required API key, sent as `api_key` |
+| `apiKey` | `string` | API key, sent as `api_key`. Needed for every operation except key operations |
 | `userToken` | `string` | Management Key for account operations. Keep it on your server |
 | `baseUrl` | `string` | Defaults to `https://api.addresszen.com/v1` |
 | `fetch` | `typeof fetch` | Custom fetch implementation for tests or request handling |
@@ -47,6 +47,12 @@ const client = createZenClient({
 ## Management Key
 
 Set `userToken` to a Management Key only to call the account operations that need it: key details, usage and logs, licensees and configs. Each [operation page](https://docs.addresszen.com/docs/sdks/typescript/endpoints) says whether it needs one. A Management Key controls your account, so keep it on your server and never use it in a client that runs in the browser. The SDK sends it in the `Authorization` header, and only to operations that accept it.
+
+A client used only for key operations needs no `apiKey`:
+
+```ts title="management.ts"
+const client = createZenClient({ userToken: process.env.MANAGEMENT_KEY });
+```
 
 ## Dependencies
 

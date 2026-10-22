@@ -24,7 +24,7 @@ Call `key_details` on the `AddressZen` client. Path parameters are positional; q
 
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| `key` | `str` | yes | **API Key** The API Key to retrieve. Begins `ak_`. |
+| `key` | `str` | yes | **API Key** The API Key. Begins `ak_`. |
 
 ## Query Parameters
 

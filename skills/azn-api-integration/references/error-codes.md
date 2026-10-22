@@ -36,6 +36,7 @@ With a JSONP `callback` parameter the API returns every error with HTTP 200, so 
 | [40016](#40016) | 400 | Invalid filter or bias value |
 | [40017](#40017) | 400 | Email query too long |
 | [40018](#40018) | 400 | Missing query |
+| [40021](#40021) | 400 | Dataset set by your plan |
 | [4010](#4010) | 401 | Invalid key |
 | [4011](#4011) | 401 | URL or IP not on allowed list, or missing user token |
 | [4012](#4012) | 401 | Key not owned by user token |
@@ -69,7 +70,7 @@ Your API Key was not recognised. The key may be incorrect or malformed.
 
 1. **Check for typos** - copy the key directly from your AddressZen account.
 2. **Check querystring parameter name** - ensure the key is passed as `api_key` and not `api-key`.
-3. **Check Authorization header format** - ensure the header is formatted as `Authorization: api_key="ak_yourkey"` (key wrapped in double quotes).
+3. **Check Authorization header format** - ensure the header is formatted as `Authorization: Bearer ak_yourkey`.
 4. **Check the key still exists** - a regenerated or deleted key stops working immediately.
 
 ### 4011 - URL Not on Allowed List {#4011}
@@ -226,6 +227,13 @@ The `query` on `/v1/emails` is longer than 320 characters. Trim the input before
 **HTTP Status:** 400
 
 A search endpoint received no `query`, or a `query` that is not a string. Send the query as a string.
+
+### 40021 - Dataset Set by Plan {#40021}
+
+**Message:** `Datasets set by your plan (paf, mr, nyb, ecad, ecaf) cannot be changed on this key. Contact support to change your plan`
+**HTTP Status:** 400
+
+Some datasets, such as Eircode, cannot be enabled on your own. Contact support to start enabling one.
 
 ## 401 Unauthorized
 

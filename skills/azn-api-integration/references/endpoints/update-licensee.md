@@ -12,7 +12,7 @@ Updates a licensee's address, postcode, allowed URLs and daily limit. Returns th
 
 | Name | In | Required | Type | Description |
 |---|---|---|---|---|
-| `key` | path | yes | string | The API Key to retrieve. Begins `ak_`. |
+| `key` | path | yes | string | The API Key. Begins `ak_`. |
 | `licensee` | path | yes | string | Uniquely identifies a licensee. |
 | `user_token` | query | no | string | A secret key used to manage your account and API Keys. It was previously called the user token. |
 
@@ -45,34 +45,34 @@ curl -X POST 'https://api.addresszen.com/v1/keys/ak_test/licensees/sl_ijoiqsxeQg
 **JavaScript**
 
 ```javascript
-const response = await fetch('https://api.addresszen.com/v1/keys/ak_test/licensees/sl_ijoiqsxeQgXW2gkiE0X94?user_token=uk_secret', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
+import { createZenClient, updateLicensee } from '@addresszen/sdk';
+
+const client = createZenClient({ apiKey: 'ak_test', userToken: 'uk_secret' });
+
+const { data } = await updateLicensee({
+  client,
+  path: { key: 'ak_test', licensee: 'sl_ijoiqsxeQgXW2gkiE0X94' },
+  body: {
     daily: {
       limit: 20000,
     },
-  }),
+  },
 });
-
-const { result } = await response.json();
 ```
 
 **Python**
 
 ```python
-import requests
+# pip install addresszen
+from addresszen import AddressZen
 
-response = requests.post(
-    "https://api.addresszen.com/v1/keys/ak_test/licensees/sl_ijoiqsxeQgXW2gkiE0X94",
-    params={"user_token": "uk_secret"},
-    json={
-        "daily": {
-            "limit": 20000,
-        },
-    },
-)
-result = response.json()["result"]
+with AddressZen("ak_test") as client:
+    result = client.update_licensee(
+        "ak_test",
+        "sl_ijoiqsxeQgXW2gkiE0X94",
+        user_token="uk_secret",
+        daily={"limit": 20000},
+    )
 ```
 
 **Ruby**

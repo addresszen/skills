@@ -12,7 +12,7 @@ Returns a configuration by name. This request needs no `user_token`, so a browse
 
 | Name | In | Required | Type | Description |
 |---|---|---|---|---|
-| `key` | path | yes | string | The API Key to retrieve. Begins `ak_`. |
+| `key` | path | yes | string | The API Key. Begins `ak_`. |
 | `config` | path | yes | string | User-provided configuration object name. |
 
 ## Request Samples
@@ -27,28 +27,24 @@ curl -G 'https://api.addresszen.com/v1/keys/ak_test/configs/woocommerce' \
 **JavaScript**
 
 ```javascript
-const response = await fetch(
-  'https://api.addresszen.com/v1/keys/ak_test/configs/woocommerce?' +
-  new URLSearchParams({
-    user_token: 'uk_secret',
-  })
-);
+import { createZenClient, retrieveConfig } from '@addresszen/sdk';
 
-const { result } = await response.json();
+const client = createZenClient({ apiKey: 'ak_test' });
+
+const { data } = await retrieveConfig({
+  client,
+  path: { key: 'ak_test', config: 'woocommerce' },
+});
 ```
 
 **Python**
 
 ```python
-import requests
+# pip install addresszen
+from addresszen import AddressZen
 
-response = requests.get(
-    "https://api.addresszen.com/v1/keys/ak_test/configs/woocommerce",
-    params={
-        "user_token": "uk_secret",
-    },
-)
-result = response.json()["result"]
+with AddressZen("ak_test") as client:
+    result = client.retrieve_config("ak_test", "woocommerce")
 ```
 
 **Ruby**

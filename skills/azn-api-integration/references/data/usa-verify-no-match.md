@@ -14,6 +14,7 @@
 | `count` | yes | `0` |  |  |
 | `fit` | yes | `0` |  |  |
 | `confidence` | yes | `0` |  |  |
+| `match_information` | yes | string | Why the address could not be verified, for people to read. For example `Address not found`, `House number not valid for this street`, `Invalid city, state or ZIP code` or `Address could not be parsed`. | `Address not found` |
 | `address_line_one` | yes | `""` | Empty if no match |  |
 | `address_line_two` | yes | `""` | Empty if no match |  |
 | `city` | yes | `""` | Empty if no match |  |

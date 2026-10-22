@@ -12,7 +12,7 @@ Creates a named configuration on a key and returns it.
 
 | Name | In | Required | Type | Description |
 |---|---|---|---|---|
-| `key` | path | yes | string | The API Key to retrieve. Begins `ak_`. |
+| `key` | path | yes | string | The API Key. Begins `ak_`. |
 | `user_token` | query | no | string | A secret key used to manage your account and API Keys. It was previously called the user token. |
 
 ## Request Body
@@ -40,32 +40,35 @@ curl -X POST 'https://api.addresszen.com/v1/keys/ak_test/configs?user_token=uk_s
 **JavaScript**
 
 ```javascript
-const response = await fetch('https://api.addresszen.com/v1/keys/ak_test/configs?user_token=uk_secret', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
+import { createZenClient, createConfig } from '@addresszen/sdk';
+
+const client = createZenClient({ apiKey: 'ak_test', userToken: 'uk_secret' });
+
+const { data } = await createConfig({
+  client,
+  path: { key: 'ak_test' },
+  body: {
     name: 'woocommerce',
     payload: '{"removeOrganisation": false}',
-  }),
+  },
 });
-
-const { result } = await response.json();
 ```
 
 **Python**
 
 ```python
-import requests
+# pip install addresszen
+import json
 
-response = requests.post(
-    "https://api.addresszen.com/v1/keys/ak_test/configs",
-    params={"user_token": "uk_secret"},
-    json={
-        "name": "woocommerce",
-        "payload": "{\"removeOrganisation\": false}",
-    },
-)
-result = response.json()["result"]
+from addresszen import AddressZen
+
+with AddressZen("ak_test") as client:
+    result = client.create_config(
+        "ak_test",
+        user_token="uk_secret",
+        name="woocommerce",
+        payload=json.dumps({"removeOrganisation": False}),
+    )
 ```
 
 **Ruby**

@@ -22,7 +22,7 @@ import { listLicensees } from "@addresszen/sdk";
 
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| `key` | `string` | yes | **API Key** The API Key to retrieve. Begins `ak_`. |
+| `key` | `string` | yes | **API Key** The API Key. Begins `ak_`. |
 
 ## Query Parameters
 
@@ -48,10 +48,7 @@ HTTP errors throw an `ApiError` with the HTTP `status` and the API error `code` 
 import { createZenClient, listLicensees } from "@addresszen/sdk";
 
 export const example = async () => {
-  const client = createZenClient({
-    apiKey: "ak_test",
-    userToken: "uk_example",
-  });
+  const client = createZenClient({ userToken: "uk_example" });
   const { data } = await listLicensees({
     client,
     path: { key: "ak_test" },

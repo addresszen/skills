@@ -40,7 +40,7 @@ Direct HTTP integration with the AddressZen API. Supports multiple client librar
 ```javascript
 const key = process.env.ADDRESSZEN_API_KEY;
 const base = 'https://api.addresszen.com/v1';
-const headers = { Authorization: `api_key="${key}"` };
+const headers = { Authorization: `Bearer ${key}` };
 
 // Autocomplete step 1 (free): suggestions as the user types (US by default)
 const query = encodeURIComponent('1600 Pennsylvania Ave');
@@ -59,7 +59,7 @@ Alternatively, pass `?api_key=...` in the query string instead of the header.
 ## Quick Start (verify)
 
 ```javascript
-// Verify a typed address against USPS CASS; only a match is charged
+// Verify a typed address against USPS CASS
 const response = await fetch(`${base}/verify/addresses`, {
   method: 'POST',
   headers: { ...headers, 'Content-Type': 'application/json' },
@@ -69,7 +69,7 @@ const { result } = await response.json();
 if (result.count === 0) {
   // No match: result.match is null and the address fields are empty
 } else {
-  console.log(result.fit, result.confidence, result.match.zip_plus_4_code);
+  console.log(result.fit, result.confidence, result.zip_code);
 }
 ```
 
@@ -81,7 +81,7 @@ import axios from 'axios';
 const client = axios.create({
   baseURL: 'https://api.addresszen.com/v1',
   headers: {
-    Authorization: `api_key="${process.env.ADDRESSZEN_API_KEY}"`,
+    Authorization: `Bearer ${process.env.ADDRESSZEN_API_KEY}`,
   },
 });
 
@@ -119,13 +119,14 @@ See [`endpoints/`](./references/endpoints/) for one reference per operation, inc
 
 - Send `query` alone (the whole address), or the first line in `query` plus either `zip_code`, or `city` and `state`
 - A match returns the standardized lines, `city`, `state`, ZIP+4, a `fit` and `confidence` score (0 to 1) and the CASS record in `match`: delivery point, DPV flags, carrier route, county, congressional district, coordinates. See [`data/usa-verify-match.md`](./references/data/usa-verify-match.md) and [`data/usa-cass-verified-address.md`](./references/data/usa-cass-verified-address.md)
+- Verify defaults to the United States. Pass `context` (ISO 3166-1 alpha-3, e.g. `context=GBR`) as a query parameter to verify elsewhere. Outside the United States `match` is an [`Address`](./references/data/address.md), the Retrieve Address format with the raw record in `native`. `dataset` is present on every non-US match and absent from a CASS match: branch on it
 - No match is still `200`, with `count: 0`, `match: null` and empty address fields. See [`data/usa-verify-no-match.md`](./references/data/usa-verify-no-match.md)
-- Only a match draws on your balance
+- In the United States every verification the CASS engine answers draws on your balance, matched or not; a query that cannot be parsed does not. Elsewhere only a match draws on your balance
 - `401` means verification is not enabled on the key. `429` means the verification ran past 9.5 seconds and was aborted
 
 ## Critical Gotchas
 
-- **Auth header format** - `Authorization: api_key="<your-key>"` (with double quotes around the key). Not `Bearer`, not `ApiKey <key>`. Query-string `?api_key=...` also works
+- **Auth header format** - `Authorization: Bearer <your-key>`. Key management routes under `/keys/{key}` take the Management Key instead: `Authorization: Bearer uk_...`. Query-string `?api_key=...` also works. The older `Authorization: api_key="<your-key>"` form still works but is deprecated
 - **API key restrictions** - default keys are restricted to specific domains. Ensure your domain is in the key's allowed list
 - **Rate limits** - each IP is rate limited at 30 requests per second. Tripping the limit returns a 503. Autocomplete adds its own limit of 3,000 requests per 5 minutes per key and IP, reported in the `X-RateLimit-Limit`, `X-RateLimit-Remaining` and `X-RateLimit-Reset` headers. Code `4021` (HTTP 402) is different: the key's own daily or per-IP lookup limit, set in your key settings
 - **Free find, paid retrieve** - suggestions cost nothing; retrieving one costs a lookup. Keys that find without ever retrieving are rate limited, then suspended

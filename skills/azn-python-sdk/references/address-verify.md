@@ -1,16 +1,18 @@
 # Address verification
 
-`address_verify` checks a US address against the USPS Coding Accuracy Support System (CASS). It returns the address corrected and standardized, with its ZIP+4 code and USPS delivery data.
+`address_verify` checks a US address against the USPS Coding Accuracy Support System (CASS). It returns the address corrected and standardized, with its ZIP+4 code and USPS delivery data. To verify an address in another country, pass `context` with its ISO 3166-1 alpha-3 code, e.g. `context="GBR"`. Outside the United States `match` is a `types.Address`, the format `retrieve_address` returns; in the United States it is a `types.UsaCassVerifiedAddress`.
 
 ```python title="address_verify.py"
 from addresszen import AddressZen, types
 
 with AddressZen("ak_test") as client:
     result = client.address_verify(query="1010 Cauthen Ln, Alamogordo, NM 88310")
-    if isinstance(result, types.UsaVerifyMatch) and result.fit > 0:
+    if not isinstance(result, types.UsaVerifyMatch):
+        print("No match:", result.match_information)
+    elif isinstance(result.match, types.UsaCassVerifiedAddress):
         print(result.zip_code, result.match.dpv, result.match.rdi)
     else:
-        print("No match")
+        print(result.zip_code, result.match.dataset)
 ```
 
 Your key needs address verification enabled, or the call raises `AuthenticationError` with status `401`.
@@ -27,7 +29,7 @@ Check `match.dpv`, the USPS Delivery Point Validation result. `"Y"` means USPS c
 
 ## No match
 
-Check `fit`. No match still returns successfully, with `fit` and `confidence` at `0` and the reason in `match_information`. The result can still carry a `match` record that echoes your input, so neither the model type nor `match` tells you on its own.
+An address that cannot be verified still returns successfully, as a `types.UsaVerifyNoMatch` with `match` set to `None`, a `count` of `0`, empty address fields and the reason in `match_information`, such as `Address not found` or `House number not valid for this street`. The wording may change, so do not parse it. CASS corrects what it can first: an address with the wrong city or state for its ZIP code still verifies, with the corrected values.
 
 ## Fit and confidence
 
@@ -48,4 +50,4 @@ with AddressZen("ak_test") as client:
 
 ## Cost
 
-One lookup for a match. No match costs nothing. A verification still running after 9.5 seconds raises `RateLimitError` with status `429`.
+Every verification the CASS engine answers costs one lookup, matched or not. A query that cannot be parsed into an address costs nothing. A verification still running after 9.5 seconds raises `RateLimitError` with status `429`.

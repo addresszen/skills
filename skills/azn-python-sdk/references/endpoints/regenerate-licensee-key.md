@@ -22,7 +22,7 @@ Call `regenerate_licensee_key` on the `AddressZen` client. Path parameters are p
 
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| `key` | `str` | yes | **API Key** The API Key to retrieve. Begins `ak_`. |
+| `key` | `str` | yes | **API Key** The API Key. Begins `ak_`. |
 | `licensee` | `str` | yes | **Licensee Key** Uniquely identifies a licensee. |
 
 ## Query Parameters

@@ -12,7 +12,7 @@ Korean-named fields are empty strings when the source record does not carry a va
 
 | Field | Required | Type | Description | Example |
 |---|---|---|---|---|
-| `id` | yes | string | Global unique internally generated identifier for an address |  |
+| `id` | yes | string | Globally unique internally generated identifier for an address |  |
 | `dataset` | yes | `mois` | Dataset the address originates from. |  |
 | `country` | yes | `South Korea` | Full country names (ISO 3166) |  |
 | `country_iso` | yes | `KOR` | 3 letter country code (ISO 3166-1) |  |

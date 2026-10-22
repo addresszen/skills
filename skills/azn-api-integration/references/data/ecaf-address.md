@@ -10,7 +10,7 @@ Unavailable elements are returned as an empty string, never `null`. ECAF carries
 
 | Field | Required | Type | Description | Example |
 |---|---|---|---|---|
-| `id` | yes | string | Global unique internally generated identifier for an address |  |
+| `id` | yes | string | Globally unique internally generated identifier for an address |  |
 | `dataset` | yes | `ecaf` | Source of address |  |
 | `country_iso` | yes | `IRL` | 3 letter country code (ISO 3166-1) |  |
 | `country_iso_2` | yes | `IE` | 2 letter country code (ISO 3166-1) |  |

@@ -12,7 +12,7 @@ The API returns attributes sourced from a one-to-many table (address aliases, si
 
 | Field | Required | Type | Description | Example |
 |---|---|---|---|---|
-| `id` | yes | string | Global unique internally generated identifier for an address |  |
+| `id` | yes | string | Globally unique internally generated identifier for an address |  |
 | `dataset` | yes | `gnaf` |  |  |
 | `country` | yes | `Australia` \| `Cocos (Keeling) Islands` \| `Christmas Island` \| `Norfolk Island` | Full country names (ISO 3166) |  |
 | `country_iso` | yes | `AUS` \| `CCK` \| `CXR` \| `NFK` | 3 letter country code (ISO 3166-1) |  |

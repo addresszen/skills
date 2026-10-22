@@ -12,7 +12,7 @@ Creates a licensee on a key and returns it with its generated `sl_` key. The key
 
 | Name | In | Required | Type | Description |
 |---|---|---|---|---|
-| `key` | path | yes | string | The API Key to retrieve. Begins `ak_`. |
+| `key` | path | yes | string | The API Key. Begins `ak_`. |
 | `user_token` | query | no | string | A secret key used to manage your account and API Keys. It was previously called the user token. |
 
 ## Request Body
@@ -48,10 +48,14 @@ curl -X POST 'https://api.addresszen.com/v1/keys/ak_test/licensees?user_token=uk
 **JavaScript**
 
 ```javascript
-const response = await fetch('https://api.addresszen.com/v1/keys/ak_test/licensees?user_token=uk_secret', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
+import { createZenClient, createLicensee } from '@addresszen/sdk';
+
+const client = createZenClient({ apiKey: 'ak_test', userToken: 'uk_secret' });
+
+const { data } = await createLicensee({
+  client,
+  path: { key: 'ak_test' },
+  body: {
     name: 'Qwerty Widgets Limited',
     address: '12 High Street, Manchester',
     postcode: 'BR8 7RE',
@@ -59,31 +63,26 @@ const response = await fetch('https://api.addresszen.com/v1/keys/ak_test/license
     daily: {
       limit: 10000,
     },
-  }),
+  },
 });
-
-const { result } = await response.json();
 ```
 
 **Python**
 
 ```python
-import requests
+# pip install addresszen
+from addresszen import AddressZen
 
-response = requests.post(
-    "https://api.addresszen.com/v1/keys/ak_test/licensees",
-    params={"user_token": "uk_secret"},
-    json={
-        "name": "Qwerty Widgets Limited",
-        "address": "12 High Street, Manchester",
-        "postcode": "BR8 7RE",
-        "whitelist": [],
-        "daily": {
-            "limit": 10000,
-        },
-    },
-)
-result = response.json()["result"]
+with AddressZen("ak_test") as client:
+    result = client.create_licensee(
+        "ak_test",
+        user_token="uk_secret",
+        name="Qwerty Widgets Limited",
+        address="12 High Street, Manchester",
+        postcode="BR8 7RE",
+        whitelist=[],
+        daily={"limit": 10000},
+    )
 ```
 
 **Ruby**

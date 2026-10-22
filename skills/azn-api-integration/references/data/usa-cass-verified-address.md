@@ -13,11 +13,11 @@ Address retrieved using CASS compliant address verification process
 | `address3` | yes | string | Additional secondary address information |  |
 | `area_code` | yes | string | Area code. Also known as Numbering Plan Area (NPA) https://en.wikipedia.org/wiki/List_of_North_American_Numbering_Plan_area_codes |  |
 | `carrier_route` | yes | string | Data required to perform a Carrier Route sort |  |
-| `check_digit` | yes | string | Character following the 5 or 9 digit ZIP Code. Part of the 11-digit barcode |  |
+| `check_digit` | yes | string | Character following the 5-digit or 9-digit ZIP Code. Part of the 11-digit barcode |  |
 | `city` | yes | string | City name |  |
 | `city_abbreviation` | yes | string | City Abbreviation. Empty string if not present |  |
 | `congressional_district` | yes | string | Identifies the Congressional District. Empty string if not present |  |
-| `country_code` | yes | string | ISO3166 country code. Empty string if not present |  |
+| `country_code` | yes | string | ISO 3166 country code. Empty string if not present |  |
 | `county` | yes | string | Name of the county |  |
 | `day_light_savings` | yes | boolean | Daylight saving time indicator |  |
 | `delivery_point` | yes | string | Last 2 digits of the primary street address number or Post Office box |  |
@@ -38,7 +38,7 @@ Address retrieved using CASS compliant address verification process
 | `latitude` | yes | string | Latitude of the encoded address. Empty string if not present |  |
 | `longitude` | yes | string | Longitude of the encoded address. Empty string if not present |  |
 | `parsed_pmb_designator` | yes | string | Information if a Private Mail Box (PMB) is found in an address. Empty string if not present |  |
-| `parsed_pmb_number` | yes | string | Information if a Private Mail Box (PMB) is found in an address. Empty string if not present |  |
+| `parsed_pmb_number` | yes | string | Private Mail Box (PMB) number, if one is found in an address. Empty string if not present |  |
 | `parsed_post_directional` | yes | string | Notation following the street name indicating street direction. Empty string if not present |  |
 | `parsed_pre_directional` | yes | string | Notation preceding the street name indicating street direction. Empty string if not present |  |
 | `parsed_primary_number` | yes | string | Number preceding the street name. Empty string if not present |  |

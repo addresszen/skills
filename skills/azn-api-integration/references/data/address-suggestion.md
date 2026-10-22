@@ -8,7 +8,7 @@ Represents an address suggestion for any address in the world
 
 | Field | Required | Type | Description | Example |
 |---|---|---|---|---|
-| `id` | yes | string | Global unique internally generated identifier for an address |  |
+| `id` | yes | string | Globally unique internally generated identifier for an address |  |
 | `suggestion` | yes | string | Address Suggestion to be displayed to the user |  |
 | `urls` | yes | object | Always an empty object (`{}`). Retrieve the full address with `id` |  |
 

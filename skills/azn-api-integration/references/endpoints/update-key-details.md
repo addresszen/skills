@@ -6,13 +6,13 @@
 
 **Tags:** Keys
 
-Updates a key's settings and returns its private details. Only the fields you send change. A key on an unlimited plan ignores changes to `datasets`, `daily_limit` and `monthly_limit`.
+Updates a key's settings and returns its private details. Only the fields you send change. A key on an unlimited plan ignores changes to `datasets`, `daily_limit` and `monthly_limit`. Datasets set by your plan cannot be changed here: sending one with a different value returns a 400.
 
 ## Parameters
 
 | Name | In | Required | Type | Description |
 |---|---|---|---|---|
-| `key` | path | yes | string | The API Key to retrieve. Begins `ak_`. |
+| `key` | path | yes | string | The API Key. Begins `ak_`. |
 | `user_token` | query | no | string | A secret key used to manage your account and API Keys. It was previously called the user token. |
 
 ## Request Body
@@ -29,7 +29,7 @@ Content-Type: `application/json` (required)
 | `redact_days` | no | integer | Number of days to preserve personal data stored in your key usage history. Set to 0 to prevent personal data storage |
 | `notifications` | no | object |  |
 | `ip_forwarding` | no | boolean | Accept IP addresses forwarded in the `AZ-Source-IP` header |
-| `datasets` | no | object | Indicates which datasets are available and added by default to the address responses |
+| `datasets` | no | object | Datasets you can switch on or off for this key. Datasets set by your plan (`paf`, `mr`, `nyb`, `ecad`, `ecaf`) cannot be changed here: sending one with a different value returns a 400. |
 
 ## Request Samples
 
@@ -40,7 +40,9 @@ curl -X PUT 'https://api.addresszen.com/v1/keys/ak_test/details?user_token=uk_se
   -H 'Content-Type: application/json' \
   -d '{
     "name": "My Updated Key",
-    "daily_limit": 1000,
+    "daily_limit": {
+      "limit": 1000
+    },
     "notifications": {
       "enabled": true
     }
@@ -50,38 +52,39 @@ curl -X PUT 'https://api.addresszen.com/v1/keys/ak_test/details?user_token=uk_se
 **JavaScript**
 
 ```javascript
-const response = await fetch('https://api.addresszen.com/v1/keys/ak_test/details?user_token=uk_secret', {
-  method: 'PUT',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
+import { createZenClient, updateKeyDetails } from '@addresszen/sdk';
+
+const client = createZenClient({ apiKey: 'ak_test', userToken: 'uk_secret' });
+
+const { data } = await updateKeyDetails({
+  client,
+  path: { key: 'ak_test' },
+  body: {
     name: 'My Updated Key',
-    daily_limit: 1000,
+    daily_limit: {
+      limit: 1000,
+    },
     notifications: {
       enabled: true,
     },
-  }),
+  },
 });
-
-const { result } = await response.json();
 ```
 
 **Python**
 
 ```python
-import requests
+# pip install addresszen
+from addresszen import AddressZen
 
-response = requests.put(
-    "https://api.addresszen.com/v1/keys/ak_test/details",
-    params={"user_token": "uk_secret"},
-    json={
-        "name": "My Updated Key",
-        "daily_limit": 1000,
-        "notifications": {
-            "enabled": True,
-        },
-    },
-)
-result = response.json()["result"]
+with AddressZen("ak_test") as client:
+    result = client.update_key_details(
+        "ak_test",
+        user_token="uk_secret",
+        name="My Updated Key",
+        daily_limit={"limit": 1000},
+        notifications={"enabled": True},
+    )
 ```
 
 **Ruby**
@@ -93,7 +96,9 @@ require "json"
 uri = URI("https://api.addresszen.com/v1/keys/ak_test/details?user_token=uk_secret")
 body = {
   name: "My Updated Key",
-  daily_limit: 1000,
+  daily_limit: {
+    limit: 1000,
+  },
   notifications: {
     enabled: true,
   },
@@ -112,7 +117,9 @@ curl_setopt_array($ch, [
   CURLOPT_HTTPHEADER => ["Content-Type: application/json"],
   CURLOPT_POSTFIELDS => json_encode([
     "name" => "My Updated Key",
-    "daily_limit" => 1000,
+    "daily_limit" => [
+      "limit" => 1000,
+    ],
     "notifications" => [
       "enabled" => true,
     ],

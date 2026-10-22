@@ -13,23 +13,23 @@ Every address is returned in this shape, whatever dataset it came from. US and n
 
 | Field | Required | Type | Description | Example |
 |---|---|---|---|---|
-| `id` | yes | string | Global unique internally generated identifier for an address |  |
+| `id` | yes | string | Globally unique internally generated identifier for an address |  |
 | `dataset` | yes | string | Indicates the provenance of an address. |  |
 | `country_iso` | yes | string | 3 letter country code (ISO 3166-1) |  |
 | `country_iso_2` | yes | string | 2 letter country code (ISO 3166-1) |  |
 | `country` | yes | string | Full country names (ISO 3166) |  |
 | `language` | yes | string | Language represented by 2 letter ISO Code (639-1) |  |
 | `primary_number` | yes | string | Building, house, rural route, contract box or PO Box number. The numeric or alphanumeric component of an address preceding the street name. |  |
-| `secondary_number` | yes | string | Number of the sub unit, apartment, suite etc. |  |
-| `plus_4_code` | yes | string | 4 digit ZIP add-on code. USPS addresses only. |  |
+| `secondary_number` | yes | string | Number of the subunit, apartment, suite etc. |  |
+| `plus_4_code` | yes | string | 4-digit ZIP add-on code. USPS addresses only. |  |
 | `line_1` | yes | string | The primary delivery line (usually the street address) of the address. |  |
 | `line_2` | yes | string | Secondary delivery line of the address. Typically populated if the first line is the firm or building name. |  |
 | `last_line` | yes | string | Final line of the address, comprising city, state or region and postal code. |  |
-| `zip_code` | yes | string | Postal code identifying the delivery area. For US addresses this is the 5 digit ZIP Code. |  |
+| `zip_code` | yes | string | Postal code identifying the delivery area. For US addresses this is the 5-digit ZIP Code. |  |
 | `zip_plus_4_code` | yes | string | Nine-digit code that identifies a small geographic delivery area serviceable by a single carrier; appears in the last line of the address on a mail piece. USPS addresses only. |  |
 | `update_key_number` | yes | string | Key that uniquely identifies the source dataset record. For USPS this is the Update Key Number: a database segment code (V1, V2, W1, W2, X1, X2, Y1, Y2, Z1 or Z2) followed by eight alphanumeric characters. It is fixed for the life of the record and is not used in address matching. |  |
 | `record_type_code` | yes | `G` \| `H` \| `F` \| `S` \| `P` \| `R` \| `M` \| `""` | An alphabetic value identifying the type of USPS record backing the address. |  |
-| `carrier_route_id` | yes | string | A 4 character ID identifying the USPS postal route for the address. The first character indicates the route type: |  |
+| `carrier_route_id` | yes | string | A 4-character ID identifying the USPS postal route for the address. The first character indicates the route type: |  |
 | `street_pre_directional_abbreviation` | yes | string | A geographic direction that precedes the street name. |  |
 | `street_name` | yes | string | The official name of the street as assigned by the local governing authority. Contains the street name only, without directionals (EAST, WEST, etc.) or suffixes (ST, DR, BLVD, etc.). May also contain literals such as PO BOX, GENERAL DELIVERY, USS, PSC or UNIT. |  |
 | `street_suffix_abbreviation` | yes | string | Standard abbreviation for the trailing designator in a street address. |  |
@@ -39,7 +39,7 @@ Every address is returned in this shape, whatever dataset it came from. US and n
 | `base_alternate_code` | yes | `A` \| `B` \| `""` | Code specifying whether the backing USPS record is a base (preferred) or alternate record. |  |
 | `lacs_status_indicator` | yes | `""` \| `L` | The Locatable Address Conversion Service (LACS) indicator marks USPS records converted to the LACS system, which lets mailers convert a rural route address to a city-style address so emergency services can locate it. |  |
 | `government_building_indicator` | yes | `""` \| `A` \| `B` \| `C` \| `D` \| `E` \| `F` \| `G` | An alphabetic value identifying the type of government agency at the delivery point and/or whether a firm is the only delivery at an address. |  |
-| `state_abbreviation` | yes | string | Abbreviated name of the state, province or region. For US addresses this is the 2 character state, territory or armed forces designation ("AA", "AE" or "AP" for APO/FPO/DPO). |  |
+| `state_abbreviation` | yes | string | Abbreviated name of the state, province or region. For US addresses this is the 2-character state, territory or armed forces designation ("AA", "AE" or "AP" for APO/FPO/DPO). |  |
 | `state` | yes | string | Full name of the state, province or region. |  |
 | `municipality_city_state_key` | yes | string | Municipality City State Key. Currently blank. |  |
 | `urbanization_city_state_key` | yes | string | An index to the USPS City State file that provides the urbanization name for this delivery range. |  |

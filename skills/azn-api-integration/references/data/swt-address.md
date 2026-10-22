@@ -12,7 +12,7 @@ Records marked as multilingual upstream are split into one address per street na
 
 | Field | Required | Type | Description | Example |
 |---|---|---|---|---|
-| `id` | yes | string | Global unique internally generated identifier for an address |  |
+| `id` | yes | string | Globally unique internally generated identifier for an address |  |
 | `dataset` | yes | `swt` |  |  |
 | `country` | yes | `Switzerland` \| `Liechtenstein` | Full country names (ISO 3166) |  |
 | `country_iso` | yes | `CHE` \| `LIE` | 3 letter country code (ISO 3166-1) |  |

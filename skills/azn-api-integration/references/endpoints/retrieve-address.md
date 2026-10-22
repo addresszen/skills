@@ -33,28 +33,41 @@ curl -G 'https://api.addresszen.com/v1/autocomplete/addresses/usps_V118834572|31
 **JavaScript**
 
 ```javascript
-const response = await fetch(
-  'https://api.addresszen.com/v1/autocomplete/addresses/usps_V118834572%7C310%7C%7C3191/usa?' +
-  new URLSearchParams({
-    api_key: 'ak_test',
-  })
-);
+import { createZenClient } from '@addresszen/sdk';
+import { createAutocomplete } from '@addresszen/sdk/autocomplete';
 
-const { result } = await response.json();
+const client = createZenClient({ apiKey: 'ak_test' });
+
+// Debounces keystrokes, drops superseded requests and caches suggestions
+const autocomplete = createAutocomplete({ client });
+
+const hits = await autocomplete.find({ query: '1600 Pennsylvania' });
+if (hits?.length) {
+  const address = await autocomplete.retrieve({ hit: hits[0] });
+}
+```
+
+**JavaScript (direct)**
+
+```javascript
+import { createZenClient, retrieveAddress } from '@addresszen/sdk';
+
+const client = createZenClient({ apiKey: 'ak_test' });
+
+const { data } = await retrieveAddress({
+  client,
+  path: { address: 'usps_V118834572|310||3191' },
+});
 ```
 
 **Python**
 
 ```python
-import requests
+# pip install addresszen
+from addresszen import AddressZen
 
-response = requests.get(
-    "https://api.addresszen.com/v1/autocomplete/addresses/usps_V118834572%7C310%7C%7C3191/usa",
-    params={
-        "api_key": "ak_test",
-    },
-)
-result = response.json()["result"]
+with AddressZen("ak_test") as client:
+    result = client.retrieve_address("usps_V118834572|310||3191")
 ```
 
 **Ruby**

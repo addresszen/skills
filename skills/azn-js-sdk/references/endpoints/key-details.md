@@ -22,7 +22,7 @@ import { keyDetails } from "@addresszen/sdk";
 
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| `key` | `string` | yes | **API Key** The API Key to retrieve. Begins `ak_`. |
+| `key` | `string` | yes | **API Key** The API Key. Begins `ak_`. |
 
 ## Query Parameters
 
@@ -32,6 +32,12 @@ _None._
 
 ```ts
 import type { KeyDetailsResponse } from "@addresszen/sdk";
+```
+
+The `result` property has the type `ApiKeyDetails`.
+
+```ts
+import type { ApiKeyDetails } from "@addresszen/sdk";
 ```
 
 ## Errors
@@ -44,10 +50,7 @@ HTTP errors throw an `ApiError` with the HTTP `status` and the API error `code` 
 import { createZenClient, keyDetails } from "@addresszen/sdk";
 
 export const example = async () => {
-  const client = createZenClient({
-    apiKey: "ak_test",
-    userToken: "uk_example",
-  });
+  const client = createZenClient({ userToken: "uk_example" });
   const { data } = await keyDetails({
     client,
     path: { key: "ak_test" },

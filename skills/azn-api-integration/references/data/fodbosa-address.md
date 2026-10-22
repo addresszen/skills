@@ -17,7 +17,7 @@ Conventions:
 
 | Field | Required | Type | Description | Example |
 |---|---|---|---|---|
-| `id` | yes | string | Global unique internally generated identifier for an address |  |
+| `id` | yes | string | Globally unique internally generated identifier for an address |  |
 | `dataset` | yes | `fodbosa` | Dataset the address originates from. |  |
 | `country` | yes | `Belgium` | Full country names (ISO 3166) |  |
 | `country_iso` | yes | `BEL` | 3 letter country code (ISO 3166-1) |  |

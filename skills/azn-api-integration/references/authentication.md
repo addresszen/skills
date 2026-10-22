@@ -5,16 +5,12 @@ Every API request needs an API key. Keys are minted in your AddressZen account a
 ## Header (recommended for server-side)
 
 ```
-Authorization: api_key="ak_yourkey"
+Authorization: Bearer ak_yourkey
 ```
 
-The key value **must be wrapped in double quotes**.
+Requests that manage a key, under `/keys/{key}`, take the Management Key instead: `Authorization: Bearer uk_...`. The API key is already in the path.
 
-Multiple parameters can be combined in the same header, comma-separated:
-
-```
-Authorization: api_key="ak_yourkey", user_token="..."
-```
+The older `Authorization: api_key="ak_yourkey"` form still works but is deprecated. Use Bearer in new integrations.
 
 ## Query string
 

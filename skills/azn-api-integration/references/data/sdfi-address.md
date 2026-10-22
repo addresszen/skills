@@ -12,7 +12,7 @@ Field names follow the Danish source. Fields the source spells with ASCII substi
 
 | Field | Required | Type | Description | Example |
 |---|---|---|---|---|
-| `id` | yes | string | Global unique internally generated identifier for an address |  |
+| `id` | yes | string | Globally unique internally generated identifier for an address |  |
 | `dataset` | yes | `sdfi` |  |  |
 | `country` | yes | `Denmark` | Full country names (ISO 3166) |  |
 | `country_iso` | yes | `DNK` | 3 letter country code (ISO 3166-1) |  |

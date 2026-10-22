@@ -6,15 +6,19 @@ Verifies an address against the USPS Coding Accuracy Support System (CASS) and r
 
 Submit the whole address in `query`, or the first address line in `query` with either `zip_code`, or `city` and `state`. A freeform `query` is parsed into those components before the search runs.
 
-A match returns the standardized address lines, city, state and ZIP+4, scored by `fit` and `confidence`. It also carries the CASS record behind the match: delivery point, DPV flags, carrier route, eLOT, county, congressional district, RDI, time zone and coordinates. No match returns `200` with a `count` of `0`, a `null` `match` and empty address fields.
+A match returns the standardized address lines, city, state and ZIP+4, scored by `fit` and `confidence`. It also carries the CASS record behind the match: delivery point, DPV flags, carrier route, eLOT, county, congressional district, RDI, time zone and coordinates. CASS corrects what it can, so an address with the wrong city or state for its ZIP code still verifies, with the corrected values.
 
-Only a match draws on your balance. A key without address verification enabled returns `401`. A verification still running after 9.5 seconds aborts with `429`.
+An address that cannot be verified returns `200` with a `count` of `0`, a `null` `match` and empty address fields. `match_information` says why, e.g. `Address not found` or `House number not valid for this street`. It is for people to read and its wording may change, so test `match` for `null` rather than parsing it.
+
+In the United States every verification the CASS engine answers draws on your balance, matched or not. A query that cannot be parsed into an address does not. Elsewhere only a match draws on your balance. A key without address verification enabled returns `401`. A verification still running after 9.5 seconds aborts with `429`.
 
 ## Countries
 
 Verify defaults to the United States, where it is CASS certified. Pass `context` with an ISO 3166-1 alpha-3 country code to verify an address elsewhere, e.g. `context=GBR` or `context=FRA`. The address datasets your key is licensed for decide which countries it can verify.
 
-Outside the United States there is no CASS record to return, so `match` carries the standardized address from that country's dataset instead. The top-level fields (`address_line_one`, `city`, `state`, `zip_code`, `country_iso_2`) are populated for every country, along with `confidence` and `fit`.
+Outside the United States there is no CASS record, so `match` is the address in the same format Retrieve Address returns: USPS-style field names, empty strings where the country has no equivalent, and the raw dataset record in `native`. Check `dataset` to tell the two apart: it is present on every non-US match and absent from a CASS match.
+
+The top-level fields (`address_line_one`, `address_line_two`, `city`, `state`, `zip_code`, `country_iso_2`) are populated for every country, along with `confidence` and `fit`.
 
 ## Endpoint
 
@@ -48,7 +52,7 @@ _None._
 | `query` | `str` | yes | Address input to verify. If submitting a freeform address verification query, enter the full address. E.g. `query=123 Main St, Springfield, CO, 81073` Otherwise, query can be accompanied with the following address components: - `zip_code` - `city` and `state` If you supply `zip_code`, or `city` and `state`, omit that information from `query` and use it for the first address line only. E.g. `query=123 Main St` |
 | `zip_code` | `str` | no | Specify the ZIP code of an address. The following formats are accepted: `81073-1119`, `810731119`, `81073`. |
 | `city` | `str` | no | City of an address. |
-| `state` | `str` | no | State of an address. For the US, use the 2 letter state abbreviation. |
+| `state` | `str` | no | State of an address. For the US, use the 2-letter state abbreviation. |
 
 ## Response Type
 

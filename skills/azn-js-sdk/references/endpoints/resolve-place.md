@@ -39,6 +39,12 @@ import { resolvePlace } from "@addresszen/sdk";
 import type { ResolvePlaceResponse2 } from "@addresszen/sdk";
 ```
 
+The `result` property has the type `Place`.
+
+```ts
+import type { Place } from "@addresszen/sdk";
+```
+
 ## Errors
 
 HTTP errors throw an `ApiError` with the HTTP `status` and the API error `code` and `message`. Network failures and aborts reject with the runtime's native error. Pass `throwOnError: false` to get `{ data, error }` instead. See [error handling](https://docs.addresszen.com/docs/sdks/typescript/errors).

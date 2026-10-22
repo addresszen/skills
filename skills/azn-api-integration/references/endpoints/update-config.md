@@ -12,7 +12,7 @@ Replaces a configuration's payload and returns the updated configuration. The na
 
 | Name | In | Required | Type | Description |
 |---|---|---|---|---|
-| `key` | path | yes | string | The API Key to retrieve. Begins `ak_`. |
+| `key` | path | yes | string | The API Key. Begins `ak_`. |
 | `config` | path | yes | string | User-provided configuration object name. |
 | `user_token` | query | no | string | A secret key used to manage your account and API Keys. It was previously called the user token. |
 
@@ -39,30 +39,34 @@ curl -X POST 'https://api.addresszen.com/v1/keys/ak_test/configs/woocommerce?use
 **JavaScript**
 
 ```javascript
-const response = await fetch('https://api.addresszen.com/v1/keys/ak_test/configs/woocommerce?user_token=uk_secret', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    payload: '{"removeOrganisation": true}',
-  }),
-});
+import { createZenClient, updateConfig } from '@addresszen/sdk';
 
-const { result } = await response.json();
+const client = createZenClient({ apiKey: 'ak_test', userToken: 'uk_secret' });
+
+const { data } = await updateConfig({
+  client,
+  path: { key: 'ak_test', config: 'woocommerce' },
+  body: {
+    payload: '{"removeOrganisation": true}',
+  },
+});
 ```
 
 **Python**
 
 ```python
-import requests
+# pip install addresszen
+import json
 
-response = requests.post(
-    "https://api.addresszen.com/v1/keys/ak_test/configs/woocommerce",
-    params={"user_token": "uk_secret"},
-    json={
-        "payload": "{\"removeOrganisation\": true}",
-    },
-)
-result = response.json()["result"]
+from addresszen import AddressZen
+
+with AddressZen("ak_test") as client:
+    result = client.update_config(
+        "ak_test",
+        "woocommerce",
+        user_token="uk_secret",
+        payload=json.dumps({"removeOrganisation": True}),
+    )
 ```
 
 **Ruby**

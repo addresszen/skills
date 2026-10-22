@@ -50,7 +50,7 @@ Call `key_logs` on the `AddressZen` client. Path parameters are positional; quer
 
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| `key` | `str` | yes | **API Key** The API Key to retrieve. Begins `ak_`. |
+| `key` | `str` | yes | **API Key** The API Key. Begins `ak_`. |
 
 ## Query Parameters
 

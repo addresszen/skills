@@ -41,7 +41,7 @@ Pass the client to each operation. Each instance holds its own configuration. ES
 
 ## Authentication and errors
 
-Set `apiKey` on the client. Private account operations also need a Management Key, set as `userToken`. Never put a Management Key in browser code. HTTP errors throw an `ApiError` with the HTTP `status` and the API error `code` and `message`. Pass `throwOnError: false` to get `{ data, error }` instead. See [error handling](./references/errors.md).
+Set `apiKey` on the client. Private account operations take a Management Key instead, set as `userToken`; a client used only for them needs no `apiKey`. Never put a Management Key in browser code. HTTP errors throw an `ApiError` with the HTTP `status` and the API error `code` and `message`. Pass `throwOnError: false` to get `{ data, error }` instead. See [error handling](./references/errors.md).
 
 ## References
 

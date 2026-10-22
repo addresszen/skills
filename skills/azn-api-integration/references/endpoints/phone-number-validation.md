@@ -33,30 +33,24 @@ curl -G 'https://api.addresszen.com/v1/phone_numbers' \
 **JavaScript**
 
 ```javascript
-const response = await fetch(
-  'https://api.addresszen.com/v1/phone_numbers?' +
-  new URLSearchParams({
-    api_key: 'ak_test',
-    query: '02071128019',
-  })
-);
+import { createZenClient, phoneNumberValidation } from '@addresszen/sdk';
 
-const { result } = await response.json();
+const client = createZenClient({ apiKey: 'ak_test' });
+
+const { data } = await phoneNumberValidation({
+  client,
+  query: { query: '02071128019' },
+});
 ```
 
 **Python**
 
 ```python
-import requests
+# pip install addresszen
+from addresszen import AddressZen
 
-response = requests.get(
-    "https://api.addresszen.com/v1/phone_numbers",
-    params={
-        "api_key": "ak_test",
-        "query": "02071128019",
-    },
-)
-result = response.json()["result"]
+with AddressZen("ak_test") as client:
+    result = client.phone_number_validation(query="02071128019")
 ```
 
 **Ruby**

@@ -26,7 +26,7 @@ import { keyAvailability } from "@addresszen/sdk";
 
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| `key` | `string` | yes | **API Key** The API Key to retrieve. Begins `ak_`. |
+| `key` | `string` | yes | **API Key** The API Key. Begins `ak_`. |
 
 ## Query Parameters
 
@@ -36,6 +36,12 @@ _None._
 
 ```ts
 import type { KeyAvailabilityResponse } from "@addresszen/sdk";
+```
+
+The `result` property has the type `ApiKey`.
+
+```ts
+import type { ApiKey } from "@addresszen/sdk";
 ```
 
 ## Errors
@@ -48,7 +54,7 @@ HTTP errors throw an `ApiError` with the HTTP `status` and the API error `code` 
 import { createZenClient, keyAvailability } from "@addresszen/sdk";
 
 export const example = async () => {
-  const client = createZenClient({ apiKey: "ak_test" });
+  const client = createZenClient({});
   const { data } = await keyAvailability({
     client,
     path: { key: "ak_test" },

@@ -32,30 +32,24 @@ curl -G 'https://api.addresszen.com/v1/emails' \
 **JavaScript**
 
 ```javascript
-const response = await fetch(
-  'https://api.addresszen.com/v1/emails?' +
-  new URLSearchParams({
-    api_key: 'ak_test',
-    query: 'foo@domain.com',
-  })
-);
+import { createZenClient, emailValidation } from '@addresszen/sdk';
 
-const { result } = await response.json();
+const client = createZenClient({ apiKey: 'ak_test' });
+
+const { data } = await emailValidation({
+  client,
+  query: { query: 'foo@domain.com' },
+});
 ```
 
 **Python**
 
 ```python
-import requests
+# pip install addresszen
+from addresszen import AddressZen
 
-response = requests.get(
-    "https://api.addresszen.com/v1/emails",
-    params={
-        "api_key": "ak_test",
-        "query": "foo@domain.com",
-    },
-)
-result = response.json()["result"]
+with AddressZen("ak_test") as client:
+    result = client.email_validation(query="foo@domain.com")
 ```
 
 **Ruby**

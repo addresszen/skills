@@ -1,6 +1,6 @@
 # Address verification
 
-`addressVerify` checks a US address against the USPS Coding Accuracy Support System (CASS) and returns it corrected and standardized, with its ZIP+4 code and USPS delivery data. Verification covers US addresses only. For other countries, use [autocomplete](https://docs.addresszen.com/docs/sdks/typescript/autocomplete) with `context` set to the country's code.
+`addressVerify` checks a US address against the USPS Coding Accuracy Support System (CASS) and returns it corrected and standardized, with its ZIP+4 code and USPS delivery data. To verify an address in another country, pass `query: { context }` with its ISO 3166-1 alpha-3 code, e.g. `"GBR"`. Outside the United States `match` is the address in the format [Retrieve Address](https://docs.addresszen.com/docs/sdks/typescript/endpoints/retrieve-address) returns, with `dataset` set; a CASS match has no `dataset`.
 
 ```ts title="address-verify.ts"
 import { createZenClient, addressVerify } from "@addresszen/sdk";
@@ -11,14 +11,16 @@ const { data } = await addressVerify({
   body: { query: "1010 Cauthen Ln, Alamogordo, NM 88310" },
 });
 const result = data.result;
-if (result.fit > 0 && result.match) {
-  console.log(result.zip_code, result.match.dpv, result.match.rdi);
+if (result.match === null) {
+  console.log("No match:", result.match_information);
+} else if ("dataset" in result.match) {
+  console.log(result.zip_code, result.match.dataset);
 } else {
-  console.log("No match");
+  console.log(result.zip_code, result.match.dpv, result.match.rdi);
 }
 ```
 
-Your key needs address verification enabled, or the request fails with `401`. Only a match draws on your balance.
+Your key needs address verification enabled, or the request fails with `401`. Every verification the CASS engine answers draws on your balance, matched or not. A query that cannot be parsed into an address does not.
 
 ## Match result
 
@@ -90,29 +92,23 @@ Both are scores from 0 to 1. `fit` compares only the elements you sent with the 
 
 ## No match
 
-No match still returns HTTP `200`, with `fit` and `confidence` of `0` and the reason in `match_information`. The response still carries a `match` record and echoes your input in the address fields, so check `fit`, not `match`, to detect it. This response is trimmed:
+An address that cannot be verified still returns HTTP `200`, with a `null` `match`, a `count` of `0`, empty address fields and the reason in `match_information`, such as `Address not found` or `House number not valid for this street`. The wording may change, so test `match === null` rather than parsing `match_information`. CASS corrects what it can first: an address with the wrong city or state for its ZIP code still verifies, with the corrected values. This response is trimmed:
 
 ```json
 {
   "result": {
     "query": "1 Nowhere Rd, Springfield, CO 81073",
-    "count": 1,
+    "count": 0,
     "fit": 0,
     "confidence": 0,
-    "match_information": "Street address not found in database",
-    "address_line_one": "1 Nowhere Rd",
+    "match_information": "Address not found",
+    "address_line_one": "",
     "address_line_two": "",
-    "city": "Springfield",
-    "state": "CO",
-    "zip_code": "81073",
-    "country_iso_2": "US",
-    "match": {
-      "address1": "1 Nowhere Rd",
-      "zip_code": "81073",
-      "record_type": "",
-      "dpv": "",
-      "dpv_footnotes": "A1"
-    }
+    "city": "",
+    "state": "",
+    "zip_code": "",
+    "country_iso_2": "",
+    "match": null
   },
   "code": 2000,
   "message": "Success"

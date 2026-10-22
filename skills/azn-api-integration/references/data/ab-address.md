@@ -14,7 +14,7 @@ How it differs from the neighbouring datasets:
 
 | Field | Required | Type | Description | Example |
 |---|---|---|---|---|
-| `id` | yes | string | Global unique internally generated identifier for an address |  |
+| `id` | yes | string | Globally unique internally generated identifier for an address |  |
 | `country_iso` | yes | string | 3 letter country code (ISO 3166-1) |  |
 | `dataset` | yes | `ab` | Indicates the provenance of an address |  |
 | `language` | yes | string | Language represented by 2 letter ISO Code (639-1) |  |

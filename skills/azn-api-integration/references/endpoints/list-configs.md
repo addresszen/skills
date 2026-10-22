@@ -12,7 +12,7 @@ Returns every configuration stored against a key, oldest first.
 
 | Name | In | Required | Type | Description |
 |---|---|---|---|---|
-| `key` | path | yes | string | The API Key to retrieve. Begins `ak_`. |
+| `key` | path | yes | string | The API Key. Begins `ak_`. |
 | `user_token` | query | no | string | A secret key used to manage your account and API Keys. It was previously called the user token. |
 
 ## Request Samples
@@ -27,28 +27,24 @@ curl -G 'https://api.addresszen.com/v1/keys/ak_test/configs' \
 **JavaScript**
 
 ```javascript
-const response = await fetch(
-  'https://api.addresszen.com/v1/keys/ak_test/configs?' +
-  new URLSearchParams({
-    user_token: 'uk_secret',
-  })
-);
+import { createZenClient, listConfigs } from '@addresszen/sdk';
 
-const { result } = await response.json();
+const client = createZenClient({ apiKey: 'ak_test', userToken: 'uk_secret' });
+
+const { data } = await listConfigs({
+  client,
+  path: { key: 'ak_test' },
+});
 ```
 
 **Python**
 
 ```python
-import requests
+# pip install addresszen
+from addresszen import AddressZen
 
-response = requests.get(
-    "https://api.addresszen.com/v1/keys/ak_test/configs",
-    params={
-        "user_token": "uk_secret",
-    },
-)
-result = response.json()["result"]
+with AddressZen("ak_test") as client:
+    result = client.list_configs("ak_test", user_token="uk_secret")
 ```
 
 **Ruby**

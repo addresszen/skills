@@ -2,7 +2,7 @@
 
 Update Details
 
-Updates a key's settings and returns its private details. Only the fields you send change. A key on an unlimited plan ignores changes to `datasets`, `daily_limit` and `monthly_limit`.
+Updates a key's settings and returns its private details. Only the fields you send change. A key on an unlimited plan ignores changes to `datasets`, `daily_limit` and `monthly_limit`. Datasets set by your plan cannot be changed here: sending one with a different value returns a 400.
 
 ## Endpoint
 
@@ -24,7 +24,7 @@ Call `update_key_details` on the `AddressZen` client. Path parameters are positi
 
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| `key` | `str` | yes | **API Key** The API Key to retrieve. Begins `ak_`. |
+| `key` | `str` | yes | **API Key** The API Key. Begins `ak_`. |
 
 ## Query Parameters
 
@@ -42,7 +42,7 @@ _None._
 | `redact_days` | `int` | no | Number of days to preserve personal data stored in your key usage history. Set to 0 to prevent personal data storage |
 | `notifications` | `requests.UpdateKeyDetailsNotifications` | no |  |
 | `ip_forwarding` | `bool` | no | Accept IP addresses forwarded in the `AZ-Source-IP` header |
-| `datasets` | `requests.UpdateKeyDetailsDatasets` | no | Indicates which datasets are available and added by default to the address responses |
+| `datasets` | `requests.UpdateKeyDetailsDatasets` | no | Datasets you can switch on or off for this key. Datasets set by your plan (`paf`, `mr`, `nyb`, `ecad`, `ecaf`) cannot be changed here: sending one with a different value returns a 400. |
 
 Nested settings are typed dictionaries from `addresszen.requests`.
 

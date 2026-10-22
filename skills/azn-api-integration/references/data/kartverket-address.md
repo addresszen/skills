@@ -10,7 +10,7 @@ Covers Norway (`NOR`) and Svalbard and Jan Mayen (`SJM`). Records come from the 
 
 | Field | Required | Type | Description | Example |
 |---|---|---|---|---|
-| `id` | yes | string | Global unique internally generated identifier for an address |  |
+| `id` | yes | string | Globally unique internally generated identifier for an address |  |
 | `dataset` | yes | `kartverket` |  |  |
 | `country` | yes | `Norway` \| `Svalbard and Jan Mayen` | Full country names (ISO 3166) |  |
 | `country_iso` | yes | `NOR` \| `SJM` | 3 letter country code (ISO 3166-1) |  |
