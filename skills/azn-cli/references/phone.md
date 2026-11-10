@@ -56,7 +56,7 @@ A row that fails its lookup doesn't abort the batch: in CSV its `status` becomes
 ## Agent patterns
 
 ```bash
-# Single — is it valid?
+# Single: is it valid?
 azn phone "+12025550173" | jq .response.result.valid
 
 # Batch to CSV

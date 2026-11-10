@@ -52,7 +52,7 @@ A row that fails its lookup doesn't abort the batch: in CSV its `status` becomes
 ## Agent patterns
 
 ```bash
-# Single — is it deliverable?
+# Single: is it deliverable?
 azn email "support@example.com" | jq -r .response.result.result
 
 # Batch to CSV
