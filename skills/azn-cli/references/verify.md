@@ -70,7 +70,7 @@ awk -F, '$3 >= 0.9' verified.csv
 
 ## Error codes
 
-- `missing_argument`: no `[query]`, `--file`, or `--stdin` supplied
+- `missing_argument`: no `[query]`, `--file` or `--stdin` supplied
 - `auth_failed`: invalid key, or key lacks paid verify permission
 - `rate_limited`: back off and retry
 - `invalid_input`: malformed body rejected by the API

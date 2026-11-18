@@ -2,7 +2,7 @@
 
 ## No-Match Action
 
-Sometimes a user genuinely cannot find their address - a new build, an unusual spelling, or an address not yet in the dataset. Without an escape hatch they are stuck at `"No matches found"`.
+Sometimes a user genuinely cannot find their address - a new build, an unusual spelling or an address not yet in the dataset. Without an escape hatch they are stuck at `"No matches found"`.
 
 Address Lookup can render an actionable item beneath the no-match message. Use it to hand the user off to a fallback, most commonly a manual address entry form.
 

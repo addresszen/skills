@@ -2,7 +2,7 @@
 
 ## Overview
 
-`shouldAddressPopulate` runs after an address is retrieved and **before** it is written to the form. Return `false` to cancel population, or `true` to proceed. Use it to block addresses you can't serve - outside a delivery area, an unsupported state, or any custom rule - before the fields are filled in.
+`shouldAddressPopulate` runs after an address is retrieved and **before** it is written to the form. Return `false` to cancel population, or `true` to proceed. Use it to block addresses you can't serve - outside a delivery area, an unsupported state or any custom rule - before the fields are filled in.
 
 The predicate may be synchronous or return a promise, so you can call your own API to make the decision.
 

@@ -4,7 +4,7 @@ Inspect and manage API keys.
 
 Every subcommand accepts `[key]` as an optional first positional. If omitted, the resolved api_key is used, so `azn keys details` and `azn keys details ak_xxx` behave the same when your own key is configured.
 
-All subcommands except `keys get`, `keys context` and `keys configs get` **require a user_token**. The CLI preflights this before any HTTP call: if no user_token is found via `--user-token`, `AZN_USER_TOKEN`, or `azn auth login`, the command exits with `code: missing_user_token` and a hint pointing to those three sources.
+All subcommands except `keys get`, `keys context` and `keys configs get` **require a user_token**. The CLI preflights this before any HTTP call: if no user_token is found via `--user-token`, `AZN_USER_TOKEN` or `azn auth login`, the command exits with `code: missing_user_token` and a hint pointing to those three sources.
 
 ## `azn keys get [key]`
 
@@ -16,7 +16,7 @@ Geographic context for a key: `GET /keys/{key}`. Reports `context` (the likely c
 
 ## `azn keys details [key]`
 
-Private key details: `GET /keys/{key}/details`. **Requires user_token.** Reports name, limits, allowed URLs, notifications, and purchases. Dataset availability lives under `keys datasets`; available contexts under `keys context`.
+Private key details: `GET /keys/{key}/details`. **Requires user_token.** Reports name, limits, allowed URLs, notifications and purchases. Dataset availability lives under `keys datasets`; available contexts under `keys context`.
 
 ## `azn keys datasets [key]`
 

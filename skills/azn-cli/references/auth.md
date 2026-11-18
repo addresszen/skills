@@ -58,6 +58,6 @@ Show where each credential was resolved from and call `GET /keys/{key}` to verif
 }
 ```
 
-`source` is `flag`, `env`, or `config`. `preview` is the first 6 characters of the credential followed by `…`.
+`source` is `flag`, `env` or `config`. `preview` is the first 6 characters of the credential followed by `…`.
 
 Either credential may be `null` if it isn't configured. When `api_key` is `null`, the API check is skipped; output omits `available` and reports `"live": false`.

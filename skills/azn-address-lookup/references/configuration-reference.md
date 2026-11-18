@@ -270,7 +270,7 @@ Apply inline styles (a `CSSStyleDeclaration` object) to rendered elements. See [
 
 | Option | Applies to |
 |---|---|
-| `injectStyle` | `boolean \| string` - inject the default stylesheet (`true`), skip it (`false`), or load a stylesheet from a URL (`string`). Default `true` |
+| `injectStyle` | `boolean \| string` - inject the default stylesheet (`true`), skip it (`false`) or load a stylesheet from a URL (`string`). Default `true` |
 | `inputStyle` | the input field |
 | `containerStyle` | the container wrapping all elements |
 | `mainStyle` | the main component (list, toolbar, messages) |

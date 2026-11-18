@@ -1,6 +1,6 @@
 # Add to your React Application
 
-[`@addresszen/react`](https://www.npmjs.com/package/@addresszen/react) is the official React integration for Address Lookup. It renders an `<input>`, attaches the widget, and hands selected addresses back through callbacks - no `useEffect` or `useRef` wiring required.
+[`@addresszen/react`](https://www.npmjs.com/package/@addresszen/react) is the official React integration for Address Lookup. It renders an `<input>`, attaches the widget and hands selected addresses back through callbacks - no `useEffect` or `useRef` wiring required.
 
 ## Install
 
@@ -72,7 +72,7 @@ export default function CheckoutForm() {
 
 ## Wrap an Existing Input
 
-Pass a single `<input>` (or any element that renders one and forwards a ref) as `children`. The component attaches the widget to your input rather than rendering its own - useful for design systems like shadcn/ui, MUI, or Mantine, or for any input you've already styled.
+Pass a single `<input>` (or any element that renders one and forwards a ref) as `children`. The component attaches the widget to your input rather than rendering its own - useful for design systems like shadcn/ui, MUI or Mantine, or for any input you've already styled.
 
 ```tsx
 <AddressLookup
@@ -112,7 +112,7 @@ All behavioral options from the underlying controller are supported as props.
 - `resolveOptions` - forwarded to the resolve endpoint (e.g. `tags` for usage attribution).
 - `detectCountry` - default `true`. Set `false` to skip IP-based country detection.
 
-The legacy DOM-coupled options (`inputField`, `outputFields`, `hide`, `unhide`, `scope`, `inputStyle`, `listStyle`, `mainStyle`, `containerStyle`, `liStyle`) are intentionally absent. React owns the DOM - render your own form fields, update them from `onAddressRetrieved`, and style with CSS classes or your component library.
+The legacy DOM-coupled options (`inputField`, `outputFields`, `hide`, `unhide`, `scope`, `inputStyle`, `listStyle`, `mainStyle`, `containerStyle`, `liStyle`) are intentionally absent. React owns the DOM - render your own form fields, update them from `onAddressRetrieved` and style with CSS classes or your component library.
 
 ## Callbacks
 
@@ -135,7 +135,7 @@ The three most common:
 />
 ```
 
-See [Callbacks](https://docs.addresszen.com/docs/address-lookup/callbacks) for the full list and semantics (`onAddressPopulated`, `onSuggestionsRetrieved`, `onCountrySelected`, `onOpen`, `onClose`, `onFocus`, `onBlur`, `onFailedCheck`, and more).
+See [Callbacks](https://docs.addresszen.com/docs/address-lookup/callbacks) for the full list and semantics (`onAddressPopulated`, `onSuggestionsRetrieved`, `onCountrySelected`, `onOpen`, `onClose`, `onFocus`, `onBlur`, `onFailedCheck` and more).
 
 ## CSS
 
