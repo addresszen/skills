@@ -125,3 +125,7 @@ azn resolve "$ID"
 # Inspect a key
 azn keys details
 ```
+
+## MCP server
+
+An agent that needs address, email or phone lookups while it works, rather than a shell command, can connect to the MCP server at `https://api.addresszen.com/mcp` instead. The `azn-api-integration` skill covers it, as does <https://docs.addresszen.com/docs/guides/mcp>.

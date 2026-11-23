@@ -7,7 +7,9 @@ description: |
   phone validation, key/licensee/config admin, the US-shaped Address model
   with its `dataset` and `native` (raw dataset record) fields, the `context`
   country parameter, filters and biases, error codes, rate limits, and common
-  gotchas around allowed URLs.
+  gotchas around allowed URLs. Also covers the MCP server at
+  api.addresszen.com/mcp, which gives an agent address, email and phone
+  tools directly.
 license: SEE LICENSE IN LICENSE
 metadata:
   author: addresszen
@@ -26,6 +28,7 @@ inputs:
     required: true
 references:
   - authentication.md
+  - mcp.md
   - error-codes.md
   - endpoints/
   - data/
@@ -101,6 +104,19 @@ console.log(data.result.hits);
 
 See [`endpoints/`](./references/endpoints/) for one reference per operation, including key, licensee and config admin.
 
+## MCP Server
+
+`POST https://api.addresszen.com/mcp` exposes the API as five MCP tools: `verify_address`, `find_address`, `retrieve_address`, `validate_email` and `validate_phone`. Use it when a model needs addresses, emails or phone numbers checked while it works; use HTTP when you are writing application code.
+
+Use `verify_address` first: the model usually holds the whole address. Fall back to `find_address` then `retrieve_address` when confidence is low, narrowing the candidates with filters and biases.
+
+- MCP protocol revision `2026-07-28` only. Older clients are refused
+- `Authorization: Bearer <key>` on every request, never the query string. A licensee sends `Bearer sl_...`
+- A backend key: a key with Allowed URLs is refused with `4011`
+- Each tool bills as the endpoint it mirrors. Refusals come back as tool results with `isError` and the API's error code
+
+See [`mcp.md`](./references/mcp.md) for tool arguments, errors and a raw request.
+
 ## Filters, Biases and Context
 
 - **`context`** - each search runs in one country. A missing or unrecognized `context` falls back to your account default. Example: `context=USA`
@@ -136,6 +152,7 @@ See [`endpoints/`](./references/endpoints/) for one reference per operation, inc
 ## Reference Layout
 
 - [`authentication.md`](./references/authentication.md) - header and query auth, key restrictions
+- [`mcp.md`](./references/mcp.md) - MCP server: requirements, tools, billing, errors
 - [`error-codes.md`](./references/error-codes.md) - error code catalogue with fixes
 - [`endpoints/`](./references/endpoints/) - one reference per API operation: parameters, request body, curl samples, response schema, response example, status codes
 - [`data/`](./references/data/) - one reference per data model (`Address`, the verify match, every `native` dataset record, suggestions, key admin) with field tables, an example and "used by" cross-links
