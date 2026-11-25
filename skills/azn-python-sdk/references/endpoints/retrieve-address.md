@@ -46,7 +46,7 @@ With `filter`, returns dictionaries of the requested fields instead of models.
 
 ## Errors
 
-Unsuccessful HTTP responses raise `APIError` or a subclass, with the HTTP `status` and the API error `code` and `message`. Connection failures and timeouts raise `TransportError`. Unexpected responses raise `ProtocolError`. All derive from `ClientError`. See [error handling](https://docs.addresszen.com/docs/sdks/python/errors).
+Unsuccessful HTTP responses raise `APIError` or a subclass, with the HTTP `status` and the API error `code` and `message`. Connection failures and timeouts raise `TransportError`. Unexpected responses raise `ProtocolError`. All derive from `ClientError`. A result that does not match the spec is returned unvalidated with a `ResponseValidationWarning`. See [error handling](https://docs.addresszen.com/docs/sdks/python/errors).
 
 ## Example
 

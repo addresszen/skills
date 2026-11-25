@@ -13,9 +13,23 @@ Every failure the SDK raises derives from `ClientError`. An unsuccessful HTTP re
 | `ServerError` | Any other HTTP `5xx` |
 | `APIError` | Any other unsuccessful HTTP response. Base class of the five above |
 | `TransportError` | The request failed before a response arrived, such as a connection error or timeout |
-| `ProtocolError` | The response was not a valid success envelope, or did not match the response schema. If only the result's fields failed, `result` holds the unvalidated result, otherwise `None` |
+| `ProtocolError` | The response was not a valid success envelope, had an unexpected success status or its result was the wrong JSON type, such as a list instead of an object |
 
 The SDK checks arguments against the API's schema before it sends a request. A wrong type or a missing settings key raises `TypeError`; a value out of range, too long or not matching its pattern raises `ValueError`. It does not check option values, so the API can add new ones.
+
+## Responses that do not match the spec
+
+If the API returns a result that breaks the response schema, such as a missing required field or a field of the wrong type, the SDK returns it rather than raising and emits a `ResponseValidationWarning`. The warning names the method and the field paths, never the values. Fields that match are typed as usual; a field that does not keeps the raw value, and a missing field raises `AttributeError` when read. Calling `model_dump()` on such a result can print Pydantic serializer warnings that include values, so pass `warnings=False` if you log it.
+
+To fail instead, turn the warning into an error:
+
+```python
+import warnings
+
+from addresszen import ResponseValidationWarning
+
+warnings.simplefilter("error", ResponseValidationWarning)
+```
 
 ## APIError attributes
 

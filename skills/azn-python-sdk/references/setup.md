@@ -26,11 +26,11 @@ The client keeps a pool of HTTP connections open. Use it as a context manager, o
 | `base_url` | `https://api.addresszen.com/v1` | API root. Change it only to point at a test server |
 | `transport` | `None` | An HTTPX transport, such as `httpx.MockTransport` in tests |
 
-Every argument after `api_key` is keyword-only.
+Every argument after `api_key` is keyword-only. The SDK sends the API key as `Authorization: Bearer ak_...` on each lookup, never in the URL.
 
 ## Management Key
 
-To read or change your account: key details, usage, logs, licensees and configs. A Management Key begins `uk_`. Pass it to each of those methods as `user_token`; the SDK sends it in the `Authorization` header, never in the URL.
+To read or change your account: key details, usage, logs, licensees and configs. A Management Key begins `uk_`. Pass it to each of those methods as `user_token`. The SDK sends it as `Authorization: Bearer uk_...` in place of the API key, never in the URL.
 
 A Management Key controls your account. Keep it in a secret store on your server, never in a browser or mobile app.
 
@@ -40,4 +40,4 @@ The client is synchronous. From an async application, run calls in a worker thre
 
 ## User-Agent
 
-Every request carries `User-Agent: addresszen-python-sdk/<version>`, such as `addresszen-python-sdk/0.1.0`. The header holds no credentials or address data.
+Every request carries `User-Agent: addresszen-python-sdk/<version> python/<python version>`, such as `addresszen-python-sdk/0.2.1 python/3.12.3`. The header holds no credentials or address data.

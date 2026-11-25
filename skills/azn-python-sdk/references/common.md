@@ -38,4 +38,4 @@ def test_empty_balance() -> None:
     assert error.value.code == 4020
 ```
 
-A mocked success needs the API's envelope, `{"code": 2000, "result": ...}`, around a result that matches the response schema. Anything else raises `ProtocolError`.
+A mocked success needs the API's envelope, `{"code": 2000, "result": ...}`, around a result that matches the response schema. A missing envelope raises `ProtocolError`; a result that breaks the schema emits a `ResponseValidationWarning`.

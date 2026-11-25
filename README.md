@@ -10,6 +10,7 @@ A collection of skills for AI coding agents (Claude Code, Cursor, Codex) providi
 - **`azn-cli`** - driving the API from the terminal with the `azn` CLI (`@addresszen/cli`).
 - **`azn-js-sdk`** - integrating `@addresszen/sdk`, the fetch-based TypeScript SDK: typed API calls, autocomplete, error handling and React or Preact Query adapters.
 - **`azn-python-sdk`** - integrating `addresszen` on PyPI, the Python SDK: typed methods and Pydantic models for every API operation: US address verification, email and phone validation, autocomplete, keys and licensees.
+- **`azn-php-sdk`** - integrating `addresszen/sdk` on Packagist, the PHP SDK, and its Symfony bundle and Laravel package: one typed method and read-only response class for every API operation: US address verification, autocomplete, email and phone validation, keys and licensees.
 
 ## Install
 

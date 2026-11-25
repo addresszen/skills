@@ -41,7 +41,7 @@ Every API operation has a method, including autocomplete (`find_address`, `retri
 
 ## Authentication and errors
 
-Pass the API key to the client. Key management (except `key_availability`), licensee and config methods also need a Management Key (`uk_...`) as the `user_token` keyword argument. The SDK sends it in the `Authorization` header; load it from a secret store and never ship it to a browser. Unsuccessful responses raise `APIError` subclasses (`AuthenticationError`, `PaymentRequiredError`, `NotFoundError`, `RateLimitError`, `ServerError`) with `status`, `code` and `message`. Network failures raise `TransportError`; invalid responses raise `ProtocolError`. All derive from `ClientError`. The SDK never retries: a timed-out lookup may already be charged. See [error handling](./references/errors.md).
+Pass the API key to the client. Key management (except `key_availability`), licensee and config methods also need a Management Key (`uk_...`) as the `user_token` keyword argument. The SDK sends it in the `Authorization` header; load it from a secret store and never ship it to a browser. Unsuccessful responses raise `APIError` subclasses (`AuthenticationError`, `PaymentRequiredError`, `NotFoundError`, `RateLimitError`, `ServerError`) with `status`, `code` and `message`. Network failures raise `TransportError`; a malformed envelope raises `ProtocolError`. All derive from `ClientError`. A result that breaks the response schema is returned unvalidated with a `ResponseValidationWarning`. The SDK never retries: a timed-out lookup may already be charged. See [error handling](./references/errors.md).
 
 ## References
 
