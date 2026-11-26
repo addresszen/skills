@@ -28,7 +28,7 @@ import { listLicensees } from "@addresszen/sdk";
 
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| `starting_after` | `number` | no | ID of the licensee after which to list results |
+| `starting_after` | `string` | no | ID of the licensee after which to list results. Pass the `id` of the last licensee on the previous page. |
 | `limit` | `number` | no | **Limit** Specifies the maximum number of records to retrieve. By default the limit is 10. Requesting a larger result set adds latency. |
 | `query` | `string` | no | Filter results by licensee name. Can be shortened to `q=` |
 

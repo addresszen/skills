@@ -59,7 +59,7 @@ How it differs from the neighbouring datasets:
 | `dpa_end_date` | no | string | Date the PAF record no longer existed in the database. |  |
 | `dpa_last_update_date` | no | string | Date any attribute on the DPA record was last changed. |  |
 | `dpa_entry_date` | no | string | Date the PAF record was first loaded by GeoPlace. |  |
-| `classification_code` | no | string | Current AddressBase classification code (e.g. `RD` residential, |  |
+| `classification_code` | no | string | Current AddressBase classification code, passed through verbatim at |  |
 | `class_scheme` | no | string | Name of the classification scheme applied to this record. |  |
 | `scheme_version` | no | number | Version number of the classification scheme in use (e.g. `1.0`). |  |
 | `classification_start_date` | no | string | Date the classification record was first loaded into the database. |  |

@@ -13,7 +13,7 @@ Returns a key's licensees, oldest first, up to 100 per request. The list omits c
 | Name | In | Required | Type | Description |
 |---|---|---|---|---|
 | `key` | path | yes | string | The API Key. Begins `ak_`. |
-| `starting_after` | query | no | integer | ID of the licensee after which to list results |
+| `starting_after` | query | no | string | ID of the licensee after which to list results. Pass the `id` of the last licensee on the previous page. |
 | `user_token` | query | no | string | A secret key used to manage your account and API Keys. It was previously called the user token. |
 | `limit` | query | no | integer | Specifies the maximum number of records to retrieve. |
 | `query` | query | no | string | Filter results by licensee name. Can be shortened to `q=` |

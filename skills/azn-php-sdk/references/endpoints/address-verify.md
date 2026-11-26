@@ -46,6 +46,7 @@ Pass these as keys of `$params`.
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
 | `tags` | `string\|list<string>` | no | Tags |
+| `remove_firm` | `'true'` | no | Remove Firm |
 | `context` | `string` | no | Identify the country of the address to verify. Defaults to United States (USA) |
 
 ## Request Body

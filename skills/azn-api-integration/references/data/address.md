@@ -105,3 +105,7 @@ Every address is returned in this shape, whatever dataset it came from. US and n
   "county_number": 103
 }
 ```
+
+## Used By
+
+- [RetrieveAddress](../endpoints/retrieve-address.md)

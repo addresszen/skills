@@ -36,6 +36,7 @@ Pass these as keys of `$params`.
 | `licensee` | `string` | no | Licensee Key |
 | `filter` | `string\|list<string>` | no | Restrict Result Fields |
 | `tags` | `string\|list<string>` | no | Tags |
+| `remove_firm` | `'true'` | no | Remove Firm |
 
 ## Response
 

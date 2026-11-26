@@ -38,7 +38,7 @@ Some results come in one of several forms, and the SDK picks the class that matc
 | --- | --- |
 | `addressVerify()` result | `UsaVerifyMatch`, or `UsaVerifyNoMatch` when nothing matches: `match` is `null`, `count` is `0` and the address fields are empty strings |
 | `UsaVerifyMatch` `match` | `UsaCassVerifiedAddress` for a CASS match in the United States, or `Address` for a match elsewhere, such as with `['context' => 'GBR']` in the params. An `Address` has a `dataset` and a `native` record |
-| `Address` `native` | A class for the address's source dataset, such as `UspsAddress` or `PafAddress`; an array for a dataset the SDK does not know yet; or `null` |
+| `Address` `native` | A class for the address's source dataset, such as `PafAddress`; an array for a dataset the SDK does not know yet; or `null` |
 | `Place` `native` | `GeonamesPlace`; an array for a dataset the SDK does not know yet; or `null` |
 | `emailValidation()` result | `Email`, or `UnknownEmail` when deliverability cannot be checked |
 | `phoneNumberValidation()` result | `PhoneNumber`, or `InvalidPhoneNumber` |

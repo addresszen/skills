@@ -30,7 +30,7 @@ The source IP column carries the address forwarded in the `AZ-Source-IP` header.
 
 ## Data redaction
 
-We redact personally identifiable data (PII) in your usage log weekly, covering the IP, source IP, search term and URL columns.
+We redact personally identifiable information (PII) in your usage log weekly, covering the IP, source IP, search term and URL columns.
 
 The default retention is 28 days. Change the period from your dashboard. Set it to `0` days to stop collecting PII altogether.
 

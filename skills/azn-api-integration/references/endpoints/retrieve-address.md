@@ -20,6 +20,7 @@ Every address comes back in one US-shaped format, whatever country or dataset it
 | `licensee` | query | no | string | Uniquely identifies a licensee. |
 | `filter` | query | no | string | Comma separated whitelist of address elements to return. |
 | `tags` | query | no | string | A comma separated list of tags to query over. |
+| `remove_firm` | query | no | `true` | Removes firm names from the address lines (`line_1`, `line_2`, ...). Outside the USA this covers organization and department names. Remaining lines move up. Useful when delivering to people rather than businesses. |
 
 ## Request Samples
 

@@ -31,7 +31,7 @@ Pass these as keys of `$params`.
 
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| `starting_after` | `int` | no | ID of the licensee after which to list results |
+| `starting_after` | `string` | no | ID of the licensee after which to list results. Pass the `id` of the last licensee on the previous page. |
 | `limit` | `int` | no | Limit |
 | `query` | `string` | no | Filter results by licensee name. Can be shortened to `q=` |
 

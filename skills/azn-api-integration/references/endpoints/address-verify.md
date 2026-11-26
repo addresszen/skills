@@ -29,6 +29,7 @@ The top-level fields (`address_line_one`, `address_line_two`, `city`, `state`, `
 | Name | In | Required | Type | Description |
 |---|---|---|---|---|
 | `tags` | query | no | string | A comma separated list of tags to query over. |
+| `remove_firm` | query | no | `true` | Removes firm names from the address lines (`line_1`, `line_2`, ...). Outside the USA this covers organization and department names. Remaining lines move up. Useful when delivering to people rather than businesses. |
 | `context` | query | no | string | Identify the country of the address to verify. Defaults to United States (USA) |
 
 ## Request Body

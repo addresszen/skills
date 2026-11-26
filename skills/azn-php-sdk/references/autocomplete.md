@@ -48,17 +48,7 @@ Each entry in `contexts` has `iso3` (the `context` code), `iso2`, `description` 
 
 Pass the hit's `id` to `retrieveAddress()`. The result is an `Address` in one US-shaped format, whatever the country: `line1`, `line2`, `lastLine`, `city`, `state`, `zipCode`, `zipPlus4Code`, `countryIso` and the other standard fields. A field the country's dataset does not carry is an empty string. See [responses](https://docs.addresszen.com/docs/sdks/php/responses) for how to read it.
 
-`dataset` names the source, and `native` holds the raw record from that dataset when the API returns one. It is `null` otherwise, so narrow it before reading dataset-specific fields.
-
-```php title="native.php"
-use AddressZen\Types\UspsAddress;
-
-$address = $client->retrieveAddress('usps_Z108703633|123||1119')->result;
-
-if ($address->native instanceof UspsAddress) {
-    echo $address->native->primaryNumber, PHP_EOL;
-}
-```
+`dataset` names the source. A United States address comes from `usps` and has no native record, so its `native` is `null`. An address from another country's dataset carries that dataset's raw record in `native`; see [native records](https://docs.addresszen.com/docs/sdks/php/responses#native-records).
 
 ## Cost
 

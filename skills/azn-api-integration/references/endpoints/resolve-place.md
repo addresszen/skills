@@ -24,7 +24,7 @@ Each request decrements your lookup balance. An unknown ID returns `404`.
 **curl**
 
 ```bash
-curl -G 'https://api.addresszen.com/v1/places/geonames_5353' \
+curl -G 'https://api.addresszen.com/v1/places/geonames_2643743' \
   -d 'api_key=ak_test'
 ```
 
@@ -37,7 +37,7 @@ const client = createZenClient({ apiKey: 'ak_test' });
 
 const { data } = await resolvePlace({
   client,
-  path: { place: 'geonames_5353' },
+  path: { place: 'geonames_2643743' },
 });
 ```
 
@@ -48,7 +48,7 @@ const { data } = await resolvePlace({
 from addresszen import AddressZen
 
 with AddressZen("ak_test") as client:
-    result = client.resolve_place("geonames_5353")
+    result = client.resolve_place("geonames_2643743")
 ```
 
 **Ruby**
@@ -57,7 +57,7 @@ with AddressZen("ak_test") as client:
 require "net/http"
 require "json"
 
-uri = URI("https://api.addresszen.com/v1/places/geonames_5353")
+uri = URI("https://api.addresszen.com/v1/places/geonames_2643743")
 uri.query = URI.encode_www_form(api_key: "ak_test")
 result = JSON.parse(Net::HTTP.get(uri))["result"]
 ```
@@ -67,7 +67,7 @@ result = JSON.parse(Net::HTTP.get(uri))["result"]
 ```php
 <?php
 $response = file_get_contents(
-  "https://api.addresszen.com/v1/places/geonames_5353?" .
+  "https://api.addresszen.com/v1/places/geonames_2643743?" .
   http_build_query([
     "api_key" => "ak_test",
   ])

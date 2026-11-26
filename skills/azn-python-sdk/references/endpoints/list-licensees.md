@@ -30,7 +30,7 @@ Call `list_licensees` on the `AddressZen` client. Path parameters are positional
 
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
-| `starting_after` | `int` | no | ID of the licensee after which to list results |
+| `starting_after` | `str` | no | ID of the licensee after which to list results. Pass the `id` of the last licensee on the previous page. |
 | `limit` | `int` | no | **Limit** Specifies the maximum number of records to retrieve. By default the limit is 10. Requesting a larger result set adds latency. |
 | `query` | `str` | no | Filter results by licensee name. Can be shortened to `q=` |
 

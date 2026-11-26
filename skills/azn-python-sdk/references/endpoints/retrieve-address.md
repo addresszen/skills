@@ -35,6 +35,7 @@ Call `retrieve_address` on the `AddressZen` client. Path parameters are position
 | `licensee` | `str` | no | **Licensee Key** Uniquely identifies a licensee. |
 | `filter` | `str` | no | **Restrict Result Fields** Comma separated whitelist of address elements to return. E.g. `filter=line_1,line_2,line_3` returns only the `line_1`, `line_2` and `line_3` address elements in your response. |
 | `tags` | `str` | no | **Tags** A comma separated list of tags to query over. Useful if you want to specify the circumstances in which the request was made. If you specify multiple tags, the response comprises only requests that satisfy all of them. Searching `"foo,bar"` queries only requests tagged both `"foo"` and `"bar"`. |
+| `remove_firm` | `Literal['true'] \| str` | no | **Remove Firm** Removes firm names from the address lines (`line_1`, `line_2`, ...). Outside the USA this covers organization and department names. Remaining lines move up. Useful when delivering to people rather than businesses. Set `remove_firm=true` to enable. Firm fields and the `native` record are unchanged. If removing the firm would leave no address lines, it is kept and the lines are returned unchanged. Building names are not removed. |
 
 ## Response Type
 
